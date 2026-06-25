@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  /* Bölüm başlığı için bordo, harf aralıklı küçük etiket */
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 text-wine tracking-[0.25em] uppercase text-xs font-semibold;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-wine px-7 py-3
+      text-sm font-semibold text-cream transition-all duration-300
+      hover:bg-wine-light hover:shadow-lg hover:shadow-wine/30 focus:outline-none
+      focus-visible:ring-2 focus-visible:ring-wine focus-visible:ring-offset-2
+      focus-visible:ring-offset-cream;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-wine/50
+      px-7 py-3 text-sm font-semibold text-wine transition-all duration-300
+      hover:bg-wine hover:text-cream focus:outline-none focus-visible:ring-2
+      focus-visible:ring-wine focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+  }
+}
+
+/* İnce, zarif kaydırma çubuğu */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #ece4d4;
+}
+::-webkit-scrollbar-thumb {
+  background: #6e2b3d;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8c4255;
+}
