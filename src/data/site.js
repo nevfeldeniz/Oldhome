@@ -118,17 +118,17 @@ const buildImages = (main) =>
   [main, 'room.png', 'bathroom.png', 'hero-building.png'].map((p) => asset(p))
 
 const showcaseSeed = [
-  { number: '101', type: 'Çift', desc: 'Zemin katta, ferah ve aydınlık çift kişilik odamız. Sıcak ahşap tonları ve konforlu yatağıyla huzurlu bir konaklama sunar.' },
-  { number: '102', type: 'Tek', desc: 'Tek başına seyahat edenler için ideal, sakin ve kompakt odamız. Çalışma için uygun, sessiz bir köşe.' },
-  { number: '103', type: '3 Kişilik', desc: 'Aileler için geniş, üç kişilik konaklamaya uygun ferah odamız. Esnek yatak düzeni ve bol depolama alanı.' },
-  { number: '104', type: 'Çift', desc: 'Modern dekoru ve özel banyosuyla çiftler için sıcak bir yuva hissi veren odamız.' },
-  { number: '105', type: 'Tek', desc: 'Bütçe dostu, temiz ve şık tek kişilik odamız. Tüm temel konfor detaylarıyla donatılmıştır.' },
-  { number: '201', type: 'Çift', desc: 'Üst katta, gün ışığı alan keyifli çift kişilik odamız. Dinlenme koltuğu ve şehir köşesi manzarası.' },
-  { number: '202', type: '3 Kişilik', desc: 'En geniş aile odalarımızdan biri. İki ayrı yatak alanı ve rahat bir oturma köşesi sunar.' },
-  { number: '203', type: 'Çift', desc: 'Sıcak krem tonlarıyla huzur veren, çift kişilik premium odamız. Sessiz arka cephe.' },
-  { number: '204', type: 'Tek', desc: 'Pratik ve konforlu tek kişilik odamız; iş seyahatleri için ideal bir seçenek.' },
-  { number: '205', type: 'Çift', desc: 'Geniş yatağı ve ferah banyosuyla öne çıkan, romantik bir konaklama için ideal odamız.' },
-  { number: '206', type: '3 Kişilik', desc: 'Üst katın köşesinde yer alan, bol ışıklı ve geniş üç kişilik odamız. Kalabalık aileler için uygun.' },
+  { number: '001', type: 'Çift', desc: 'Zemin katta, ferah ve aydınlık çift kişilik odamız. Sıcak ahşap tonları ve konforlu yatağıyla huzurlu bir konaklama sunar.' },
+  { number: '002', type: 'Tek', desc: 'Tek başına seyahat edenler için ideal, sakin ve kompakt odamız. Çalışma için uygun, sessiz bir köşe.' },
+  { number: '003', type: '3 Kişilik', desc: 'Aileler için geniş, üç kişilik konaklamaya uygun ferah odamız. Esnek yatak düzeni ve bol depolama alanı.' },
+  { number: '004', type: 'Çift', desc: 'Modern dekoru ve özel banyosuyla çiftler için sıcak bir yuva hissi veren odamız.' },
+  { number: '005', type: 'Tek', desc: 'Bütçe dostu, temiz ve şık tek kişilik odamız. Tüm temel konfor detaylarıyla donatılmıştır.' },
+  { number: '006', type: 'Çift', desc: 'Üst katta, gün ışığı alan keyifli çift kişilik odamız. Dinlenme koltuğu ve şehir köşesi manzarası.' },
+  { number: '007', type: '3 Kişilik', desc: 'En geniş aile odalarımızdan biri. İki ayrı yatak alanı ve rahat bir oturma köşesi sunar.' },
+  { number: '008', type: 'Çift', desc: 'Sıcak krem tonlarıyla huzur veren, çift kişilik premium odamız. Sessiz arka cephe.' },
+  { number: '009', type: 'Tek', desc: 'Pratik ve konforlu tek kişilik odamız; iş seyahatleri için ideal bir seçenek.' },
+  { number: '010', type: 'Çift', desc: 'Geniş yatağı ve ferah banyosuyla öne çıkan, romantik bir konaklama için ideal odamız.' },
+  { number: '011', type: '3 Kişilik', desc: 'Üst katın köşesinde yer alan, bol ışıklı ve geniş üç kişilik odamız. Kalabalık aileler için uygun.' },
 ]
 
 const featuresByType = {
