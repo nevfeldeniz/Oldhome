@@ -17,6 +17,12 @@ export default {
         },
         // Sıcak koyu metin rengi
         ink: '#33272b',
+        // Koyu antrasit tonları (modal arka planı, görsel zeminleri, vurgular)
+        charcoal: {
+          900: '#1a1a1a',
+          800: '#262626',
+          700: '#333333',
+        },
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'Merriweather', 'serif'],
