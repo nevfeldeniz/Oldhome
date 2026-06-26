@@ -11,6 +11,7 @@ export const navLinks = [
   { label: 'Ana Sayfa', href: '#home' },
   { label: 'Hakkımızda', href: '#about' },
   { label: 'Odalarımız', href: '#rooms' },
+  { label: 'Oda Galerisi', href: '#room-showcase' },
   { label: 'İmkanlar', href: '#amenities' },
   { label: 'İletişim', href: '#contact' },
 ]
@@ -97,6 +98,59 @@ export const rooms = [
 ]
 
 export const roomsNote = '0-6 yaş arası çocuklar tüm odalarımızda ücretsizdir.'
+
+// =====================================================================
+//  ODA GALERİSİ (Room Showcase) - 11 oda
+//  Kendi fotoğraflarını eklemek için sadece "images" dizisindeki
+//  bağlantıları değiştirmen yeterli (her oda için 4 görsel).
+//  Şimdilik public/ klasöründeki mevcut görseller placeholder olarak kullanılıyor.
+// =====================================================================
+
+// Oda tipine göre varsayılan fiyat ve ana görsel eşlemesi
+const roomTypeDefaults = {
+  Tek: { price: '2.200 TL', main: 'room-1.png' },
+  Çift: { price: '2.700 TL', main: 'room-2.png' },
+  '3 Kişilik': { price: '3.500 TL', main: 'room-3.png' },
+}
+
+// Her odaya 4 görsellik bir set üretir (ana görsel + ortak placeholder'lar)
+const buildImages = (main) =>
+  [main, 'room.png', 'bathroom.png', 'hero-building.png'].map((p) => asset(p))
+
+const showcaseSeed = [
+  { number: '101', type: 'Çift', desc: 'Zemin katta, ferah ve aydınlık çift kişilik odamız. Sıcak ahşap tonları ve konforlu yatağıyla huzurlu bir konaklama sunar.' },
+  { number: '102', type: 'Tek', desc: 'Tek başına seyahat edenler için ideal, sakin ve kompakt odamız. Çalışma için uygun, sessiz bir köşe.' },
+  { number: '103', type: '3 Kişilik', desc: 'Aileler için geniş, üç kişilik konaklamaya uygun ferah odamız. Esnek yatak düzeni ve bol depolama alanı.' },
+  { number: '104', type: 'Çift', desc: 'Modern dekoru ve özel banyosuyla çiftler için sıcak bir yuva hissi veren odamız.' },
+  { number: '105', type: 'Tek', desc: 'Bütçe dostu, temiz ve şık tek kişilik odamız. Tüm temel konfor detaylarıyla donatılmıştır.' },
+  { number: '201', type: 'Çift', desc: 'Üst katta, gün ışığı alan keyifli çift kişilik odamız. Dinlenme koltuğu ve şehir köşesi manzarası.' },
+  { number: '202', type: '3 Kişilik', desc: 'En geniş aile odalarımızdan biri. İki ayrı yatak alanı ve rahat bir oturma köşesi sunar.' },
+  { number: '203', type: 'Çift', desc: 'Sıcak krem tonlarıyla huzur veren, çift kişilik premium odamız. Sessiz arka cephe.' },
+  { number: '204', type: 'Tek', desc: 'Pratik ve konforlu tek kişilik odamız; iş seyahatleri için ideal bir seçenek.' },
+  { number: '205', type: 'Çift', desc: 'Geniş yatağı ve ferah banyosuyla öne çıkan, romantik bir konaklama için ideal odamız.' },
+  { number: '206', type: '3 Kişilik', desc: 'Üst katın köşesinde yer alan, bol ışıklı ve geniş üç kişilik odamız. Kalabalık aileler için uygun.' },
+]
+
+const featuresByType = {
+  Tek: ['Ücretsiz Wi-Fi', 'Klima', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Günlük Temizlik'],
+  Çift: ['Ücretsiz Wi-Fi', 'Klima', 'Çift Kişilik Yatak', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Saç Kurutma Makinesi', 'Günlük Temizlik'],
+  '3 Kişilik': ['Ücretsiz Wi-Fi', 'Klima', 'Geniş Aile Yatağı', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Mini Buzdolabı', 'Günlük Temizlik'],
+}
+
+export const showcaseRooms = showcaseSeed.map((room, index) => ({
+  id: index + 1,
+  number: `Oda ${room.number}`,
+  type: room.type,
+  description: room.desc,
+  price: roomTypeDefaults[room.type].price,
+  // Bir odaya kendi fotoğraflarını vermek için yukarıdaki showcaseSeed
+  // satırına `images: ['oda101-1.png', 'oda101-2.png', ...]` ekle (public/ içindeki dosyalar).
+  // Aksi halde tipe göre varsayılan placeholder görseller kullanılır.
+  images: room.images
+    ? room.images.map((p) => asset(p))
+    : buildImages(roomTypeDefaults[room.type].main),
+  features: featuresByType[room.type],
+}))
 
 export const gallery = [
   {
