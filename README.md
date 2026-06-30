@@ -26,7 +26,15 @@ npm run build
 npm run preview
 ```
 
-`npm run dev` çalıştıktan sonra terminalde gösterilen adresi (genellikle http://localhost:5173) tarayıcıda açın.
+`npm run dev` çalıştıktan sonra tarayıcıda şu adresleri açın:
+
+- **Site:** http://localhost:5173/Oldhome/
+- **Admin:** http://localhost:5173/Oldhome/admin
+
+Canlı site (GitHub Pages):
+
+- **Site:** https://nevfeldeniz.github.io/Oldhome/
+- **Admin:** https://nevfeldeniz.github.io/Oldhome/admin
 
 ## Proje Yapısı
 
