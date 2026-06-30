@@ -1,11 +1,12 @@
 import { Home } from 'lucide-react'
-import { about } from '../data/site'
+import { useSite } from '../context/SiteContext'
 import { Reveal } from './Section'
 
-// Otelin gerçek oda görseli (public/ klasöründe)
 const ABOUT_IMAGE = `${import.meta.env.BASE_URL}room.png`
 
 export default function About() {
+  const { site } = useSite()
+  const { about } = site
   return (
     <section id="about" className="bg-parchment py-24 sm:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
