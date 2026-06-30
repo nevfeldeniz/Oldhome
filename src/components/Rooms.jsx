@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
 import { Users, Check, Phone, Baby } from 'lucide-react'
-import { rooms, roomsNote, contact } from '../data/site'
+import { useSite } from '../context/SiteContext'
 import { SectionHeading, fadeUp } from './Section'
 
 export default function Rooms() {
+  const { site } = useSite()
+  const { rooms, roomsNote, contact } = site
   return (
     <section id="rooms" className="bg-cream py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
