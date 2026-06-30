@@ -1,27 +1,20 @@
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Amenities from './components/Amenities'
-import Rooms from './components/Rooms'
-import RoomShowcase from './components/RoomShowcase'
-import Gallery from './components/Gallery'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { SiteProvider } from './context/SiteContext'
+import HomePage from './pages/HomePage'
+import AdminApp from './admin/AdminApp'
+
+// GitHub Pages alt yolu: /Oldhome/
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-cream text-ink">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Amenities />
-        <Rooms />
-        <RoomShowcase />
-        <Gallery />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <SiteProvider>
+      <BrowserRouter basename={basename}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/admin/*" element={<AdminApp />} />
+        </Routes>
+      </BrowserRouter>
+    </SiteProvider>
   )
 }
