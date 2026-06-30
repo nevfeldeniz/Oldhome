@@ -1,7 +1,10 @@
 import { TreePine, Phone, Mail, MapPin } from 'lucide-react'
-import { navLinks, contact, footer, hero } from '../data/site'
+import { navLinks } from '../data/site'
+import { useSite } from '../context/SiteContext'
 
 export default function Footer() {
+  const { site } = useSite()
+  const { contact, footer, hero } = site
   const year = new Date().getFullYear()
 
   return (
