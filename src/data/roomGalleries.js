@@ -1,5 +1,5 @@
 // Oda galerileri — dosya yolları public/rooms/ altındadır.
-// Her oda için profesyonel otel galeri sırası (genel → detay).
+// Tekrarlayan açılar elendi; her bölümden en iyi tek kare seçildi.
 
 export const roomGalleries = {
   '001': {
@@ -27,73 +27,18 @@ export const roomGalleries = {
         category: 'view',
       },
       {
-        src: 'rooms/001/05.png',
-        alt: 'Cozy seating nook by the window in Room 001 at Old Home Cyprus with natural light and modern decor',
-        category: 'view',
-      },
-      {
-        src: 'rooms/001/06.png',
-        alt: 'Relaxing corner seating in Room 001 at Old Home Cyprus near window with striped roller blinds',
-        category: 'view',
-      },
-      {
-        src: 'rooms/001/07.png',
-        alt: 'Ensuite bathroom entrance at Old Home Cyprus Room 001 with glass shower cabin and grey marble tiles',
-        category: 'bathroom-entry',
-      },
-      {
-        src: 'rooms/001/08.png',
-        alt: 'Modern bathroom at Old Home Cyprus Room 001 with corner glass shower, white vanity sink and marble walls',
-        category: 'sink',
-      },
-      {
-        src: 'rooms/001/09.png',
-        alt: 'Bathroom vanity and sink area at Old Home Cyprus Room 001 with grey marble tiles and hotel toiletries',
-        category: 'sink',
-      },
-      {
-        src: 'rooms/001/10.png',
-        alt: 'White ceramic sink and modern faucet in Room 001 bathroom at Old Home Cyprus with marble-patterned walls',
-        category: 'sink',
-      },
-      {
-        src: 'rooms/001/11.png',
-        alt: 'Compact bathroom sink unit at Old Home Cyprus Room 001 with mirror shelf and complimentary amenities',
-        category: 'sink',
-      },
-      {
-        src: 'rooms/001/12.png',
-        alt: 'Wall-mounted bathroom vanity with white basin at Old Home Cyprus Room 001 and elegant grey tile finish',
-        category: 'sink',
-      },
-      {
-        src: 'rooms/001/13.png',
-        alt: 'Minimalist bathroom sink and wood-accent vanity at Old Home Cyprus Room 001 with marble wall tiles',
-        category: 'sink',
-      },
-      {
         src: 'rooms/001/14.png',
-        alt: 'Bathroom shelf with toiletries above white sink at Old Home Cyprus Room 001 reflecting clean hotel standards',
+        alt: 'Bathroom vanity and sink at Old Home Cyprus Room 001 with grey marble tiles, mirror and complimentary toiletries',
         category: 'sink',
       },
       {
         src: 'rooms/001/15.png',
-        alt: 'Shower and toilet area in Room 001 bathroom at Old Home Cyprus with curved glass enclosure and mosaic tiles',
-        category: 'shower',
-      },
-      {
-        src: 'rooms/001/16.png',
-        alt: 'Modern ensuite bathroom at Old Home Cyprus Room 001 featuring white toilet and corner shower with rainfall head',
+        alt: 'Ensuite bathroom at Old Home Cyprus Room 001 with white toilet, glass shower cabin and grey marble tiling',
         category: 'shower',
       },
       {
         src: 'rooms/001/17.png',
         alt: 'In-room entertainment and refreshment station at Old Home Cyprus Room 001 with flat-screen TV, mini-fridge and kettle',
-        category: 'detail',
-      },
-      {
-        src: 'rooms/001/18.png',
-        alt: 'Hotel room amenity detail at Old Home Cyprus Room 001 showing TV console, tea and coffee tray with mugs and glasses',
         category: 'detail',
       },
       {
