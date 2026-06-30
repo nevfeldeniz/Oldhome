@@ -1,10 +1,12 @@
 import { MapPin, Phone, Mail } from 'lucide-react'
-import { contact } from '../data/site'
+import { useSite } from '../context/SiteContext'
 import { SectionHeading, Reveal } from './Section'
 
-const MAP_QUERY = encodeURIComponent(contact.address)
-
 export default function Contact() {
+  const { site } = useSite()
+  const { contact } = site
+  const MAP_QUERY = encodeURIComponent(contact.address)
+
   return (
     <section id="contact" className="bg-parchment py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
