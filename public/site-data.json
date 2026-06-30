@@ -74,10 +74,10 @@
       "description": "Zemin katta, ferah ve aydınlık çift kişilik odamız. Sıcak ahşap tonları ve konforlu yatağıyla huzurlu bir konaklama sunar.",
       "price": "2.700 TL",
       "images": [
-        "room-2.png",
-        "room.png",
-        "bathroom.png",
-        "hero-building.png"
+        "rooms/001/01.png",
+        "rooms/001/02.png",
+        "rooms/001/03.png",
+        "rooms/001/04.png"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
