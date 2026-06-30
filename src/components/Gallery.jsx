@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion'
-import { gallery } from '../data/site'
+import { useSite } from '../context/SiteContext'
 import { SectionHeading, fadeUp } from './Section'
 
 export default function Gallery() {
+  const { site } = useSite()
+  const { gallery } = site
+
   return (
     <section id="gallery" className="bg-sand py-24 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
