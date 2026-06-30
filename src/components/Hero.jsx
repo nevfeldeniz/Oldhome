@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { BedDouble, Phone } from 'lucide-react'
-import { hero } from '../data/site'
+import { useSite } from '../context/SiteContext'
 
 // Afişten kırpılmış, sadece bina kısmını gösteren görsel (public/ klasöründe)
 const HERO_IMAGE = `${import.meta.env.BASE_URL}hero-building.png`
@@ -15,6 +15,9 @@ const item = {
 }
 
 export default function Hero() {
+  const { site } = useSite()
+  const { hero } = site
+
   return (
     <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Arka plan görseli (placeholder) */}
