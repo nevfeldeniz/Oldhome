@@ -16,7 +16,7 @@ import {
   Wind,
   Sparkles,
 } from 'lucide-react'
-import { contact } from '../data/site'
+import { useSite } from '../context/SiteContext'
 
 // Özellik metnini ikonla eşleştirir; bilinmeyenler için varsayılan Check.
 const featureIcons = {
@@ -32,6 +32,8 @@ const featureIcons = {
 }
 
 export default function RoomModal({ room, onClose }) {
+  const { site } = useSite()
+  const { contact } = site
   const [current, setCurrent] = useState(0)
   const total = room.images.length
 
