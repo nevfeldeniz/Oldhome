@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Users, Eye, Images } from 'lucide-react'
-import { showcaseRooms } from '../data/site'
+import { useSite } from '../context/SiteContext'
 import { SectionHeading, fadeUp } from './Section'
 import RoomModal from './RoomModal'
 
@@ -18,6 +18,8 @@ const capacityLabel = (type) =>
 const typeLabel = (type) => (type === '3 Kişilik' ? '3 Kişilik' : `${type} Kişilik`)
 
 export default function RoomShowcase() {
+  const { site } = useSite()
+  const { showcaseRooms } = site
   const [activeFilter, setActiveFilter] = useState('Tümü')
   const [selectedRoom, setSelectedRoom] = useState(null)
 
