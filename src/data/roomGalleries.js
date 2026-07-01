@@ -232,6 +232,52 @@ export const roomGalleries = {
       },
     ],
   },
+  '008': {
+    id: 'room-8',
+    title: 'Room 008',
+    images: [
+      {
+        src: 'rooms/008/01.png',
+        alt: 'Wide view of Room 008 at Old Home Cyprus showing double and single beds, Smart TV, mini-fridge and wicker seating area',
+        category: 'overview',
+      },
+      {
+        src: 'rooms/008/02.png',
+        alt: 'Triple room sleeping area at Old Home Cyprus Room 008 with single and double beds on marble flooring',
+        category: 'bed',
+      },
+      {
+        src: 'rooms/008/03.png',
+        alt: 'Second angle of Room 008 at Old Home Cyprus featuring single and double beds, TV and marble tile floor',
+        category: 'angle',
+      },
+      {
+        src: 'rooms/008/04.png',
+        alt: 'Seating corner in Room 008 at Old Home Cyprus with grey wicker chair, white cushions and refreshment station',
+        category: 'view',
+      },
+      {
+        src: 'rooms/008/05.png',
+        alt: 'Bathroom vanity and sink at Old Home Cyprus Room 008 with grey marble tiles, mirror and complimentary toiletries',
+        category: 'sink',
+      },
+      {
+        src: 'rooms/008/06.png',
+        alt: 'Ensuite bathroom at Old Home Cyprus Room 008 with glass shower cabin, white toilet and grey marble tiling',
+        category: 'shower',
+      },
+      {
+        src: 'rooms/008/07.png',
+        alt: 'In-room entertainment at Old Home Cyprus Room 008 with flat-screen TV, mini-fridge and tea and coffee station',
+        category: 'detail',
+      },
+      {
+        src: 'rooms/008/08.png',
+        alt: 'Bathroom mirror and toiletries shelf in Room 008 at Old Home Cyprus with marble tiles and modern fixtures',
+        category: 'detail',
+      },
+    ],
+  },
 }
 
 /** Oda numarasından galeri verisini döndürür (örn. "Oda 001" → "001") */
