@@ -166,13 +166,13 @@
       "id": 5,
       "number": "Oda 005",
       "type": "Tek",
-      "description": "Bütçe dostu, temiz ve şık tek kişilik odamız. Tüm temel konfor detaylarıyla donatılmıştır.",
+      "description": "Modern ve ferah tek kişilik odamız. Beyaz minimalist tasarım, konforlu yatak, duvar tipi Smart TV, mini buzdolabı, çalışma köşesi ve mermer kaplı özel banyosuyla yalnız seyahat eden misafirler için idealdir.",
       "price": "2.200 TL",
       "images": [
-        "room-1.png",
-        "room.png",
-        "bathroom.png",
-        "hero-building.png"
+        "rooms/005/01.png",
+        "rooms/005/02.png",
+        "rooms/005/03.png",
+        "rooms/005/04.png"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -180,6 +180,7 @@
         "Çay & Kahve İkramı",
         "Smart TV",
         "Özel Banyo",
+        "Mini Buzdolabı",
         "Günlük Temizlik"
       ]
     },
