@@ -10,7 +10,7 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section id="about-trust" className="section-parchment" aria-labelledby="why-us-heading">
+    <section id="about-trust" className="section-parchment !pt-8 sm:!pt-10 lg:!pt-12" aria-labelledby="why-us-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <header className="mx-auto max-w-2xl text-center">
           <h2 id="why-us-heading" className="text-3xl font-semibold text-wine-dark sm:text-4xl">

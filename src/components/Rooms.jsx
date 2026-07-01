@@ -8,7 +8,7 @@ export default function Rooms() {
   const { site } = useSite()
   const { rooms, roomsNote } = site
   return (
-    <section id="fiyatlar" className="section-parchment" aria-labelledby="rooms-pricing-heading">
+    <section id="fiyatlar" className="section-parchment !pb-6 sm:!pb-8 lg:!pb-10" aria-labelledby="rooms-pricing-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
           id="rooms-pricing-heading"
@@ -90,7 +90,8 @@ export default function Rooms() {
                     <p className="font-serif text-2xl font-semibold text-wine">{room.price}</p>
                     <p className="text-xs text-ink/50">gecelik</p>
                   </div>
-                </div>              </div>
+                </div>
+              </div>
             </motion.article>
           ))}
         </motion.div>
@@ -101,7 +102,7 @@ export default function Rooms() {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-12 text-center"
+          className="mt-8 text-center"
         >
           <a
             href="#rooms"
@@ -112,6 +113,7 @@ export default function Rooms() {
             <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
           </a>
         </motion.div>
-      </div>    </section>
+      </div>
+    </section>
   )
 }
