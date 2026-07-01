@@ -67,9 +67,9 @@
 
   .btn-hero-secondary {
     @apply inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-ui border
-      border-cream/50 bg-cream/15 px-7 py-3.5 text-sm font-semibold text-cream backdrop-blur-sm
-      transition-all duration-200 hover:border-cream/70 hover:bg-cream/25
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 sm:w-auto;
+      border-white/55 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-md
+      transition-all duration-200 hover:border-white/80 hover:bg-white/20
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:w-auto;
   }
 
   .sr-only {

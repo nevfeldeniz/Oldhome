@@ -5,7 +5,7 @@ import { useSite } from '../context/SiteContext'
 export const INSTAGRAM_URL = 'https://www.instagram.com/oldhomecyprus/'
 
 const variants = {
-  nav: 'grid h-10 w-10 place-items-center rounded-ui border border-wine/20 bg-parchment/80 text-wine transition-colors hover:border-wine/40 hover:bg-parchment sm:border-cream/40 sm:bg-cream/10 sm:text-white sm:hover:bg-cream/20',
+  nav: 'grid h-10 w-10 place-items-center rounded-ui border border-white/35 bg-white/10 text-white backdrop-blur-sm transition-colors hover:border-white/50 hover:bg-white/20 sm:border-cream/40 sm:bg-cream/10 sm:hover:bg-cream/20',
   navSolid:
     'grid h-10 w-10 place-items-center rounded-ui border border-wine/20 bg-parchment text-wine transition-colors hover:bg-cream',
   footer:
