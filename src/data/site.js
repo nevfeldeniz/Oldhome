@@ -1,11 +1,11 @@
 // Statik menü linkleri (admin panelinden değiştirilmez)
 export const navLinks = [
   { label: 'Ana Sayfa', href: '#home' },
-  { label: 'Hakkımızda', href: '#about' },
-  { label: 'Odalarımız', href: '#rooms' },
-  { label: 'Oda Galerisi', href: '#room-showcase' },
-  { label: 'Dış Mekân', href: '#outdoor' },
-  { label: 'İmkanlar', href: '#amenities' },
+  { label: 'Odalar', href: '#rooms' },
+  { label: 'Fiyatlar', href: '#fiyatlar' },
+  { label: 'Galeri', href: '#gallery' },
+  { label: 'Konum', href: '#location' },
+  { label: 'Yorumlar', href: '#reviews' },
   { label: 'İletişim', href: '#contact' },
 ]
 

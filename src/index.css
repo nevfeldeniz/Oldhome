@@ -39,6 +39,21 @@
       hover:bg-wine hover:text-cream focus:outline-none focus-visible:ring-2
       focus-visible:ring-wine focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
   }
+
+  .btn-whatsapp {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#25D366]
+      px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200
+      hover:bg-[#20bd5a] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]
+      focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+  }
+
+  .btn-hero-secondary {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border-2
+      border-cream/80 bg-cream/10 px-7 py-3.5 text-sm font-semibold text-cream backdrop-blur-sm
+      transition-colors duration-200 hover:bg-cream hover:text-wine-dark focus:outline-none
+      focus-visible:ring-2 focus-visible:ring-cream focus-visible:ring-offset-2
+      focus-visible:ring-offset-transparent;
+  }
 }
 
 /* İnce, zarif kaydırma çubuğu */

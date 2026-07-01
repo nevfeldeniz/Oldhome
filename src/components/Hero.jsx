@@ -1,93 +1,61 @@
-import { motion } from 'framer-motion'
-import { BedDouble, Phone } from 'lucide-react'
-import { useSite } from '../context/SiteContext'
-
-const FALLBACK_HERO = `${import.meta.env.BASE_URL}oldhome-cyprus-hotel-exterior.jpg`
-
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
-}
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
-}
-
-export default function Hero() {
-  const { site } = useSite()
-  const { hero } = site
-  const heroImage = hero.image || FALLBACK_HERO
-
-  return (
-    <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Hotel exterior and terrace at Old Home Boutique Hotel Cyprus"
-          className="h-full w-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-wine-dark/45 via-wine-dark/15 to-cream/92" />
-        <div className="absolute inset-0 bg-gradient-to-r from-wine-dark/25 via-transparent to-wine-dark/10" />
-      </div>
-
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-5 pt-28 pb-20 text-center sm:px-8"
-      >
-        <motion.span variants={item} className="section-eyebrow mb-6">
-          Köşklüçiftlik · Lefkoşa, Kıbrıs
-        </motion.span>
-
-        <motion.h1
-          variants={item}
-          className="font-serif text-4xl font-semibold leading-tight text-wine-dark sm:text-6xl md:text-7xl"
-        >
-          {hero.brand}
-        </motion.h1>
-
-        <motion.p
-          variants={item}
-          className="mt-3 font-serif text-2xl italic text-wine sm:text-3xl md:text-4xl"
-        >
-          {hero.welcome}
-        </motion.p>
-
-        <motion.p
-          variants={item}
-          className="mt-6 text-lg font-medium tracking-wide text-ink sm:text-xl"
-        >
-          {hero.subtitle}
-        </motion.p>
-
-        <motion.p variants={item} className="mt-4 max-w-2xl text-ink/70 leading-relaxed">
-          {hero.description}
-        </motion.p>
-
-        <motion.div variants={item} className="mt-10 flex flex-col gap-4 sm:flex-row">
-          <a href="#rooms" className="btn-primary">
-            <BedDouble className="h-4 w-4" />
-            Odaları İncele
-          </a>
-          <a href="#contact" className="btn-outline">
-            <Phone className="h-4 w-4" />
-            İletişime Geç
-          </a>
-        </motion.div>
-      </motion.div>
-
-      {/* Aşağı kaydırma ipucu */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ opacity: { delay: 1.2 }, y: { repeat: Infinity, duration: 2, delay: 1.2 } }}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
-      >
-        <span className="flex h-10 w-6 items-start justify-center rounded-full border border-wine/50 p-1.5">
-          <span className="h-2 w-1 rounded-full bg-wine" />
-        </span>
-      </motion.div>
-    </section>
-  )
-}
+import { BedDouble, MessageCircle } from 'lucide-react'
+import { useSite } from '../context/SiteContext'
+import { getWhatsAppUrl } from '../utils/whatsapp'
+
+const FALLBACK_HERO = `${import.meta.env.BASE_URL}oldhome-cyprus-hotel-exterior.jpg`
+
+export default function Hero() {
+  const { site } = useSite()
+  const { hero, contact, social } = site
+  const heroImage = hero.image || FALLBACK_HERO
+  const whatsappUrl = getWhatsAppUrl(
+    social?.whatsapp || contact.phoneLinks[0],
+    social?.whatsappMessage,
+  )
+
+  return (
+    <section id="home" className="relative flex min-h-[88vh] items-end sm:min-h-screen sm:items-center">
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt="Old Home Guest House dış cephe ve teras görünümü"
+          fetchPriority="high"
+          decoding="async"
+          className="h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/85 via-charcoal-900/45 to-charcoal-900/25" />
+      </div>
+
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-12 pt-28 text-center sm:px-8 sm:pb-20 sm:pt-32">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-cream/80">
+          Köşklüçiftlik · Lefkoşa, Kıbrıs
+        </p>
+
+        <h1 className="font-serif text-4xl font-semibold leading-tight text-cream sm:text-5xl md:text-6xl">
+          Old Home Guest House
+        </h1>
+
+        <p className="mx-auto mt-4 max-w-xl text-lg font-medium leading-relaxed text-cream/90 sm:text-xl">
+          Konforlu konaklama, sıcak bir yuva hissi
+        </p>
+
+        <div className="mx-auto mt-8 flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-whatsapp w-full sm:w-auto"
+          >
+            <MessageCircle className="h-5 w-5" />
+            WhatsApp ile Rezervasyon
+          </a>
+          <a href="#rooms" className="btn-hero-secondary w-full sm:w-auto">
+            <BedDouble className="h-5 w-5" />
+            Odaları Gör
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+

@@ -148,6 +148,13 @@ export const defaultSiteData = {
     phoneLinks: ['+905331139862', '+905391139848'],
   },
 
+  social: {
+    whatsapp: '905331139862',
+    whatsappMessage: 'Merhaba, Old Home Guest House için rezervasyon yapmak istiyorum.',
+    instagram: 'https://www.instagram.com/',
+    facebook: 'https://www.facebook.com/',
+  },
+
   footer: {
     slogan: 'Rahat, Temiz ve Güvenli. Sizi Bekliyor...',
   },

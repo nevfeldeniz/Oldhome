@@ -1,13 +1,18 @@
 import { motion } from 'framer-motion'
-import { Users, Check, Phone, Baby } from 'lucide-react'
+import { Users, Check, MessageCircle, Baby } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { SectionHeading, fadeUp } from './Section'
+import { getWhatsAppUrl } from '../utils/whatsapp'
 
 export default function Rooms() {
   const { site } = useSite()
-  const { rooms, roomsNote, contact } = site
+  const { rooms, roomsNote, contact, social } = site
+  const whatsappUrl = getWhatsAppUrl(
+    social?.whatsapp || contact.phoneLinks[0],
+    social?.whatsappMessage,
+  )
   return (
-    <section id="rooms" className="bg-cream py-24 sm:py-28">
+    <section id="fiyatlar" className="bg-cream py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Odalarımız & Fiyatlar"
@@ -97,11 +102,13 @@ export default function Rooms() {
                     <p className="text-xs text-ink/50">gecelik</p>
                   </div>
                   <a
-                    href={`tel:${contact.phoneLinks[0]}`}
-                    className="btn-primary !px-5 !py-2.5 text-xs"
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-whatsapp !px-5 !py-2.5 !text-xs"
                   >
-                    <Phone className="h-4 w-4" />
-                    Hemen Ara
+                    <MessageCircle className="h-4 w-4" />
+                    Rezervasyon
                   </a>
                 </div>
               </div>
