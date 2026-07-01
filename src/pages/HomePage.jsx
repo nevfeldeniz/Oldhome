@@ -30,10 +30,10 @@ export default function HomePage() {
       <main id="main-content" className="min-h-screen bg-cream text-ink">
         <Hero />
         <QuickInfoBar />
-        <DiscoverRooms />
+        <Rooms />
         <WhyUs />
         <About />
-        <Rooms />
+        <DiscoverRooms />
         <Amenities />
         <RoomShowcase />
         <PhotoGallery />

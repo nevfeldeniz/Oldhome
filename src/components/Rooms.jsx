@@ -1,19 +1,12 @@
 import { motion } from 'framer-motion'
-import { Users, Check, Baby } from 'lucide-react'
+import { Users, Check, Baby, ChevronRight } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { SectionHeading, fadeUp } from './Section'
-import { getWhatsAppUrl } from '../utils/whatsapp'
-import WhatsAppIcon from './WhatsAppIcon'
 import OptimizedImage from './ui/OptimizedImage'
 
 export default function Rooms() {
   const { site } = useSite()
-  const { rooms, roomsNote, contact, social } = site
-  const whatsappUrl = getWhatsAppUrl(
-    social?.whatsapp || contact.phoneLinks[0],
-    social?.whatsappMessage,
-  )
-
+  const { rooms, roomsNote } = site
   return (
     <section id="fiyatlar" className="section-parchment" aria-labelledby="rooms-pricing-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
@@ -89,7 +82,7 @@ export default function Rooms() {
                   ))}
                 </ul>
 
-                <div className="mt-6 flex items-end justify-between border-t border-black/[0.06] pt-5">
+                <div className="mt-6 border-t border-black/[0.06] pt-5">
                   <div>
                     {room.oldPrice && (
                       <p className="text-sm font-medium text-ink/40 line-through">{room.oldPrice}</p>
@@ -97,22 +90,28 @@ export default function Rooms() {
                     <p className="font-serif text-2xl font-semibold text-wine">{room.price}</p>
                     <p className="text-xs text-ink/50">gecelik</p>
                   </div>
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-cta !min-h-[44px] !px-4 !py-2.5 !text-xs"
-                    aria-label={`${room.name} için WhatsApp rezervasyon`}
-                  >
-                    <WhatsAppIcon className="h-4 w-4" />
-                    Rezervasyon
-                  </a>
-                </div>
-              </div>
+                </div>              </div>
             </motion.article>
           ))}
         </motion.div>
-      </div>
-    </section>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-12 text-center"
+        >
+          <a
+            href="#rooms"
+            className="group inline-flex min-h-[48px] w-full max-w-xl items-center justify-center gap-2 rounded-ui border border-wine/25 bg-cream px-6 py-3.5 text-sm font-semibold text-wine-dark transition-all hover:border-wine/40 hover:bg-parchment sm:w-auto"
+            aria-label="Odalarımızı keşfedin bölümüne git"
+          >
+            Odalarımızı detaylı inceleyip dilediğiniz odayı seçin
+            <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+          </a>
+        </motion.div>
+      </div>    </section>
   )
 }
