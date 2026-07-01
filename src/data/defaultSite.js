@@ -15,8 +15,8 @@ export const defaultSiteData = {
     title: 'Hakkımızda',
     paragraph:
       'Old Home Guest House, 2 katlı ve toplam 11 odasıyla hizmet veren, sıcak ve samimi bir butik oteldir. İster iş ister tatil amaçlı seyahat edin, evinizin konforunda ağırlamaktan mutluluk duyarız. Gün içinde sürekli temizlenen hijyenik ortamımızda misafirlerimizin rahatı her zaman önceliğimizdir.',
-    image: 'oldhome-cyprus-room-interior-001-01.jpg',
-    imageAlt: 'Room interior at Old Home Boutique Hotel Cyprus',
+    image: 'oldhome-cyprus-garden-lounge.jpg',
+    imageAlt: 'Modern outdoor lounge area with grey wicker furniture at Old Home Guest House Cyprus',
     stats: [
       { value: '2', label: 'Katlı Bina' },
       { value: '11', label: 'Konforlu Oda' },

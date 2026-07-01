@@ -2,13 +2,13 @@ import { Home } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { Reveal } from './Section'
 
-const FALLBACK_ABOUT_IMAGE = `${import.meta.env.BASE_URL}oldhome-cyprus-room-interior-001-01.jpg`
+const FALLBACK_ABOUT_IMAGE = `${import.meta.env.BASE_URL}oldhome-cyprus-garden-lounge.jpg`
 
 export default function About() {
   const { site } = useSite()
   const { about } = site
   const aboutImage = about.image || FALLBACK_ABOUT_IMAGE
-  const aboutAlt = about.imageAlt || 'Room interior at Old Home Boutique Hotel Cyprus'
+  const aboutAlt = about.imageAlt || 'Modern outdoor lounge area with grey wicker furniture at Old Home Guest House Cyprus'
 
   return (
     <section id="about" className="bg-parchment py-24 sm:py-28">
