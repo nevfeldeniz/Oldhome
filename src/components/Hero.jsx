@@ -2,8 +2,7 @@ import { motion } from 'framer-motion'
 import { BedDouble, Phone } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 
-// Afişten kırpılmış, sadece bina kısmını gösteren görsel (public/ klasöründe)
-const HERO_IMAGE = `${import.meta.env.BASE_URL}hero-building.png`
+const FALLBACK_HERO = `${import.meta.env.BASE_URL}outdoor/hero.jpg`
 
 const container = {
   hidden: {},
@@ -17,18 +16,18 @@ const item = {
 export default function Hero() {
   const { site } = useSite()
   const { hero } = site
+  const heroImage = hero.image || FALLBACK_HERO
 
   return (
     <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Arka plan görseli (placeholder) */}
       <div className="absolute inset-0">
         <img
-          src={HERO_IMAGE}
-          alt="Old Home Guest House dış cephe"
-          className="h-full w-full object-cover"
+          src={heroImage}
+          alt="Old Home Guest House dış cephe ve teras"
+          className="h-full w-full object-cover object-center"
         />
-        {/* Gerçek fotoğrafın görünmesi için daha açık, krem tonlu overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-cream/60 via-cream/45 to-cream" />
+        <div className="absolute inset-0 bg-gradient-to-b from-wine-dark/45 via-wine-dark/15 to-cream/92" />
+        <div className="absolute inset-0 bg-gradient-to-r from-wine-dark/25 via-transparent to-wine-dark/10" />
       </div>
 
       <motion.div

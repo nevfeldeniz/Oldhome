@@ -39,6 +39,9 @@ export default function GeneralPanel() {
         <AdminField label="Açıklama">
           <AdminTextarea value={rawData.hero.description} onChange={(e) => setHero('description', e.target.value)} />
         </AdminField>
+        <AdminField label="Ana Sayfa Görseli" hint="public/ klasöründeki dosya (örn. outdoor/hero.jpg)">
+          <AdminInput value={rawData.hero.image || ''} onChange={(e) => setHero('image', e.target.value)} />
+        </AdminField>
       </AdminCard>
 
       <AdminCard title="Hakkımızda">

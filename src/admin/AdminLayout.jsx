@@ -19,7 +19,7 @@ const menu = [
   { id: 'contact', label: 'İletişim', icon: Phone },
   { id: 'room-types', label: 'Oda Tipleri', icon: BedDouble },
   { id: 'showcase', label: 'Oda Galerisi (11 Oda)', icon: Grid3X3 },
-  { id: 'gallery', label: 'Galeri', icon: Images },
+  { id: 'gallery', label: 'Dış Mekân', icon: Images },
   { id: 'settings', label: 'Ayarlar', icon: Settings },
 ]
 

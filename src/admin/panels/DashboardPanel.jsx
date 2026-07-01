@@ -7,7 +7,7 @@ export default function DashboardPanel() {
   const stats = [
     { label: 'Oda Tipi', value: site.rooms.length },
     { label: 'Galeri Odası', value: site.showcaseRooms.length },
-    { label: 'Galeri Görseli', value: site.gallery.length },
+    { label: 'Dış Mekân Görseli', value: site.outdoorGallery?.length || 0 },
     { label: 'Telefon', value: site.contact.phones.length },
   ]
 

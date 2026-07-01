@@ -4,6 +4,7 @@ export const navLinks = [
   { label: 'Hakkımızda', href: '#about' },
   { label: 'Odalarımız', href: '#rooms' },
   { label: 'Oda Galerisi', href: '#room-showcase' },
+  { label: 'Dış Mekân', href: '#outdoor' },
   { label: 'İmkanlar', href: '#amenities' },
   { label: 'İletişim', href: '#contact' },
 ]

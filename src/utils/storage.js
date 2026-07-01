@@ -16,6 +16,10 @@ export function resolveAsset(path) {
 export function hydrateSiteData(raw) {
   return {
     ...raw,
+    hero: {
+      ...raw.hero,
+      image: resolveAsset(raw.hero?.image),
+    },
     rooms: raw.rooms.map((room) => ({
       ...room,
       image: resolveAsset(room.image),
@@ -23,6 +27,10 @@ export function hydrateSiteData(raw) {
     showcaseRooms: raw.showcaseRooms.map((room) => ({
       ...room,
       images: room.images.map(resolveAsset),
+    })),
+    outdoorGallery: (raw.outdoorGallery || []).map((item) => ({
+      ...item,
+      src: resolveAsset(item.src),
     })),
     gallery: raw.gallery.map((item) => ({
       ...item,
@@ -41,6 +49,10 @@ export function dehydrateSiteData(hydrated) {
 
   return {
     ...hydrated,
+    hero: {
+      ...hydrated.hero,
+      image: strip(hydrated.hero?.image),
+    },
     rooms: hydrated.rooms.map((room) => ({
       ...room,
       image: strip(room.image),
@@ -48,6 +60,10 @@ export function dehydrateSiteData(hydrated) {
     showcaseRooms: hydrated.showcaseRooms.map((room) => ({
       ...room,
       images: room.images.map(strip),
+    })),
+    outdoorGallery: (hydrated.outdoorGallery || []).map((item) => ({
+      ...item,
+      src: strip(item.src),
     })),
     gallery: hydrated.gallery.map((item) => ({
       ...item,

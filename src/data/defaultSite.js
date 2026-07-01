@@ -8,6 +8,7 @@ export const defaultSiteData = {
     subtitle: 'Konforlu Konaklama, Sıcak Bir Yuva Hissi',
     description:
       'Rahatlığı ve huzuru bir araya getirerek misafirlerimize unutulmaz bir konaklama deneyimi sunuyoruz.',
+    image: 'outdoor/hero.jpg',
   },
 
   about: {
@@ -66,10 +67,61 @@ export const defaultSiteData = {
     { id: 11, number: 'Oda 011', type: 'Tek', description: 'Üst katta yer alan, aydınlık ve minimalist odamız. Konforlu tek kişilik yatak, mermer zemin, geniş ayna, Smart TV, mini buzdolabı, çalışma köşesi ve yağmur duşlu mermer banyosuyla yalnız seyahat eden misafirler için idealdir.', price: '2.200 TL', images: ['rooms/011/01.png', 'rooms/011/02.png', 'rooms/011/03.png', 'rooms/011/04.png'], features: ['Ücretsiz Wi-Fi', 'Klima', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Mini Buzdolabı', 'Günlük Temizlik'] },
   ],
 
+  outdoorGallery: [
+    {
+      src: 'outdoor/01.png',
+      alt: 'Old Home Guest House genel dış cephe görünümü, beyaz bina ve teras',
+      label: 'Genel Dış Cephe',
+      category: 'exterior',
+    },
+    {
+      src: 'outdoor/02.png',
+      alt: 'Old Home Guest House ön cephe, teras ve oturma alanları',
+      label: 'Cephe & Teras',
+      category: 'exterior',
+    },
+    {
+      src: 'outdoor/03.png',
+      alt: 'Old Home Guest House geniş teras, şemsiyeler ve bahçe düzeni',
+      label: 'Bahçe Terası',
+      category: 'terrace',
+    },
+    {
+      src: 'outdoor/04.png',
+      alt: 'Old Home Guest House tabela, kavisli mimari ve dış oturma alanı',
+      label: 'Karşılama Alanı',
+      category: 'terrace',
+    },
+    {
+      src: 'outdoor/05.png',
+      alt: 'Old Home Guest House dış tabela ve dekoratif cephe detayı',
+      label: 'Old Home Tabelası',
+      category: 'terrace',
+    },
+    {
+      src: 'outdoor/06.png',
+      alt: 'Old Home Guest House gölgeli teras oturma alanı, hasır mobilya',
+      label: 'Gölgeli Teras',
+      category: 'lounge',
+    },
+    {
+      src: 'outdoor/07.png',
+      alt: 'Old Home Guest House hasır koltuklu dış dinlenme köşesi',
+      label: 'Hasır Oturma',
+      category: 'lounge',
+    },
+    {
+      src: 'outdoor/08.png',
+      alt: 'Old Home Guest House gri rattan mobilyalı oturma köşesi',
+      label: 'Dinlenme Köşesi',
+      category: 'lounge',
+    },
+  ],
+
   gallery: [
-    { src: 'hero-building.png', alt: 'Otel dış cephesi', label: 'Dış Cephe' },
-    { src: 'room.png', alt: 'Şık yatak odası', label: 'Yatak Odası' },
-    { src: 'bathroom.png', alt: 'Modern banyo', label: 'Banyo' },
+    { src: 'outdoor/01.png', alt: 'Old Home Guest House genel dış cephe', label: 'Dış Cephe' },
+    { src: 'outdoor/06.png', alt: 'Old Home Guest House gölgeli teras', label: 'Teras' },
+    { src: 'outdoor/08.png', alt: 'Old Home Guest House oturma köşesi', label: 'Oturma Köşesi' },
   ],
 
   contact: {

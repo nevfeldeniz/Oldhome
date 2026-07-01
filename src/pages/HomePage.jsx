@@ -4,7 +4,7 @@ import About from '../components/About'
 import Amenities from '../components/Amenities'
 import Rooms from '../components/Rooms'
 import RoomShowcase from '../components/RoomShowcase'
-import Gallery from '../components/Gallery'
+import OutdoorGallery from '../components/OutdoorGallery'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 
@@ -18,7 +18,7 @@ export default function HomePage() {
         <Amenities />
         <Rooms />
         <RoomShowcase />
-        <Gallery />
+        <OutdoorGallery />
         <Contact />
       </main>
       <Footer />
