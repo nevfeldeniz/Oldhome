@@ -97,10 +97,10 @@
       "description": "Tek başına seyahat edenler için ideal, sakin ve kompakt odamız. Çalışma için uygun, sessiz bir köşe.",
       "price": "2.200 TL",
       "images": [
-        "room-1.png",
-        "room.png",
-        "bathroom.png",
-        "hero-building.png"
+        "rooms/002/01.png",
+        "rooms/002/02.png",
+        "rooms/002/03.png",
+        "rooms/002/04.png"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
