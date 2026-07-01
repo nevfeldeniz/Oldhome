@@ -113,11 +113,6 @@ export const defaultSiteData = {
 
   gallery: [
     {
-      src: 'oldhome-cyprus-hotel-exterior-02.jpg',
-      alt: 'Wide view of the boutique hotel exterior at Old Home Boutique Hotel Cyprus',
-      label: 'Dış Cephe',
-    },
-    {
       src: 'oldhome-cyprus-terrace-03.jpg',
       alt: 'Shaded terrace lounge at Old Home Boutique Hotel Cyprus',
       label: 'Teras',

@@ -5,6 +5,12 @@ export const ADMIN_PASSWORD_KEY = 'oldhome_admin_password'
 export const ADMIN_SESSION_KEY = 'oldhome_admin_session'
 export const DEFAULT_ADMIN_PASSWORD = 'oldhome2024'
 
+const REMOVED_OUTDOOR_IMAGES = new Set(['oldhome-cyprus-hotel-exterior-02.jpg'])
+
+function filterOutdoorGallery(items) {
+  return (items || []).filter((item) => item?.src && !REMOVED_OUTDOOR_IMAGES.has(item.src))
+}
+
 export function resolveAsset(path) {
   if (!path) return ''
   if (path.startsWith('http') || path.startsWith('data:') || path.startsWith('/')) {
@@ -33,8 +39,8 @@ export function mergeSiteData(raw) {
     roomsNote: raw.roomsNote ?? base.roomsNote,
     rooms: Array.isArray(raw.rooms) ? raw.rooms : base.rooms,
     showcaseRooms: Array.isArray(raw.showcaseRooms) ? raw.showcaseRooms : base.showcaseRooms,
-    outdoorGallery: Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery,
-    gallery: Array.isArray(raw.gallery) ? raw.gallery : base.gallery,
+    outdoorGallery: filterOutdoorGallery(Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery),
+    gallery: filterOutdoorGallery(Array.isArray(raw.gallery) ? raw.gallery : base.gallery),
   }
 }
 
