@@ -140,6 +140,52 @@ export const roomGalleries = {
       },
     ],
   },
+  '006': {
+    id: 'room-6',
+    title: 'Room 006',
+    images: [
+      {
+        src: 'rooms/006/01.png',
+        alt: 'Wide view of Room 006 at Old Home Cyprus showing double and single beds, Smart TV, mini-fridge and wicker seating area',
+        category: 'overview',
+      },
+      {
+        src: 'rooms/006/02.png',
+        alt: 'Triple room sleeping area at Old Home Cyprus Room 006 with single and double beds and white linens',
+        category: 'bed',
+      },
+      {
+        src: 'rooms/006/03.png',
+        alt: 'Second angle of Room 006 at Old Home Cyprus featuring single and double beds, air conditioning and zebra blinds',
+        category: 'angle',
+      },
+      {
+        src: 'rooms/006/04.png',
+        alt: 'Window seating area in Room 006 at Old Home Cyprus with two grey nest chairs, white cushions and zebra blinds',
+        category: 'view',
+      },
+      {
+        src: 'rooms/006/05.png',
+        alt: 'Bathroom vanity and sink at Old Home Cyprus Room 006 with grey marble tiles, mirror and complimentary toiletries',
+        category: 'sink',
+      },
+      {
+        src: 'rooms/006/06.png',
+        alt: 'Ensuite bathroom at Old Home Cyprus Room 006 with glass shower cabin, white toilet and grey marble tiling',
+        category: 'shower',
+      },
+      {
+        src: 'rooms/006/07.png',
+        alt: 'In-room entertainment at Old Home Cyprus Room 006 with flat-screen TV, mini-fridge, kettle and refreshment station',
+        category: 'detail',
+      },
+      {
+        src: 'rooms/006/08.png',
+        alt: 'White wardrobe and full-length mirror in Room 006 at Old Home Cyprus with bright minimalist triple room interior',
+        category: 'detail',
+      },
+    ],
+  },
   '005': {
     id: 'room-5',
     title: 'Room 005',
