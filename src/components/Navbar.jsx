@@ -4,6 +4,7 @@ import { navLinks } from '../data/site'
 import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import WhatsAppIcon from './WhatsAppIcon'
+import InstagramLink from './InstagramLink'
 
 export default function Navbar() {
   const { site } = useSite()
@@ -76,6 +77,8 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <InstagramLink variant={isSolid ? 'navSolid' : 'nav'} />
+
           <a
             href={whatsappUrl}
             target="_blank"
@@ -114,6 +117,9 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
+            <li className="pt-2">
+              <InstagramLink variant="contact" label="@oldhomecyprus" className="w-full" />
+            </li>
             <li className="pt-2">
               <a
                 href={whatsappUrl}

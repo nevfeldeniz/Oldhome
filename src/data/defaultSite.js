@@ -152,7 +152,7 @@ export const defaultSiteData = {
   social: {
     whatsapp: '905391139862',
     whatsappMessage: 'Merhaba, Old Home Guest House için rezervasyon yapmak istiyorum.',
-    instagram: 'https://www.instagram.com/',
+    instagram: 'https://www.instagram.com/oldhomecyprus/',
     facebook: 'https://www.facebook.com/',
   },
 

@@ -1,8 +1,9 @@
-import { Facebook, Instagram, Mail, MapPin, Phone, TreePine } from 'lucide-react'
+import { Facebook, Mail, MapPin, Phone, TreePine } from 'lucide-react'
 import { navLinks } from '../data/site'
 import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import WhatsAppIcon from './WhatsAppIcon'
+import InstagramLink from './InstagramLink'
 
 export default function Footer() {
   const { site } = useSite()
@@ -27,16 +28,8 @@ export default function Footer() {
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/70">{footer.slogan}</p>
 
-            <div className="mt-5 flex gap-3">
-              <a
-                href={social?.instagram || '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="grid h-10 w-10 place-items-center rounded-ui border border-cream/20 bg-cream/5 text-cream transition-colors hover:bg-cream/15"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <InstagramLink variant="footer" />
               <a
                 href={social?.facebook || '#'}
                 target="_blank"
@@ -56,6 +49,16 @@ export default function Footer() {
                 <WhatsAppIcon className="h-5 w-5" />
               </a>
             </div>
+            {social?.instagram && (
+              <a
+                href={social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block text-sm text-cream/60 transition-colors hover:text-cream"
+              >
+                @oldhomecyprus
+              </a>
+            )}
           </div>
 
           <div>

@@ -1,9 +1,10 @@
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { Instagram, Mail, MapPin, Phone } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { SectionHeading, Reveal } from './Section'
 import { getMapsOpenUrl } from '../utils/maps'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import WhatsAppIcon from './WhatsAppIcon'
+import InstagramLink from './InstagramLink'
 
 export default function Contact() {
   const { site } = useSite()
@@ -29,7 +30,7 @@ export default function Contact() {
           subtitle="Sorularınız ve rezervasyonlarınız için WhatsApp üzerinden anında ulaşabilirsiniz."
         />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <Reveal>
             <ContactCard icon={WhatsAppIcon} title="WhatsApp" isIconComponent>
               <p className="text-ink/65">En hızlı rezervasyon yolu</p>
@@ -46,6 +47,14 @@ export default function Contact() {
                 <WhatsAppIcon />
                 WhatsApp ile Yaz
               </a>
+            </ContactCard>
+          </Reveal>
+
+          <Reveal delay={0.08}>
+            <ContactCard icon={Instagram} title="Instagram">
+              <p className="text-ink/65">Fotoğraflar ve güncellemeler</p>
+              <p className="mt-1 text-sm font-medium text-wine-dark">@oldhomecyprus</p>
+              <InstagramLink variant="contact" label="Profili Gör" className="mt-5" />
             </ContactCard>
           </Reveal>
 
