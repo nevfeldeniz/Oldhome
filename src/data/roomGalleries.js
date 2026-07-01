@@ -324,6 +324,52 @@ export const roomGalleries = {
       },
     ],
   },
+  '011': {
+    id: 'room-11',
+    title: 'Room 011',
+    images: [
+      {
+        src: 'rooms/011/01.png',
+        alt: 'Wide view of Room 011 at Old Home Cyprus showing single bed, Smart TV, mini-fridge, mirror and white minimalist interior',
+        category: 'overview',
+      },
+      {
+        src: 'rooms/011/02.png',
+        alt: 'Single bed in Room 011 at Old Home Cyprus with white linens, fabric headboard, zebra blinds and marble floor',
+        category: 'bed',
+      },
+      {
+        src: 'rooms/011/03.png',
+        alt: 'Second angle of Room 011 at Old Home Cyprus featuring single bed, wall mirror and white wardrobe',
+        category: 'angle',
+      },
+      {
+        src: 'rooms/011/04.png',
+        alt: 'In-room refreshment and seating area in Room 011 at Old Home Cyprus with flat-screen TV, mini-fridge, kettle and black chair',
+        category: 'view',
+      },
+      {
+        src: 'rooms/011/05.png',
+        alt: 'Bathroom vanity and sink at Old Home Cyprus Room 011 with grey marble tiles, white faucet and complimentary toiletries',
+        category: 'sink',
+      },
+      {
+        src: 'rooms/011/06.png',
+        alt: 'Ensuite bathroom at Old Home Cyprus Room 011 with glass shower cabin, rain shower and grey marble tiling',
+        category: 'shower',
+      },
+      {
+        src: 'rooms/011/07.png',
+        alt: 'Rain shower head detail in Room 011 bathroom at Old Home Cyprus with chrome fixtures and marble tiles',
+        category: 'detail',
+      },
+      {
+        src: 'rooms/011/08.png',
+        alt: 'Modern ensuite bathroom detail in Room 011 at Old Home Cyprus with vanity, toilet and fresh white towels',
+        category: 'detail',
+      },
+    ],
+  },
 }
 
 /** Oda numarasından galeri verisini döndürür (örn. "Oda 001" → "001") */
