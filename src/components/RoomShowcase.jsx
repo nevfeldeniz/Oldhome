@@ -4,6 +4,8 @@ import { Users, Eye, Images } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { SectionHeading, fadeUp } from './Section'
 import RoomModal from './RoomModal'
+import RoomPriceDisplay from './RoomPriceDisplay'
+import { getShowcasePricing } from '../utils/roomPricing'
 
 const filters = [
   { value: 'Tümü', label: 'Tümü' },
@@ -84,6 +86,12 @@ export default function RoomShowcase() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/50 via-transparent to-transparent" />
 
+                  {getShowcasePricing(room.type).oldPrice && (
+                    <span className="absolute left-3 top-12 rounded-full bg-red-700 px-2.5 py-1 text-[10px] font-semibold text-white shadow">
+                      İndirim
+                    </span>
+                  )}
+
                   {/* Tip rozeti */}
                   <span className="absolute left-3 top-3 rounded-full bg-wine px-3 py-1 text-xs font-semibold text-cream">
                     {typeLabel(room.type)}
@@ -114,7 +122,7 @@ export default function RoomShowcase() {
 
                   <div className="mt-5 flex items-end justify-between border-t border-wine/10 pt-4">
                     <div>
-                      <p className="font-serif text-xl font-semibold text-wine">{room.price}</p>
+                      <RoomPriceDisplay type={room.type} price={room.price} oldPrice={room.oldPrice} size="sm" />
                       <p className="text-[11px] text-ink/50">gecelik</p>
                     </div>
                     <span className="btn-primary !px-4 !py-2 text-xs">
