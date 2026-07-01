@@ -140,6 +140,52 @@ export const roomGalleries = {
       },
     ],
   },
+  '005': {
+    id: 'room-5',
+    title: 'Room 005',
+    images: [
+      {
+        src: 'rooms/005/01.png',
+        alt: 'Wide view of Room 005 at Old Home Cyprus showing single bed, Smart TV, mini-fridge, chair and white minimalist interior',
+        category: 'overview',
+      },
+      {
+        src: 'rooms/005/02.png',
+        alt: 'Single bed in Room 005 at Old Home Cyprus with white linens, grey headboard, wardrobe and air conditioning',
+        category: 'bed',
+      },
+      {
+        src: 'rooms/005/03.png',
+        alt: 'Second angle of Room 005 at Old Home Cyprus featuring bed, wall-mounted TV and compact workspace with black chair',
+        category: 'angle',
+      },
+      {
+        src: 'rooms/005/04.png',
+        alt: 'Seating corner in Room 005 at Old Home Cyprus with black chair, marble side table and built-in mini-fridge',
+        category: 'view',
+      },
+      {
+        src: 'rooms/005/05.png',
+        alt: 'Bathroom vanity and sink at Old Home Cyprus Room 005 with grey marble tiles, mirror and fresh towels',
+        category: 'sink',
+      },
+      {
+        src: 'rooms/005/06.png',
+        alt: 'Ensuite bathroom at Old Home Cyprus Room 005 with glass shower cabin, white toilet and grey marble tiling',
+        category: 'shower',
+      },
+      {
+        src: 'rooms/005/07.png',
+        alt: 'In-room entertainment at Old Home Cyprus Room 005 with flat-screen TV, mini-fridge and electric kettle',
+        category: 'detail',
+      },
+      {
+        src: 'rooms/005/08.png',
+        alt: 'Room 005 at Old Home Cyprus showing bed, wall-mounted TV, white wardrobe and tea and coffee station',
+        category: 'detail',
+      },
+    ],
+  },
 }
 
 /** Oda numarasından galeri verisini döndürür (örn. "Oda 001" → "001") */
