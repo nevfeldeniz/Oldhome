@@ -32,7 +32,11 @@ export default function RoomShowcase() {
       : showcaseRooms.filter((room) => room.type === activeFilter)
 
   return (
-    <section id="room-showcase" className="section-parchment" aria-labelledby="room-showcase-heading">
+    <section
+      id="room-showcase"
+      className="section-parchment hidden lg:block"
+      aria-labelledby="room-showcase-heading"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
           id="room-showcase-heading"

@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
 import QuickInfoBar from '../components/QuickInfoBar'
-import FeaturedRooms from '../components/FeaturedRooms'
+import DiscoverRooms from '../components/DiscoverRooms'
 import WhyUs from '../components/WhyUs'
 import About from '../components/About'
 import Rooms from '../components/Rooms'
@@ -30,7 +30,7 @@ export default function HomePage() {
       <main id="main-content" className="min-h-screen bg-cream text-ink">
         <Hero />
         <QuickInfoBar />
-        <FeaturedRooms />
+        <DiscoverRooms />
         <WhyUs />
         <About />
         <Rooms />
