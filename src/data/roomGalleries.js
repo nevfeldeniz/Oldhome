@@ -278,6 +278,52 @@ export const roomGalleries = {
       },
     ],
   },
+  '009': {
+    id: 'room-9',
+    title: 'Room 009',
+    images: [
+      {
+        src: 'rooms/009/01.png',
+        alt: 'Wide view of Room 009 at Old Home Cyprus showing double bed, Smart TV, mini-fridge and built-in wardrobe',
+        category: 'overview',
+      },
+      {
+        src: 'rooms/009/02.png',
+        alt: 'Double bed in Room 009 at Old Home Cyprus with white linens, grey headboard and built-in wardrobe',
+        category: 'bed',
+      },
+      {
+        src: 'rooms/009/03.png',
+        alt: 'Second angle of Room 009 at Old Home Cyprus featuring double bed, wicker seating area and zebra blinds',
+        category: 'angle',
+      },
+      {
+        src: 'rooms/009/04.png',
+        alt: 'Window seating area in Room 009 at Old Home Cyprus with two grey nest chairs, white cushions and zebra blinds',
+        category: 'view',
+      },
+      {
+        src: 'rooms/009/05.png',
+        alt: 'Bathroom vanity and sink at Old Home Cyprus Room 009 with grey marble tiles, mirror and complimentary toiletries',
+        category: 'sink',
+      },
+      {
+        src: 'rooms/009/06.png',
+        alt: 'Ensuite bathroom at Old Home Cyprus Room 009 with glass shower cabin, rain shower and grey marble tiling',
+        category: 'shower',
+      },
+      {
+        src: 'rooms/009/07.png',
+        alt: 'In-room entertainment at Old Home Cyprus Room 009 with flat-screen TV, mini-fridge and tea and coffee station',
+        category: 'detail',
+      },
+      {
+        src: 'rooms/009/08.png',
+        alt: 'Modern ensuite bathroom detail in Room 009 at Old Home Cyprus with marble tiles, toilet and fresh towels',
+        category: 'detail',
+      },
+    ],
+  },
 }
 
 /** Oda numarasından galeri verisini döndürür (örn. "Oda 001" → "001") */
