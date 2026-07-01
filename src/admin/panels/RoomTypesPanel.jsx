@@ -67,7 +67,7 @@ export default function RoomTypesPanel() {
               />
             </AdminField>
           </div>
-          <AdminField label="Görsel dosyası" hint="public/ klasöründeki dosya adı, örn: room-2.png">
+          <AdminField label="Görsel dosyası" hint="public/ klasöründeki dosya adı, örn: oldhome-cyprus-room-001-01.jpg">
             <AdminInput value={room.image} onChange={(e) => updateRoom(index, 'image', e.target.value)} />
           </AdminField>
           <AdminField label="Özellikler (her satıra bir tane)">

@@ -81,7 +81,7 @@ export default function RoomShowcase() {
                 <div className="relative h-52 overflow-hidden">
                   <img
                     src={room.images[0]}
-                    alt={room.number}
+                    alt={`${room.number} at Old Home Boutique Hotel Cyprus`}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/50 via-transparent to-transparent" />

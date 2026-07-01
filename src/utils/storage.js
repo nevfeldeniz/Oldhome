@@ -20,6 +20,10 @@ export function hydrateSiteData(raw) {
       ...raw.hero,
       image: resolveAsset(raw.hero?.image),
     },
+    about: {
+      ...raw.about,
+      image: resolveAsset(raw.about?.image),
+    },
     rooms: raw.rooms.map((room) => ({
       ...room,
       image: resolveAsset(room.image),
@@ -52,6 +56,10 @@ export function dehydrateSiteData(hydrated) {
     hero: {
       ...hydrated.hero,
       image: strip(hydrated.hero?.image),
+    },
+    about: {
+      ...hydrated.about,
+      image: strip(hydrated.about?.image),
     },
     rooms: hydrated.rooms.map((room) => ({
       ...room,

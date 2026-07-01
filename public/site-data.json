@@ -4,11 +4,13 @@
     "welcome": "Welcome Home",
     "subtitle": "Konforlu Konaklama, Sıcak Bir Yuva Hissi",
     "description": "Rahatlığı ve huzuru bir araya getirerek misafirlerimize unutulmaz bir konaklama deneyimi sunuyoruz.",
-    "image": "outdoor/hero.jpg"
+    "image": "oldhome-cyprus-hotel-exterior.jpg"
   },
   "about": {
     "title": "Hakkımızda",
     "paragraph": "Old Home Guest House, 2 katlı ve toplam 11 odasıyla hizmet veren, sıcak ve samimi bir butik oteldir. İster iş ister tatil amaçlı seyahat edin, evinizin konforunda ağırlamaktan mutluluk duyarız. Gün içinde sürekli temizlenen hijyenik ortamımızda misafirlerimizin rahatı her zaman önceliğimizdir.",
+    "image": "oldhome-cyprus-room-interior-001-01.jpg",
+    "imageAlt": "Room interior at Old Home Boutique Hotel Cyprus",
     "stats": [
       {
         "value": "2",
@@ -30,7 +32,8 @@
       "name": "1 Kişilik Oda",
       "price": "2.200 TL",
       "capacity": "1 Misafir",
-      "image": "room-1.png",
+      "image": "oldhome-cyprus-room-003-01.jpg",
+      "imageAlt": "Single room at Old Home Boutique Hotel Cyprus",
       "features": [
         "Tek kişilik konforlu yatak",
         "Klima & Ücretsiz Wi-Fi",
@@ -44,7 +47,8 @@
       "price": "2.700 TL",
       "oldPrice": "3.200 TL",
       "capacity": "2 Misafir",
-      "image": "room-2.png",
+      "image": "oldhome-cyprus-room-001-01.jpg",
+      "imageAlt": "Double room at Old Home Boutique Hotel Cyprus",
       "features": [
         "Çift kişilik geniş yatak",
         "Klima & Ücretsiz Wi-Fi",
@@ -57,7 +61,8 @@
       "name": "3 Kişilik Oda",
       "price": "2.700 TL",
       "capacity": "3 Misafir",
-      "image": "room-3.png",
+      "image": "oldhome-cyprus-room-002-01.jpg",
+      "imageAlt": "Triple room at Old Home Boutique Hotel Cyprus",
       "features": [
         "Geniş aile odası",
         "Klima & Ücretsiz Wi-Fi",
@@ -76,10 +81,10 @@
       "description": "Zemin katta, ferah ve aydınlık çift kişilik odamız. Sıcak ahşap tonları ve konforlu yatağıyla huzurlu bir konaklama sunar.",
       "price": "2.700 TL",
       "images": [
-        "rooms/001/01.png",
-        "rooms/001/02.png",
-        "rooms/001/03.png",
-        "rooms/001/04.png"
+        "oldhome-cyprus-room-001-01.jpg",
+        "oldhome-cyprus-room-001-02.jpg",
+        "oldhome-cyprus-room-001-03.jpg",
+        "oldhome-cyprus-room-001-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -100,10 +105,10 @@
       "description": "Tek kişilik ve çift kişilik yatak düzeniyle aileler veya üç kişilik gruplar için ideal ferah odamız. Oturma köşesi ve geniş banyosuyla konforlu bir konaklama sunar.",
       "price": "2.700 TL",
       "images": [
-        "rooms/002/01.png",
-        "rooms/002/02.png",
-        "rooms/002/03.png",
-        "rooms/002/04.png"
+        "oldhome-cyprus-room-002-01.jpg",
+        "oldhome-cyprus-room-002-02.jpg",
+        "oldhome-cyprus-room-002-03.jpg",
+        "oldhome-cyprus-room-002-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -124,10 +129,10 @@
       "description": "Minimalist ve aydınlık tek kişilik odamız. Konforlu yatak, çalışma masası, Smart TV ve mini buzdolabı ile sakin bir konaklama sunar.",
       "price": "2.200 TL",
       "images": [
-        "rooms/003/01.png",
-        "rooms/003/02.png",
-        "rooms/003/03.png",
-        "rooms/003/04.png"
+        "oldhome-cyprus-room-003-01.jpg",
+        "oldhome-cyprus-room-003-02.jpg",
+        "oldhome-cyprus-room-003-03.jpg",
+        "oldhome-cyprus-room-003-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -146,10 +151,10 @@
       "description": "Modern dekoru ve özel banyosuyla çiftler için sıcak bir yuva hissi veren odamız.",
       "price": "2.700 TL",
       "images": [
-        "room-2.png",
-        "room.png",
-        "bathroom.png",
-        "hero-building.png"
+        "oldhome-cyprus-room-001-01.jpg",
+        "oldhome-cyprus-room-001-02.jpg",
+        "oldhome-cyprus-room-bathroom-001-01.jpg",
+        "oldhome-cyprus-hotel-exterior-02.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -170,10 +175,10 @@
       "description": "Modern ve ferah tek kişilik odamız. Beyaz minimalist tasarım, konforlu yatak, duvar tipi Smart TV, mini buzdolabı, çalışma köşesi ve mermer kaplı özel banyosuyla yalnız seyahat eden misafirler için idealdir.",
       "price": "2.200 TL",
       "images": [
-        "rooms/005/01.png",
-        "rooms/005/02.png",
-        "rooms/005/03.png",
-        "rooms/005/04.png"
+        "oldhome-cyprus-room-005-01.jpg",
+        "oldhome-cyprus-room-005-02.jpg",
+        "oldhome-cyprus-room-005-03.jpg",
+        "oldhome-cyprus-room-005-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -192,10 +197,10 @@
       "description": "Üç kişilik odamız; çift kişilik ve tek kişilik yatak düzeniyle en fazla 3 misafir konaklayabilir. Pencere kenarı oturma köşesi, Smart TV, mini buzdolabı ve mermer kaplı özel banyosuyla aileler ve arkadaş grupları için idealdir.",
       "price": "2.700 TL",
       "images": [
-        "rooms/006/01.png",
-        "rooms/006/02.png",
-        "rooms/006/03.png",
-        "rooms/006/04.png"
+        "oldhome-cyprus-room-006-01.jpg",
+        "oldhome-cyprus-room-006-02.jpg",
+        "oldhome-cyprus-room-006-03.jpg",
+        "oldhome-cyprus-room-006-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -216,10 +221,10 @@
       "description": "En geniş aile odalarımızdan biri. İki ayrı yatak alanı ve rahat bir oturma köşesi sunar.",
       "price": "2.700 TL",
       "images": [
-        "room-3.png",
-        "room.png",
-        "bathroom.png",
-        "hero-building.png"
+        "oldhome-cyprus-room-002-01.jpg",
+        "oldhome-cyprus-room-001-02.jpg",
+        "oldhome-cyprus-room-bathroom-001-01.jpg",
+        "oldhome-cyprus-hotel-exterior-02.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -240,10 +245,10 @@
       "description": "Üç kişilik odamız; mermer zemin, çift kişilik ve tek kişilik yatak düzeniyle 3 misafire kadar konaklama imkânı sunar. Hasır oturma köşesi, Smart TV, mini buzdolabı ve şık mermer banyosuyla modern ve konforlu bir konaklama sağlar.",
       "price": "2.700 TL",
       "images": [
-        "rooms/008/01.png",
-        "rooms/008/02.png",
-        "rooms/008/03.png",
-        "rooms/008/04.png"
+        "oldhome-cyprus-room-008-01.jpg",
+        "oldhome-cyprus-room-008-02.jpg",
+        "oldhome-cyprus-room-008-03.jpg",
+        "oldhome-cyprus-room-008-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -264,10 +269,10 @@
       "description": "Aydınlık ve minimalist odamız. Konforlu çift kişilik yatak, pencere kenarı hasır oturma köşesi, geniş gömme gardırop, Smart TV, mini buzdolabı ve mermer kaplı özel banyosuyla keyifli bir konaklama sunar.",
       "price": "2.700 TL",
       "images": [
-        "rooms/009/01.png",
-        "rooms/009/02.png",
-        "rooms/009/03.png",
-        "rooms/009/04.png"
+        "oldhome-cyprus-room-009-01.jpg",
+        "oldhome-cyprus-room-009-02.jpg",
+        "oldhome-cyprus-room-009-03.jpg",
+        "oldhome-cyprus-room-009-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -288,10 +293,10 @@
       "description": "Geniş yatağı ve ferah banyosuyla öne çıkan, romantik bir konaklama için ideal odamız.",
       "price": "2.700 TL",
       "images": [
-        "room-2.png",
-        "room.png",
-        "bathroom.png",
-        "hero-building.png"
+        "oldhome-cyprus-room-001-01.jpg",
+        "oldhome-cyprus-room-001-02.jpg",
+        "oldhome-cyprus-room-bathroom-001-01.jpg",
+        "oldhome-cyprus-hotel-exterior-02.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -312,10 +317,10 @@
       "description": "Üst katta yer alan, aydınlık ve minimalist odamız. Konforlu tek kişilik yatak, mermer zemin, geniş ayna, Smart TV, mini buzdolabı, çalışma köşesi ve yağmur duşlu mermer banyosuyla yalnız seyahat eden misafirler için idealdir.",
       "price": "2.200 TL",
       "images": [
-        "rooms/011/01.png",
-        "rooms/011/02.png",
-        "rooms/011/03.png",
-        "rooms/011/04.png"
+        "oldhome-cyprus-room-011-01.jpg",
+        "oldhome-cyprus-room-011-02.jpg",
+        "oldhome-cyprus-room-011-03.jpg",
+        "oldhome-cyprus-room-011-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -330,68 +335,68 @@
   ],
   "outdoorGallery": [
     {
-      "src": "outdoor/01.png",
-      "alt": "Old Home Guest House genel dış cephe görünümü, beyaz bina ve teras",
+      "src": "oldhome-cyprus-hotel-exterior-02.jpg",
+      "alt": "Wide view of the boutique hotel exterior at Old Home Boutique Hotel Cyprus",
       "label": "Genel Dış Cephe",
       "category": "exterior"
     },
     {
-      "src": "outdoor/02.png",
-      "alt": "Old Home Guest House ön cephe, teras ve oturma alanları",
+      "src": "oldhome-cyprus-hotel-exterior-03.jpg",
+      "alt": "Front facade and outdoor terrace at Old Home Boutique Hotel Cyprus",
       "label": "Cephe & Teras",
       "category": "exterior"
     },
     {
-      "src": "outdoor/03.png",
-      "alt": "Old Home Guest House geniş teras, şemsiyeler ve bahçe düzeni",
+      "src": "oldhome-cyprus-terrace-01.jpg",
+      "alt": "Outdoor terrace with seating at Old Home Boutique Hotel Cyprus",
       "label": "Bahçe Terası",
       "category": "terrace"
     },
     {
-      "src": "outdoor/04.png",
-      "alt": "Old Home Guest House tabela, kavisli mimari ve dış oturma alanı",
+      "src": "oldhome-cyprus-terrace-02.jpg",
+      "alt": "Welcome terrace and curved architecture at Old Home Boutique Hotel Cyprus",
       "label": "Karşılama Alanı",
       "category": "terrace"
     },
     {
-      "src": "outdoor/05.png",
-      "alt": "Old Home Guest House dış tabela ve dekoratif cephe detayı",
+      "src": "oldhome-cyprus-hotel-sign.jpg",
+      "alt": "Old Home guest house sign at Old Home Boutique Hotel Cyprus",
       "label": "Old Home Tabelası",
       "category": "terrace"
     },
     {
-      "src": "outdoor/06.png",
-      "alt": "Old Home Guest House gölgeli teras oturma alanı, hasır mobilya",
+      "src": "oldhome-cyprus-terrace-03.jpg",
+      "alt": "Shaded terrace lounge at Old Home Boutique Hotel Cyprus",
       "label": "Gölgeli Teras",
       "category": "lounge"
     },
     {
-      "src": "outdoor/07.png",
-      "alt": "Old Home Guest House hasır koltuklu dış dinlenme köşesi",
+      "src": "oldhome-cyprus-garden-seating-01.jpg",
+      "alt": "Garden seating area with wicker furniture at Old Home Boutique Hotel Cyprus",
       "label": "Hasır Oturma",
       "category": "lounge"
     },
     {
-      "src": "outdoor/08.png",
-      "alt": "Old Home Guest House gri rattan mobilyalı oturma köşesi",
+      "src": "oldhome-cyprus-garden-seating-02.jpg",
+      "alt": "Outdoor lounge corner at Old Home Boutique Hotel Cyprus",
       "label": "Dinlenme Köşesi",
       "category": "lounge"
     }
   ],
   "gallery": [
     {
-      "src": "outdoor/01.png",
-      "alt": "Old Home Guest House genel dış cephe",
+      "src": "oldhome-cyprus-hotel-exterior-02.jpg",
+      "alt": "Wide view of the boutique hotel exterior at Old Home Boutique Hotel Cyprus",
       "label": "Dış Cephe"
     },
     {
-      "src": "outdoor/06.png",
-      "alt": "Old Home Guest House gölgeli teras",
+      "src": "oldhome-cyprus-terrace-03.jpg",
+      "alt": "Shaded terrace lounge at Old Home Boutique Hotel Cyprus",
       "label": "Teras"
     },
     {
-      "src": "outdoor/08.png",
-      "alt": "Old Home Guest House oturma köşesi",
+      "src": "oldhome-cyprus-garden-seating-02.jpg",
+      "alt": "Outdoor lounge corner at Old Home Boutique Hotel Cyprus",
       "label": "Oturma Köşesi"
     }
   ],

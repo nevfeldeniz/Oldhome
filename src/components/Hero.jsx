@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { BedDouble, Phone } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 
-const FALLBACK_HERO = `${import.meta.env.BASE_URL}outdoor/hero.jpg`
+const FALLBACK_HERO = `${import.meta.env.BASE_URL}oldhome-cyprus-hotel-exterior.jpg`
 
 const container = {
   hidden: {},
@@ -23,7 +23,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Old Home Guest House dış cephe ve teras"
+          alt="Hotel exterior and terrace at Old Home Boutique Hotel Cyprus"
           className="h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-wine-dark/45 via-wine-dark/15 to-cream/92" />

@@ -61,7 +61,7 @@ export default function Rooms() {
               <div className="relative h-56 overflow-hidden">
                 <img
                   src={room.image}
-                  alt={room.name}
+                  alt={room.imageAlt || `${room.name} at Old Home Boutique Hotel Cyprus`}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-parchment to-transparent" />

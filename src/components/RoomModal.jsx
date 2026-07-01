@@ -160,7 +160,7 @@ export default function RoomModal({ room, onClose }) {
                 <img
                   key={i}
                   src={src}
-                  alt={`${room.number} - görsel ${i + 1}`}
+                  alt={`${room.number} photo ${i + 1} at Old Home Boutique Hotel Cyprus`}
                   className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
                     i === current ? 'opacity-100' : 'opacity-0'
                   }`}

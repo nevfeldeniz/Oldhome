@@ -115,7 +115,7 @@ export default function ShowcasePanel() {
                 {room.images[0] && (
                   <img
                     src={`${import.meta.env.BASE_URL}${room.images[0]}`}
-                    alt={room.number}
+                    alt={`${room.number} at Old Home Boutique Hotel Cyprus`}
                     className="h-40 w-full rounded-xl object-cover"
                   />
                 )}

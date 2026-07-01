@@ -39,7 +39,7 @@ export default function GeneralPanel() {
         <AdminField label="Açıklama">
           <AdminTextarea value={rawData.hero.description} onChange={(e) => setHero('description', e.target.value)} />
         </AdminField>
-        <AdminField label="Ana Sayfa Görseli" hint="public/ klasöründeki dosya (örn. outdoor/hero.jpg)">
+        <AdminField label="Ana Sayfa Görseli" hint="public/ klasöründeki dosya (örn. oldhome-cyprus-hotel-exterior.jpg)">
           <AdminInput value={rawData.hero.image || ''} onChange={(e) => setHero('image', e.target.value)} />
         </AdminField>
       </AdminCard>
@@ -50,6 +50,12 @@ export default function GeneralPanel() {
         </AdminField>
         <AdminField label="Paragraf">
           <AdminTextarea rows={5} value={rawData.about.paragraph} onChange={(e) => setAbout('paragraph', e.target.value)} />
+        </AdminField>
+        <AdminField label="Hakkımızda Görseli" hint="public/ klasöründeki SEO dosya adı">
+          <AdminInput value={rawData.about.image || ''} onChange={(e) => setAbout('image', e.target.value)} />
+        </AdminField>
+        <AdminField label="Görsel Alt Metni (EN)">
+          <AdminInput value={rawData.about.imageAlt || ''} onChange={(e) => setAbout('imageAlt', e.target.value)} />
         </AdminField>
         <div className="grid gap-4 sm:grid-cols-3">
           {rawData.about.stats.map((stat, i) => (
