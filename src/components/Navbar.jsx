@@ -28,29 +28,31 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isSolid ? 'border-b border-wine/[0.08] bg-cream/95 shadow-nav backdrop-blur-md' : 'bg-transparent'
+        isSolid
+          ? 'border-b border-wine/[0.08] bg-cream/95 shadow-nav backdrop-blur-md'
+          : 'border-b border-transparent bg-cream/90 backdrop-blur-sm sm:bg-transparent sm:backdrop-blur-none'
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-8" aria-label="Ana navigasyon">
         <a href="#home" className="flex min-w-0 items-center gap-2.5">
           <span
             className={`grid h-10 w-10 flex-none place-items-center rounded-ui border ${
-              isSolid ? 'border-wine/20 bg-parchment' : 'border-cream/40 bg-cream/10 backdrop-blur-sm'
+              isSolid ? 'border-wine/20 bg-parchment' : 'border-wine/20 bg-parchment/90 sm:border-cream/40 sm:bg-cream/10 sm:backdrop-blur-sm'
             }`}
           >
-            <TreePine className={`h-5 w-5 ${isSolid ? 'text-wine' : 'text-white'}`} />
+            <TreePine className={`h-5 w-5 ${isSolid ? 'text-wine' : 'text-wine sm:text-white'}`} />
           </span>
           <span className="min-w-0 leading-tight">
             <span
               className={`block truncate font-serif text-base font-semibold sm:text-lg ${
-                isSolid ? 'text-wine-dark' : 'text-white'
+                isSolid ? 'text-wine-dark' : 'text-wine-dark sm:text-white'
               }`}
             >
               Old Home
             </span>
             <span
               className={`block text-[10px] uppercase tracking-[0.22em] ${
-                isSolid ? 'text-ink/50' : 'text-white/70'
+                isSolid ? 'text-ink/50' : 'text-ink/50 sm:text-white/70'
               }`}
             >
               Guest House
@@ -88,7 +90,7 @@ export default function Navbar() {
             type="button"
             onClick={() => setOpen((v) => !v)}
             className={`grid h-10 w-10 place-items-center rounded-ui border lg:hidden ${
-              isSolid ? 'border-wine/20 text-wine-dark' : 'border-white/35 text-white'
+              isSolid ? 'border-wine/20 text-wine-dark' : 'border-wine/25 text-wine-dark sm:border-white/35 sm:text-white'
             }`}
             aria-label="Menüyü aç/kapat"
             aria-expanded={open}
