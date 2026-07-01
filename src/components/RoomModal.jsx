@@ -20,6 +20,7 @@ import { useSite } from '../context/SiteContext'
 import { getRoomGallery } from '../data/roomGalleries'
 import { resolveAsset } from '../utils/storage'
 import RoomGallery from './RoomGallery'
+import RoomPriceDisplay from './RoomPriceDisplay'
 
 const featureIcons = {
   'Ücretsiz Wi-Fi': Wifi,
@@ -100,7 +101,7 @@ export default function RoomModal({ room, onClose }) {
 
       <div className="mt-6 flex flex-col gap-4 border-t border-wine/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="font-serif text-3xl font-semibold text-wine">{room.price}</p>
+          <RoomPriceDisplay type={room.type} price={room.price} oldPrice={room.oldPrice} size="lg" />
           <p className="text-xs text-ink/50">gecelik · 0-6 yaş çocuk ücretsiz</p>
         </div>
         <a href={`tel:${contact.phoneLinks[0]}`} className="btn-primary">
