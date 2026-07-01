@@ -1,4 +1,5 @@
 import { Check, MapPin, MessageCircle, Shield, Sparkles, Volume2 } from 'lucide-react'
+import { SectionIntro } from './Section'
 
 const reasons = [
   { icon: Sparkles, text: 'Temiz ve konforlu odalar' },
@@ -10,16 +11,14 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section id="about-trust" className="section-parchment !pt-8 sm:!pt-10 lg:!pt-12" aria-labelledby="why-us-heading">
+    <section id="about-trust" className="section-parchment" aria-labelledby="why-us-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <header className="mx-auto max-w-2xl text-center">
-          <h2 id="why-us-heading" className="text-3xl font-semibold text-wine-dark sm:text-4xl">
-            Neden Old Home Guest House?
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-ink/65">
-            Güven veren, tutarlı ve samimi bir butik konaklama deneyimi.
-          </p>
-        </header>
+        <SectionIntro
+          id="why-us-heading"
+          eyebrow="Neden Biz"
+          title="Neden Old Home Guest House?"
+          subtitle="Güven veren, tutarlı ve samimi bir butik konaklama deneyimi."
+        />
 
         <ul className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2 lg:max-w-none lg:grid-cols-5">
           {reasons.map(({ icon: Icon, text }) => (

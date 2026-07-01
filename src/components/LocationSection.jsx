@@ -1,6 +1,7 @@
 import { ExternalLink, MapPin } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { getMapsEmbedUrl, getMapsOpenUrl } from '../utils/maps'
+import { SectionIntro } from './Section'
 
 export default function LocationSection() {
   const { site } = useSite()
@@ -9,19 +10,19 @@ export default function LocationSection() {
   const mapsOpenUrl = getMapsOpenUrl(contact)
 
   return (
-    <section id="location" className="section-parchment" aria-labelledby="location-heading">
+    <section id="location" className="section-cream" aria-labelledby="location-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <header className="mx-auto max-w-2xl text-center">
-          <p className="section-eyebrow justify-center">
-            <MapPin className="h-4 w-4" aria-hidden />
-            Konum
-          </p>
-          <h2 id="location-heading" className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">
-            Bizi ziyaret edin
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-ink/65">
-            Kıbrıs&apos;ta merkezi ve ulaşımı kolay bir konumda yer almaktadır.
-          </p>
+        <SectionIntro
+          id="location-heading"
+          eyebrow={
+            <>
+              <MapPin className="h-4 w-4" aria-hidden />
+              Konum
+            </>
+          }
+          title="Bizi ziyaret edin"
+          subtitle="Kıbrıs'ta merkezi ve ulaşımı kolay bir konumda yer almaktadır."
+        >
           <p className="mt-3 font-serif text-lg font-semibold text-wine-dark">{placeName}</p>
           <p className="mt-1 text-sm text-ink/60">{contact.address}</p>
           <a
@@ -33,7 +34,7 @@ export default function LocationSection() {
             Google Maps&apos;te aç
             <ExternalLink className="h-4 w-4" aria-hidden />
           </a>
-        </header>
+        </SectionIntro>
 
         <div className="card-booking mt-10 overflow-hidden">
           <iframe

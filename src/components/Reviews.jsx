@@ -1,4 +1,5 @@
 import { Star } from 'lucide-react'
+import { SectionIntro } from './Section'
 
 const reviews = [
   {
@@ -30,14 +31,13 @@ function Stars({ count }) {
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="section-cream" aria-labelledby="reviews-heading">
+    <section id="reviews" className="section-parchment" aria-labelledby="reviews-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <header className="mx-auto max-w-2xl text-center">
-          <p className="section-eyebrow justify-center">Misafir Yorumları</p>
-          <h2 id="reviews-heading" className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">
-            Misafirlerimiz ne diyor?
-          </h2>
-        </header>
+        <SectionIntro
+          id="reviews-heading"
+          eyebrow="Misafir Yorumları"
+          title="Misafirlerimiz ne diyor?"
+        />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review) => (

@@ -8,7 +8,7 @@ export default function Rooms() {
   const { site } = useSite()
   const { rooms, roomsNote } = site
   return (
-    <section id="fiyatlar" className="section-parchment !pb-6 sm:!pb-8 lg:!pb-10" aria-labelledby="rooms-pricing-heading">
+    <section id="fiyatlar" className="section-cream" aria-labelledby="rooms-pricing-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
           id="rooms-pricing-heading"

@@ -21,7 +21,7 @@ export default function Contact() {
   const secondaryTel = contact?.phoneLinks?.[1]
 
   return (
-    <section id="contact" className="section-parchment" aria-labelledby="contact-heading">
+    <section id="contact" className="section-cream" aria-labelledby="contact-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
           id="contact-heading"

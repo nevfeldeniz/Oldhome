@@ -24,13 +24,22 @@
     @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-wine;
   }
 
-  /* Kremsi ana sayfa bölümleri — yumuşak alternasyon, sert beyaz yok */
+  /* Kremsi ana sayfa bölümleri — mobilde alternasyon + üst ayırıcı çizgi */
   .section-cream {
-    @apply bg-cream py-20 sm:py-28 lg:py-32;
+    @apply relative border-t border-wine/[0.1] bg-cream py-14 sm:border-wine/[0.08] sm:py-28 lg:py-32;
   }
 
   .section-parchment {
-    @apply bg-parchment py-20 sm:py-28 lg:py-32;
+    @apply relative border-t border-wine/[0.1] bg-parchment py-14 sm:border-wine/[0.08] sm:py-28 lg:py-32;
+  }
+
+  /* Mobilde bölüm başlığı alanı — içerikten net ayrılır */
+  .section-head {
+    @apply border-b border-wine/[0.08] pb-8 sm:border-b-0 sm:pb-0;
+  }
+
+  .section-title-rule {
+    @apply mx-auto mt-3 block h-0.5 w-10 rounded-full bg-wine/35 sm:mt-4 sm:w-14;
   }
 
   .card-booking {

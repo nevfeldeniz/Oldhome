@@ -4,6 +4,7 @@ import { BedDouble, ChevronRight } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import RoomModal from './RoomModal'
 import { getShowcasePricing } from '../utils/roomPricing'
+import { SectionIntro } from './Section'
 
 const typeLabel = (type) => {
   if (type === 'Tek') return 'Tek Kişilik'
@@ -17,17 +18,14 @@ export default function DiscoverRooms() {
   const [selectedRoom, setSelectedRoom] = useState(null)
 
   return (
-    <section id="rooms" className="section-cream" aria-labelledby="discover-rooms-heading">
+    <section id="rooms" className="section-parchment" aria-labelledby="discover-rooms-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <header className="mx-auto max-w-2xl text-center">
-          <p className="section-eyebrow justify-center">Odalarımız</p>
-          <h2 id="discover-rooms-heading" className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">
-            Odalarımızı Keşfedin
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-ink/65">
-            11 konforlu odamızdan birini seçin, tek dokunuşla detayları inceleyin.
-          </p>
-        </header>
+        <SectionIntro
+          id="discover-rooms-heading"
+          eyebrow="Odalarımız"
+          title="Odalarımızı Keşfedin"
+          subtitle="11 konforlu odamızdan birini seçin, tek dokunuşla detayları inceleyin."
+        />
 
         <ul className="mt-8 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3 lg:gap-4">
           {showcaseRooms.map((room) => {

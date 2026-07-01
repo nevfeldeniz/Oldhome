@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { useSite } from '../context/SiteContext'
 import OptimizedImage from './ui/OptimizedImage'
+import { SectionIntro } from './Section'
 
 export default function PhotoGallery() {
   const { site } = useSite()
@@ -27,17 +28,14 @@ export default function PhotoGallery() {
   if (!images.length) return null
 
   return (
-    <section id="gallery" className="section-cream" aria-labelledby="gallery-heading">
+    <section id="gallery" className="section-parchment" aria-labelledby="gallery-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <header className="mx-auto max-w-2xl text-center">
-          <p className="section-eyebrow justify-center">Foto Galeri</p>
-          <h2 id="gallery-heading" className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">
-            Mekânımızdan kareler
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-ink/65">
-            Odalarımızdan dış mekânlarımıza kadar tesisimizi keşfedin.
-          </p>
-        </header>
+        <SectionIntro
+          id="gallery-heading"
+          eyebrow="Foto Galeri"
+          title="Mekânımızdan kareler"
+          subtitle="Odalarımızdan dış mekânlarımıza kadar tesisimizi keşfedin."
+        />
 
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {images.map((image, index) => (

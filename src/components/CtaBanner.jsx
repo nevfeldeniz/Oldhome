@@ -11,7 +11,7 @@ export default function CtaBanner() {
   )
 
   return (
-    <section className="section-cream border-y border-wine/[0.06]" aria-labelledby="cta-heading">
+    <section className="section-parchment" aria-labelledby="cta-heading">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-8">
         <h2 id="cta-heading" className="font-serif text-2xl font-semibold leading-snug text-wine-dark sm:text-3xl">
           En iyi fiyat için doğrudan bizimle rezervasyon yapın
