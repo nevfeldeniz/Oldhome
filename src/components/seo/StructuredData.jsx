@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useSite } from '../../context/SiteContext'
-import { SEO, assetUrl } from '../../config/seo'
+import { SEO, assetUrl, getCanonicalUrl } from '../../config/seo'
 
 export default function StructuredData() {
   const { site } = useSite()

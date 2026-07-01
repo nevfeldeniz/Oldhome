@@ -36,7 +36,7 @@ export function hydrateSiteData(raw) {
       ...item,
       src: resolveAsset(item.src),
     })),
-    gallery: raw.gallery.map((item) => ({
+    gallery: (raw.gallery || []).map((item) => ({
       ...item,
       src: resolveAsset(item.src),
     })),
@@ -73,7 +73,7 @@ export function dehydrateSiteData(hydrated) {
       ...item,
       src: strip(item.src),
     })),
-    gallery: hydrated.gallery.map((item) => ({
+    gallery: (hydrated.gallery || []).map((item) => ({
       ...item,
       src: strip(item.src),
     })),
