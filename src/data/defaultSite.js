@@ -143,13 +143,13 @@ export const defaultSiteData = {
 
   contact: {
     address: 'Lala Mustafa Paşa Sokak 18 ve 18A, Köşklüçiftlik / Lefkoşa, Kıbrıs',
-    phones: ['0533 113 98 62', '0539 113 98 48'],
+    phones: ['0539 113 98 48'],
     email: 'info@oldhomecyprus.com',
-    phoneLinks: ['+905331139862', '+905391139848'],
+    phoneLinks: ['+905391139848'],
   },
 
   social: {
-    whatsapp: '905331139862',
+    whatsapp: '905391139848',
     whatsappMessage: 'Merhaba, Old Home Guest House için rezervasyon yapmak istiyorum.',
     instagram: 'https://www.instagram.com/',
     facebook: 'https://www.facebook.com/',

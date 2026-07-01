@@ -39,7 +39,7 @@ export default function ContactPanel() {
               <AdminField label={`Telefon ${i + 1} (görünen)`}>
                 <AdminInput value={rawData.contact.phones[i] || ''} onChange={(e) => setPhone(i, e.target.value)} />
               </AdminField>
-              <AdminField label="Arama linki (tel:)" hint="Örn: +905331139862">
+              <AdminField label="Arama linki (tel:)" hint="Örn: +905391139848">
                 <AdminInput value={rawData.contact.phoneLinks[i] || ''} onChange={(e) => setPhoneLink(i, e.target.value)} />
               </AdminField>
             </div>
