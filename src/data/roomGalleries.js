@@ -12,19 +12,9 @@ export const roomGalleries = {
         category: 'overview',
       },
       {
-        src: 'oldhome-cyprus-room-001-02.jpg',
-        alt: 'Hotel room interior at Old Home Boutique Hotel Cyprus showing bed with white linens, grey headboard and seating area by the window',
-        category: 'bed',
-      },
-      {
         src: 'oldhome-cyprus-room-001-03.jpg',
         alt: 'Second angle of Room 001 at Old Home Boutique Hotel Cyprus featuring double bed, round wicker chair and marble-tiled bathroom view',
         category: 'angle',
-      },
-      {
-        src: 'oldhome-cyprus-room-001-04.jpg',
-        alt: 'Window seating area in Room 001 at Old Home Boutique Hotel Cyprus with grey nest chairs, white cushions and zebra blinds',
-        category: 'view',
       },
       {
         src: 'oldhome-cyprus-room-bathroom-001-01.jpg',
