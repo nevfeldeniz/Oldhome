@@ -88,7 +88,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 flex-none text-cream" />
-                <span>{contact.phones.join(' · ')}</span>
+                <span>{contact?.phones?.join(' · ') || ''}</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 flex-none text-cream" />

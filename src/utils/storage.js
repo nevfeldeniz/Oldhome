@@ -13,32 +13,55 @@ export function resolveAsset(path) {
   return `${import.meta.env.BASE_URL}${path}`
 }
 
-export function hydrateSiteData(raw) {
+/** Eksik veya eski localStorage kayıtlarını varsayılanlarla birleştirir. */
+export function mergeSiteData(raw) {
+  const base = structuredClone(defaultSiteData)
+  if (!raw || typeof raw !== 'object') return base
+
   return {
+    ...base,
     ...raw,
+    hero: { ...base.hero, ...(raw.hero || {}) },
+    about: { ...base.about, ...(raw.about || {}) },
+    contact: { ...base.contact, ...(raw.contact || {}) },
+    social: { ...base.social, ...(raw.social || {}) },
+    footer: { ...base.footer, ...(raw.footer || {}) },
+    roomsNote: raw.roomsNote ?? base.roomsNote,
+    rooms: Array.isArray(raw.rooms) ? raw.rooms : base.rooms,
+    showcaseRooms: Array.isArray(raw.showcaseRooms) ? raw.showcaseRooms : base.showcaseRooms,
+    outdoorGallery: Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery,
+    gallery: Array.isArray(raw.gallery) ? raw.gallery : base.gallery,
+  }
+}
+
+export function hydrateSiteData(raw) {
+  const data = mergeSiteData(raw)
+
+  return {
+    ...data,
     hero: {
-      ...raw.hero,
-      image: resolveAsset(raw.hero?.image),
+      ...data.hero,
+      image: resolveAsset(data.hero?.image),
     },
     about: {
-      ...raw.about,
-      image: resolveAsset(raw.about?.image),
+      ...data.about,
+      image: resolveAsset(data.about?.image),
     },
-    rooms: raw.rooms.map((room) => ({
+    rooms: (data.rooms || []).map((room) => ({
       ...room,
-      image: resolveAsset(room.image),
+      image: resolveAsset(room?.image),
     })),
-    showcaseRooms: raw.showcaseRooms.map((room) => ({
+    showcaseRooms: (data.showcaseRooms || []).map((room) => ({
       ...room,
-      images: room.images.map(resolveAsset),
+      images: (room?.images || []).map(resolveAsset),
     })),
-    outdoorGallery: (raw.outdoorGallery || []).map((item) => ({
+    outdoorGallery: (data.outdoorGallery || []).map((item) => ({
       ...item,
-      src: resolveAsset(item.src),
+      src: resolveAsset(item?.src),
     })),
-    gallery: (raw.gallery || []).map((item) => ({
+    gallery: (data.gallery || []).map((item) => ({
       ...item,
-      src: resolveAsset(item.src),
+      src: resolveAsset(item?.src),
     })),
   }
 }
@@ -61,13 +84,13 @@ export function dehydrateSiteData(hydrated) {
       ...hydrated.about,
       image: strip(hydrated.about?.image),
     },
-    rooms: hydrated.rooms.map((room) => ({
+    rooms: (hydrated.rooms || []).map((room) => ({
       ...room,
       image: strip(room.image),
     })),
-    showcaseRooms: hydrated.showcaseRooms.map((room) => ({
+    showcaseRooms: (hydrated.showcaseRooms || []).map((room) => ({
       ...room,
-      images: room.images.map(strip),
+      images: (room.images || []).map(strip),
     })),
     outdoorGallery: (hydrated.outdoorGallery || []).map((item) => ({
       ...item,
@@ -83,7 +106,7 @@ export function dehydrateSiteData(hydrated) {
 export function loadRawSiteData() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved) return JSON.parse(saved)
+    if (saved) return mergeSiteData(JSON.parse(saved))
   } catch {
     // Bozuk kayıt varsa varsayılana dön
   }

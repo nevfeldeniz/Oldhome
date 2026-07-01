@@ -15,10 +15,10 @@ export default function Contact() {
     social?.whatsappMessage,
   )
 
-  const primaryPhone = contact.phones[0]
-  const secondaryPhone = contact.phones[1]
-  const primaryTel = contact.phoneLinks[0]
-  const secondaryTel = contact.phoneLinks[1]
+  const primaryPhone = contact?.phones?.[0]
+  const secondaryPhone = contact?.phones?.[1]
+  const primaryTel = contact?.phoneLinks?.[0]
+  const secondaryTel = contact?.phoneLinks?.[1]
 
   return (
     <section id="contact" className="section-parchment" aria-labelledby="contact-heading">
