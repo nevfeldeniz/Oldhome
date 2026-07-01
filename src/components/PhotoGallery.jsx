@@ -26,22 +26,19 @@ export default function PhotoGallery() {
   if (!images.length) return null
 
   return (
-    <section id="gallery" className="bg-sand py-16 sm:py-20">
+    <section id="gallery" className="section-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-eyebrow justify-center">Foto Galeri</p>
           <h2 className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">Mekânımızdan kareler</h2>
-          <p className="mt-3 text-base text-ink/70">
+          <p className="mt-4 text-base leading-relaxed text-ink/65">
             Odalarımızdan dış mekânlarımıza kadar tesisimizi keşfedin.
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {images.map((image, index) => (
-            <figure
-              key={image.src}
-              className="group overflow-hidden rounded-xl border border-wine/10 bg-cream"
-            >
+            <figure key={image.src} className="card-booking group">
               <img
                 src={image.src}
                 alt={image.alt || `Old Home Guest House galeri ${index + 1}`}
@@ -50,7 +47,7 @@ export default function PhotoGallery() {
                 className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
               />
               {image.label && (
-                <figcaption className="px-3 py-2 text-xs font-medium text-ink/60">{image.label}</figcaption>
+                <figcaption className="px-4 py-3 text-xs font-medium text-ink/60">{image.label}</figcaption>
               )}
             </figure>
           ))}

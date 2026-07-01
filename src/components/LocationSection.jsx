@@ -9,7 +9,7 @@ export default function LocationSection() {
   const mapsOpenUrl = getMapsOpenUrl(contact)
 
   return (
-    <section id="location" className="bg-cream py-16 sm:py-20">
+    <section id="location" className="section-alt">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-eyebrow justify-center">
@@ -17,7 +17,7 @@ export default function LocationSection() {
             Konum
           </p>
           <h2 className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">Bizi ziyaret edin</h2>
-          <p className="mt-4 text-base leading-relaxed text-ink/75">
+          <p className="mt-4 text-base leading-relaxed text-ink/65">
             Kıbrıs&apos;ta merkezi ve ulaşımı kolay bir konumda yer almaktadır.
           </p>
           <p className="mt-3 font-serif text-lg font-semibold text-wine-dark">{placeName}</p>
@@ -33,7 +33,7 @@ export default function LocationSection() {
           </a>
         </div>
 
-        <div className="mt-8 overflow-hidden rounded-2xl border border-wine/15 shadow-lg shadow-wine/10">
+        <div className="card-booking mt-10 overflow-hidden">
           <iframe
             title={`${placeName} konumu - Google Maps`}
             src={getMapsEmbedUrl(contact)}

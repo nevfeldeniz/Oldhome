@@ -1,6 +1,6 @@
-import { MessageCircle } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
+import WhatsAppIcon from './WhatsAppIcon'
 
 export default function CtaBanner() {
   const { site } = useSite()
@@ -11,21 +11,21 @@ export default function CtaBanner() {
   )
 
   return (
-    <section className="bg-wine-dark py-14 sm:py-16">
+    <section className="section-alt border-y border-black/[0.04]">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-8">
-        <h2 className="font-serif text-2xl font-semibold leading-snug text-cream sm:text-3xl">
+        <h2 className="font-serif text-2xl font-semibold leading-snug text-wine-dark sm:text-3xl">
           En iyi fiyat için doğrudan bizimle rezervasyon yapın
         </h2>
-        <p className="mt-3 text-sm text-cream/75 sm:text-base">
+        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-ink/65">
           Aracı komisyonu yok — WhatsApp ile anında ulaşın, hızlıca yerinizi ayırtın.
         </p>
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-whatsapp mx-auto mt-8 w-full max-w-md text-base sm:text-lg"
+          className="btn-cta mx-auto mt-8 max-w-md text-base"
         >
-          <MessageCircle className="h-5 w-5" />
+          <WhatsAppIcon />
           WhatsApp ile Rezervasyon
         </a>
       </div>

@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-cream text-ink font-sans antialiased;
+    @apply bg-surface-alt text-ink font-sans antialiased;
   }
 
   h1,
@@ -20,48 +20,57 @@
 }
 
 @layer components {
-  /* Bölüm başlığı için bordo, harf aralıklı küçük etiket */
   .section-eyebrow {
-    @apply inline-flex items-center gap-2 text-wine tracking-[0.25em] uppercase text-xs font-semibold;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-wine;
+  }
+
+  .section-white {
+    @apply bg-surface-white py-20 sm:py-28 lg:py-32;
+  }
+
+  .section-alt {
+    @apply bg-surface-alt py-20 sm:py-28 lg:py-32;
+  }
+
+  .card-booking {
+    @apply overflow-hidden rounded-ui border border-black/[0.06] bg-surface-white shadow-card
+      transition-shadow duration-200 hover:shadow-card-hover;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-wine px-7 py-3
-      text-sm font-semibold text-cream transition-all duration-300
-      hover:bg-wine-light hover:shadow-lg hover:shadow-wine/30 focus:outline-none
-      focus-visible:ring-2 focus-visible:ring-wine focus-visible:ring-offset-2
-      focus-visible:ring-offset-cream;
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-ui bg-wine-dark px-7 py-3
+      text-sm font-semibold text-white transition-all duration-200
+      hover:bg-wine focus:outline-none focus-visible:ring-2 focus-visible:ring-wine
+      focus-visible:ring-offset-2 focus-visible:ring-offset-surface-alt;
+  }
+
+  .btn-cta {
+    @apply inline-flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-ui bg-wine-dark
+      px-7 py-3.5 text-sm font-semibold text-white transition-all duration-200
+      hover:bg-wine hover:shadow-card sm:w-auto
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-wine-dark focus-visible:ring-offset-2;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-wine/50
-      px-7 py-3 text-sm font-semibold text-wine transition-all duration-300
-      hover:bg-wine hover:text-cream focus:outline-none focus-visible:ring-2
-      focus-visible:ring-wine focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
-  }
-
-  .btn-whatsapp {
-    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#25D366]
-      px-7 py-3.5 text-sm font-semibold text-white transition-colors duration-200
-      hover:bg-[#20bd5a] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]
-      focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-ui border border-wine/30
+      bg-surface-white px-7 py-3 text-sm font-semibold text-wine-dark transition-all duration-200
+      hover:border-wine hover:bg-surface-alt focus:outline-none focus-visible:ring-2
+      focus-visible:ring-wine focus-visible:ring-offset-2;
   }
 
   .btn-hero-secondary {
-    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border-2
-      border-cream/80 bg-cream/10 px-7 py-3.5 text-sm font-semibold text-cream backdrop-blur-sm
-      transition-colors duration-200 hover:bg-cream hover:text-wine-dark focus:outline-none
-      focus-visible:ring-2 focus-visible:ring-cream focus-visible:ring-offset-2
-      focus-visible:ring-offset-transparent;
+    @apply inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-ui border
+      border-white/40 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm
+      transition-all duration-200 hover:border-white/70 hover:bg-white/20
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:w-auto;
   }
 }
 
-/* İnce, zarif kaydırma çubuğu */
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #ece4d4;
+  background: #f9f9f7;
 }
 ::-webkit-scrollbar-thumb {
   background: #6e2b3d;

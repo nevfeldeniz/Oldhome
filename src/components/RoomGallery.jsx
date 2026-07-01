@@ -17,7 +17,7 @@ export default function RoomGallery({ gallery, className = '' }) {
         {gallery.images.map((image, index) => (
           <figure
             key={image.src}
-            className="group overflow-hidden rounded-2xl border border-wine/10 bg-cream"
+            className="card-booking group"
           >
             <img
               src={resolveAsset(image.src)}

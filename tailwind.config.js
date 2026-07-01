@@ -4,20 +4,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Tabeladaki krem zemin tonları (açık arka planlar)
+        surface: {
+          white: '#FFFFFF',
+          alt: '#F9F9F7',
+        },
         cream: '#f5efe3',
         parchment: '#faf6ec',
         sand: '#e8dcc4',
-        // Tabela & logo bordo / şarap rengi (marka vurgusu)
         wine: {
           DEFAULT: '#6e2b3d',
           dark: '#511f2c',
           light: '#8c4255',
           soft: '#a05a6b',
         },
-        // Sıcak koyu metin rengi
         ink: '#33272b',
-        // Koyu antrasit tonları (modal arka planı, görsel zeminleri, vurgular)
         charcoal: {
           900: '#1a1a1a',
           800: '#262626',
@@ -25,8 +25,16 @@ export default {
         },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Merriweather', 'serif'],
-        sans: ['Montserrat', 'Lato', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+      },
+      borderRadius: {
+        ui: '12px',
+      },
+      boxShadow: {
+        card: '0 2px 16px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 8px 28px rgba(0, 0, 0, 0.08)',
+        nav: '0 4px 24px rgba(0, 0, 0, 0.06)',
       },
       keyframes: {
         'fade-up': {

@@ -30,22 +30,19 @@ function Stars({ count }) {
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="bg-parchment py-16 sm:py-20">
+    <section id="reviews" className="section-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-eyebrow justify-center">Misafir Yorumları</p>
           <h2 className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">Misafirlerimiz ne diyor?</h2>
         </div>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review) => (
-            <blockquote
-              key={review.name}
-              className="flex flex-col rounded-2xl border border-wine/10 bg-cream p-6 shadow-sm"
-            >
+            <blockquote key={review.name} className="card-booking flex flex-col p-6">
               <Stars count={review.rating} />
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-ink/80">&ldquo;{review.text}&rdquo;</p>
-              <footer className="mt-4 border-t border-wine/10 pt-4 text-sm font-semibold text-wine-dark">
+              <p className="mt-4 flex-1 text-sm leading-relaxed text-ink/75">&ldquo;{review.text}&rdquo;</p>
+              <footer className="mt-4 border-t border-black/[0.06] pt-4 text-sm font-semibold text-wine-dark">
                 {review.name}
               </footer>
             </blockquote>

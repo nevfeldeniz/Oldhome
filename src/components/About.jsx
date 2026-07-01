@@ -8,22 +8,22 @@ export default function About() {
   const { site } = useSite()
   const { about } = site
   const aboutImage = about.image || FALLBACK_ABOUT_IMAGE
-  const aboutAlt = about.imageAlt || 'Modern outdoor lounge area with grey wicker furniture at Old Home Guest House Cyprus'
+  const aboutAlt =
+    about.imageAlt || 'Modern outdoor lounge area with grey wicker furniture at Old Home Guest House Cyprus'
 
   return (
-    <section id="about" className="bg-parchment py-24 sm:py-28">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
+    <section id="about" className="section-white">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-8 lg:grid-cols-2 lg:gap-20">
         <Reveal className="relative">
-          <div className="overflow-hidden rounded-3xl border border-wine/15 shadow-xl shadow-wine/10">
+          <div className="card-booking overflow-hidden">
             <img
               src={aboutImage}
               alt={aboutAlt}
               loading="lazy"
               decoding="async"
-              className="h-[420px] w-full object-cover transition-transform duration-700 hover:scale-105"
+              className="h-[420px] w-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-5 -right-5 -z-10 hidden h-full w-full rounded-3xl border border-wine/30 sm:block" />
         </Reveal>
 
         <div className="flex flex-col gap-6">
@@ -39,22 +39,15 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="text-ink/75 leading-relaxed">{about.paragraph}</p>
+            <p className="leading-relaxed text-ink/70">{about.paragraph}</p>
           </Reveal>
 
           <Reveal delay={0.15}>
             <div className="mt-2 grid grid-cols-3 gap-4">
               {about.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-2xl border border-wine/15 bg-cream p-4 text-center"
-                >
-                  <p className="font-serif text-2xl font-semibold text-wine sm:text-3xl">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1 text-xs uppercase tracking-wider text-ink/60">
-                    {stat.label}
-                  </p>
+                <div key={stat.label} className="card-booking p-4 text-center">
+                  <p className="font-serif text-2xl font-semibold text-wine sm:text-3xl">{stat.value}</p>
+                  <p className="mt-1 text-xs uppercase tracking-wider text-ink/55">{stat.label}</p>
                 </div>
               ))}
             </div>

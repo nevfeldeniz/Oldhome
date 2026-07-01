@@ -5,7 +5,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Users,
-  Phone,
   Check,
   Wifi,
   Snowflake,
@@ -17,6 +16,8 @@ import {
   Sparkles,
 } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
+import { getWhatsAppUrl } from '../utils/whatsapp'
+import WhatsAppIcon from './WhatsAppIcon'
 import { getRoomGallery } from '../data/roomGalleries'
 import { resolveAsset } from '../utils/storage'
 import RoomGallery from './RoomGallery'
@@ -36,7 +37,7 @@ const featureIcons = {
 
 export default function RoomModal({ room, onClose }) {
   const { site } = useSite()
-  const { contact } = site
+  const { contact, social } = site
   const extendedGallery = getRoomGallery(room.number)
   const hasExtendedGallery = !!extendedGallery
 
@@ -69,6 +70,11 @@ export default function RoomModal({ room, onClose }) {
       document.body.style.overflow = original
     }
   }, [])
+
+  const whatsappUrl = getWhatsAppUrl(
+    social?.whatsapp || contact.phoneLinks[0],
+    social?.whatsappMessage,
+  )
 
   const detailsBlock = (
     <>
@@ -104,8 +110,8 @@ export default function RoomModal({ room, onClose }) {
           <RoomPriceDisplay type={room.type} price={room.price} oldPrice={room.oldPrice} size="lg" />
           <p className="text-xs text-ink/50">gecelik · 0-6 yaş çocuk ücretsiz</p>
         </div>
-        <a href={`tel:${contact.phoneLinks[0]}`} className="btn-primary">
-          <Phone className="h-4 w-4" />
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-cta">
+          <WhatsAppIcon className="h-4 w-4" />
           Bu Odayı Rezerve Et
         </a>
       </div>
@@ -127,7 +133,7 @@ export default function RoomModal({ room, onClose }) {
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
         onClick={(e) => e.stopPropagation()}
-        className={`relative w-full overflow-hidden rounded-3xl bg-cream shadow-2xl ${
+        className={`relative w-full overflow-hidden rounded-ui bg-surface-white shadow-2xl ${
           hasExtendedGallery ? 'max-h-[95vh] max-w-4xl overflow-y-auto' : 'max-h-[90vh] max-w-5xl grid lg:grid-cols-2'
         }`}
       >
@@ -135,7 +141,7 @@ export default function RoomModal({ room, onClose }) {
           type="button"
           onClick={onClose}
           aria-label="Kapat"
-          className="absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center rounded-full bg-charcoal-900/60 text-cream backdrop-blur transition-colors hover:bg-wine"
+          className="absolute right-4 top-4 z-20 grid h-10 w-10 place-items-center rounded-ui bg-black/55 text-white backdrop-blur transition-colors hover:bg-wine-dark"
         >
           <X className="h-5 w-5" />
         </button>
@@ -146,7 +152,7 @@ export default function RoomModal({ room, onClose }) {
             <img
               src={resolveAsset(extendedGallery.images[0].src)}
               alt={extendedGallery.images[0].alt}
-              className="w-full rounded-2xl object-cover"
+              className="w-full rounded-ui object-cover"
             />
 
             <div>{detailsBlock}</div>
@@ -168,10 +174,10 @@ export default function RoomModal({ room, onClose }) {
               ))}
               {total > 1 && (
                 <>
-                  <button type="button" onClick={prev} aria-label="Önceki görsel" className="absolute left-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-cream/80 text-wine shadow">
+                  <button type="button" onClick={prev} aria-label="Önceki görsel" className="absolute left-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-ui bg-white/90 text-wine-dark shadow-card">
                     <ChevronLeft className="h-5 w-5" />
                   </button>
-                  <button type="button" onClick={next} aria-label="Sonraki görsel" className="absolute right-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-cream/80 text-wine shadow">
+                  <button type="button" onClick={next} aria-label="Sonraki görsel" className="absolute right-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-ui bg-white/90 text-wine-dark shadow-card">
                     <ChevronRight className="h-5 w-5" />
                   </button>
                   <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
@@ -181,8 +187,8 @@ export default function RoomModal({ room, onClose }) {
                         type="button"
                         onClick={() => setCurrent(i)}
                         aria-label={`Görsel ${i + 1}`}
-                        className={`h-2.5 rounded-full transition-all ${
-                          i === current ? 'w-6 bg-cream' : 'w-2.5 bg-cream/50'
+                        className={`h-2.5 rounded-ui transition-all ${
+                          i === current ? 'w-6 bg-white' : 'w-2.5 bg-white/50'
                         }`}
                       />
                     ))}
