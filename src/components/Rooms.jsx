@@ -14,7 +14,7 @@ export default function Rooms() {
   )
 
   return (
-    <section id="fiyatlar" className="section-alt">
+    <section id="fiyatlar" className="section-parchment">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
           eyebrow="Odalarımız & Fiyatlar"
@@ -28,7 +28,7 @@ export default function Rooms() {
           whileInView="visible"
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mx-auto mt-8 flex w-fit items-center gap-2.5 rounded-ui border border-wine/15 bg-surface-white px-5 py-3 text-sm text-wine shadow-card"
+          className="mx-auto mt-8 flex w-fit items-center gap-2.5 rounded-ui border border-wine/15 bg-cream px-5 py-3 text-sm text-wine shadow-card"
         >
           <Baby className="h-4 w-4" />
           <span>{roomsNote}</span>
@@ -46,7 +46,7 @@ export default function Rooms() {
               key={room.name}
               variants={fadeUp}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              className={`card-booking relative flex flex-col ${room.featured ? 'ring-1 ring-wine/20' : ''}`}
+              className={`card-booking-alt relative flex flex-col ${room.featured ? 'ring-1 ring-wine/15' : ''}`}
             >
               {room.oldPrice && (
                 <span className="absolute left-4 top-4 z-10 rounded-ui bg-wine-dark px-3 py-1 text-xs font-semibold text-white">

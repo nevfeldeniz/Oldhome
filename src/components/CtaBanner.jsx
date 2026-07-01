@@ -11,7 +11,7 @@ export default function CtaBanner() {
   )
 
   return (
-    <section className="section-alt border-y border-black/[0.04]">
+    <section className="section-cream border-y border-wine/[0.06]">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-8">
         <h2 className="font-serif text-2xl font-semibold leading-snug text-wine-dark sm:text-3xl">
           En iyi fiyat için doğrudan bizimle rezervasyon yapın

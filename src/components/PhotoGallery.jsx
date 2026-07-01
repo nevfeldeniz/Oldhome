@@ -26,7 +26,7 @@ export default function PhotoGallery() {
   if (!images.length) return null
 
   return (
-    <section id="gallery" className="section-white">
+    <section id="gallery" className="section-cream">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-eyebrow justify-center">Foto Galeri</p>

@@ -28,14 +28,14 @@ export default function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isSolid ? 'border-b border-black/[0.06] bg-surface-alt/98 shadow-nav backdrop-blur-md' : 'bg-transparent'
+        isSolid ? 'border-b border-wine/[0.08] bg-cream/95 shadow-nav backdrop-blur-md' : 'bg-transparent'
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-8">
         <a href="#home" className="flex min-w-0 items-center gap-2.5">
           <span
             className={`grid h-10 w-10 flex-none place-items-center rounded-ui border ${
-              isSolid ? 'border-wine/20 bg-surface-white' : 'border-white/30 bg-white/10 backdrop-blur-sm'
+              isSolid ? 'border-wine/20 bg-parchment' : 'border-cream/40 bg-cream/10 backdrop-blur-sm'
             }`}
           >
             <TreePine className={`h-5 w-5 ${isSolid ? 'text-wine' : 'text-white'}`} />
@@ -99,14 +99,14 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-black/[0.06] bg-surface-white lg:hidden">
+        <div className="border-t border-wine/[0.08] bg-parchment lg:hidden">
           <ul className="flex flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-ui px-3 py-3 text-sm font-medium text-ink/85 hover:bg-surface-alt"
+                  className="block rounded-ui px-3 py-3 text-sm font-medium text-ink/85 hover:bg-cream/80"
                 >
                   {link.label}
                 </a>

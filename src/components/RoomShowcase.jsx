@@ -31,7 +31,7 @@ export default function RoomShowcase() {
       : showcaseRooms.filter((room) => room.type === activeFilter)
 
   return (
-    <section id="room-showcase" className="section-alt">
+    <section id="room-showcase" className="section-parchment">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
           eyebrow="Oda Galerisi"
@@ -48,7 +48,7 @@ export default function RoomShowcase() {
               className={`rounded-ui px-5 py-2.5 text-sm font-medium transition-all duration-200 ${
                 activeFilter === filter.value
                   ? 'bg-wine-dark text-white shadow-card'
-                  : 'border border-wine/20 bg-surface-white text-wine-dark hover:border-wine/40'
+                  : 'border border-wine/20 bg-cream text-wine-dark hover:border-wine/35'
               }`}
             >
               {filter.label}
@@ -70,7 +70,7 @@ export default function RoomShowcase() {
                 transition={{ duration: 0.45, ease: 'easeOut' }}
                 whileHover={{ y: -4 }}
                 onClick={() => setSelectedRoom(room)}
-                className="card-booking group flex cursor-pointer flex-col"
+                className="card-booking-alt group flex cursor-pointer flex-col"
               >
                 <div className="relative h-52 overflow-hidden">
                   <img

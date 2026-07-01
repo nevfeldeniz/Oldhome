@@ -20,7 +20,7 @@ export default function Contact() {
   const secondaryTel = contact.phoneLinks[1]
 
   return (
-    <section id="contact" className="section-white">
+    <section id="contact" className="section-parchment">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
           eyebrow="İletişim"
@@ -92,7 +92,7 @@ export default function Contact() {
 
         {secondaryPhone && secondaryTel && (
           <Reveal delay={0.14} className="mt-6">
-            <div className="card-booking px-6 py-5 sm:flex sm:items-center sm:justify-between">
+            <div className="card-booking-alt px-6 py-5 sm:flex sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-wine/80">
                   İkinci telefon hattı
@@ -116,8 +116,8 @@ export default function Contact() {
 
 function ContactCard({ icon: Icon, title, children, isIconComponent = false }) {
   return (
-    <div className="card-booking flex h-full flex-col p-6">
-      <span className="grid h-11 w-11 place-items-center rounded-ui bg-surface-alt text-wine">
+    <div className="card-booking-alt flex h-full flex-col p-6">
+      <span className="grid h-11 w-11 place-items-center rounded-ui bg-cream text-wine">
         {isIconComponent ? <Icon className="h-5 w-5" /> : <Icon className="h-5 w-5" />}
       </span>
       <h3 className="mt-4 text-sm font-semibold uppercase tracking-wider text-wine-dark">{title}</h3>

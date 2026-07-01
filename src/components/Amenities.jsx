@@ -7,7 +7,7 @@ const iconMap = { Wifi, Snowflake, ShieldCheck, Coffee, UtensilsCrossed, Sparkle
 
 export default function Amenities() {
   return (
-    <section id="amenities" className="section-white">
+    <section id="amenities" className="section-cream">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
           eyebrow="İmkanlarımız & Hizmetler"
@@ -31,7 +31,7 @@ export default function Amenities() {
                 transition={{ duration: 0.4, ease: 'easeOut' }}
                 className="card-booking p-7"
               >
-                <span className="grid h-12 w-12 place-items-center rounded-ui bg-surface-alt text-wine">
+                <span className="grid h-12 w-12 place-items-center rounded-ui bg-parchment text-wine">
                   {Icon && <Icon className="h-6 w-6" />}
                 </span>
                 <h3 className="mt-5 text-lg font-semibold text-wine-dark">{item.title}</h3>

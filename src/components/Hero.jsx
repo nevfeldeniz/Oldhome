@@ -24,8 +24,8 @@ export default function Hero() {
           decoding="async"
           className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/45 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/15" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-black/15" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/10" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-14 pt-28 text-center sm:px-8 sm:pb-20 sm:pt-36">

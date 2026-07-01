@@ -10,7 +10,7 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section id="about-trust" className="section-alt">
+    <section id="about-trust" className="section-parchment">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-semibold text-wine-dark sm:text-4xl">Neden Old Home Guest House?</h2>
@@ -21,8 +21,8 @@ export default function WhyUs() {
 
         <ul className="mx-auto mt-12 grid max-w-4xl gap-4 sm:grid-cols-2 lg:max-w-none lg:grid-cols-5">
           {reasons.map(({ icon: Icon, text }) => (
-            <li key={text} className="card-booking flex flex-col items-center px-4 py-7 text-center">
-              <span className="grid h-11 w-11 place-items-center rounded-ui bg-surface-alt text-wine">
+            <li key={text} className="card-booking-alt flex flex-col items-center px-4 py-7 text-center">
+              <span className="grid h-11 w-11 place-items-center rounded-ui bg-cream text-wine">
                 <Icon className="h-5 w-5" />
               </span>
               <span className="mt-4 text-sm font-medium leading-snug text-ink/80">{text}</span>

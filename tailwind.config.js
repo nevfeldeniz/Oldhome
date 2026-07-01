@@ -32,9 +32,9 @@ export default {
         ui: '12px',
       },
       boxShadow: {
-        card: '0 2px 16px rgba(0, 0, 0, 0.06)',
-        'card-hover': '0 8px 28px rgba(0, 0, 0, 0.08)',
-        nav: '0 4px 24px rgba(0, 0, 0, 0.06)',
+        card: '0 2px 12px rgba(110, 43, 61, 0.05)',
+        'card-hover': '0 6px 20px rgba(110, 43, 61, 0.08)',
+        nav: '0 2px 16px rgba(110, 43, 61, 0.06)',
       },
       keyframes: {
         'fade-up': {

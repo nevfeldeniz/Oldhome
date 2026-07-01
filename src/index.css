@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-surface-alt text-ink font-sans antialiased;
+    @apply bg-cream text-ink font-sans antialiased;
   }
 
   h1,
@@ -24,16 +24,22 @@
     @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-wine;
   }
 
-  .section-white {
-    @apply bg-surface-white py-20 sm:py-28 lg:py-32;
+  /* Kremsi ana sayfa bölümleri — yumuşak alternasyon, sert beyaz yok */
+  .section-cream {
+    @apply bg-cream py-20 sm:py-28 lg:py-32;
   }
 
-  .section-alt {
-    @apply bg-surface-alt py-20 sm:py-28 lg:py-32;
+  .section-parchment {
+    @apply bg-parchment py-20 sm:py-28 lg:py-32;
   }
 
   .card-booking {
-    @apply overflow-hidden rounded-ui border border-black/[0.06] bg-surface-white shadow-card
+    @apply overflow-hidden rounded-ui border border-wine/[0.08] bg-cream shadow-card
+      transition-shadow duration-200 hover:shadow-card-hover;
+  }
+
+  .card-booking-alt {
+    @apply overflow-hidden rounded-ui border border-wine/[0.08] bg-parchment shadow-card
       transition-shadow duration-200 hover:shadow-card-hover;
   }
 
@@ -41,28 +47,29 @@
     @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-ui bg-wine-dark px-7 py-3
       text-sm font-semibold text-white transition-all duration-200
       hover:bg-wine focus:outline-none focus-visible:ring-2 focus-visible:ring-wine
-      focus-visible:ring-offset-2 focus-visible:ring-offset-surface-alt;
+      focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
   }
 
   .btn-cta {
     @apply inline-flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-ui bg-wine-dark
       px-7 py-3.5 text-sm font-semibold text-white transition-all duration-200
       hover:bg-wine hover:shadow-card sm:w-auto
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-wine-dark focus-visible:ring-offset-2;
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-wine-dark focus-visible:ring-offset-2
+      focus-visible:ring-offset-cream;
   }
 
   .btn-outline {
-    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-ui border border-wine/30
-      bg-surface-white px-7 py-3 text-sm font-semibold text-wine-dark transition-all duration-200
-      hover:border-wine hover:bg-surface-alt focus:outline-none focus-visible:ring-2
-      focus-visible:ring-wine focus-visible:ring-offset-2;
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-ui border border-wine/25
+      bg-parchment/60 px-7 py-3 text-sm font-semibold text-wine-dark transition-all duration-200
+      hover:border-wine/40 hover:bg-parchment focus:outline-none focus-visible:ring-2
+      focus-visible:ring-wine focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
   }
 
   .btn-hero-secondary {
     @apply inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-ui border
-      border-white/40 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm
-      transition-all duration-200 hover:border-white/70 hover:bg-white/20
-      focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 sm:w-auto;
+      border-cream/50 bg-cream/15 px-7 py-3.5 text-sm font-semibold text-cream backdrop-blur-sm
+      transition-all duration-200 hover:border-cream/70 hover:bg-cream/25
+      focus:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 sm:w-auto;
   }
 }
 
@@ -70,7 +77,7 @@
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f9f9f7;
+  background: #f5efe3;
 }
 ::-webkit-scrollbar-thumb {
   background: #6e2b3d;

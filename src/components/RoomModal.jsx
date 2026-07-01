@@ -133,7 +133,7 @@ export default function RoomModal({ room, onClose }) {
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
         onClick={(e) => e.stopPropagation()}
-        className={`relative w-full overflow-hidden rounded-ui bg-surface-white shadow-2xl ${
+        className={`relative w-full overflow-hidden rounded-ui bg-cream shadow-2xl ${
           hasExtendedGallery ? 'max-h-[95vh] max-w-4xl overflow-y-auto' : 'max-h-[90vh] max-w-5xl grid lg:grid-cols-2'
         }`}
       >
@@ -174,10 +174,10 @@ export default function RoomModal({ room, onClose }) {
               ))}
               {total > 1 && (
                 <>
-                  <button type="button" onClick={prev} aria-label="Önceki görsel" className="absolute left-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-ui bg-white/90 text-wine-dark shadow-card">
+                  <button type="button" onClick={prev} aria-label="Önceki görsel" className="absolute left-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-ui bg-cream/90 text-wine-dark shadow-card">
                     <ChevronLeft className="h-5 w-5" />
                   </button>
-                  <button type="button" onClick={next} aria-label="Sonraki görsel" className="absolute right-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-ui bg-white/90 text-wine-dark shadow-card">
+                  <button type="button" onClick={next} aria-label="Sonraki görsel" className="absolute right-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-ui bg-cream/90 text-wine-dark shadow-card">
                     <ChevronRight className="h-5 w-5" />
                   </button>
                   <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
@@ -188,7 +188,7 @@ export default function RoomModal({ room, onClose }) {
                         onClick={() => setCurrent(i)}
                         aria-label={`Görsel ${i + 1}`}
                         className={`h-2.5 rounded-ui transition-all ${
-                          i === current ? 'w-6 bg-white' : 'w-2.5 bg-white/50'
+                          i === current ? 'w-6 bg-cream' : 'w-2.5 bg-cream/50'
                         }`}
                       />
                     ))}

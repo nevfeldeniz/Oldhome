@@ -12,7 +12,7 @@ export default function About() {
     about.imageAlt || 'Modern outdoor lounge area with grey wicker furniture at Old Home Guest House Cyprus'
 
   return (
-    <section id="about" className="section-white">
+    <section id="about" className="section-cream">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-8 lg:grid-cols-2 lg:gap-20">
         <Reveal className="relative">
           <div className="card-booking overflow-hidden">

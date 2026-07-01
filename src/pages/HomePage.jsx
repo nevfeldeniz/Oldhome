@@ -34,7 +34,7 @@ export default function HomePage() {
 
   return (
 
-    <div className="min-h-screen bg-surface-alt text-ink">
+    <div className="min-h-screen bg-cream text-ink">
 
       <Navbar />
 

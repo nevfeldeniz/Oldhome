@@ -9,7 +9,7 @@ export default function LocationSection() {
   const mapsOpenUrl = getMapsOpenUrl(contact)
 
   return (
-    <section id="location" className="section-alt">
+    <section id="location" className="section-parchment">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="section-eyebrow justify-center">
