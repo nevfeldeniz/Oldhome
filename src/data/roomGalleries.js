@@ -17,11 +17,6 @@ export const roomGalleries = {
         category: 'angle',
       },
       {
-        src: 'oldhome-cyprus-room-bathroom-001-01.jpg',
-        alt: 'Bathroom vanity and sink at Old Home Boutique Hotel Cyprus Room 001 with grey marble tiles, mirror and complimentary toiletries',
-        category: 'sink',
-      },
-      {
         src: 'oldhome-cyprus-room-bathroom-001-02.jpg',
         alt: 'Ensuite bathroom at Old Home Boutique Hotel Cyprus Room 001 with white toilet, glass shower cabin and grey marble tiling',
         category: 'shower',

@@ -5,6 +5,7 @@ import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import WhatsAppIcon from './WhatsAppIcon'
 import InstagramLink from './InstagramLink'
+import FacebookLink from './FacebookLink'
 
 export default function Navbar() {
   const { site } = useSite()
@@ -80,6 +81,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <InstagramLink variant={isSolid ? 'navSolid' : 'nav'} />
+          <FacebookLink variant={isSolid ? 'navSolid' : 'nav'} />
 
           <a
             href={whatsappUrl}

@@ -1,9 +1,10 @@
-import { Facebook, Mail, MapPin, Phone, TreePine } from 'lucide-react'
+import { Mail, MapPin, Phone, TreePine } from 'lucide-react'
 import { navLinks } from '../data/site'
 import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import WhatsAppIcon from './WhatsAppIcon'
 import InstagramLink, { INSTAGRAM_URL } from './InstagramLink'
+import FacebookLink from './FacebookLink'
 
 export default function Footer() {
   const { site } = useSite()
@@ -30,15 +31,7 @@ export default function Footer() {
 
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <InstagramLink variant="footer" />
-              <a
-                href={social?.facebook || '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="grid h-10 w-10 place-items-center rounded-ui border border-cream/20 bg-cream/5 text-cream transition-colors hover:bg-cream/15"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
+              <FacebookLink variant="footer" />
               <a
                 href={whatsappUrl}
                 target="_blank"
