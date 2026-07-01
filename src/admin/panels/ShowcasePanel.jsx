@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useSite } from '../../context/SiteContext'
+import { getShowcasePricing } from '../../utils/roomPricing'
 import { AdminCard, AdminField, AdminInput, AdminTextarea, AdminSelect, AdminSaveNote } from '../ui/AdminField'
 
 export default function ShowcasePanel() {
@@ -10,9 +11,17 @@ export default function ShowcasePanel() {
   const updateRoom = (id, key, value) =>
     updateSite((prev) => ({
       ...prev,
-      showcaseRooms: prev.showcaseRooms.map((room) =>
-        room.id === id ? { ...room, [key]: value } : room,
-      ),
+      showcaseRooms: prev.showcaseRooms.map((room) => {
+        if (room.id !== id) return room
+        const next = { ...room, [key]: value }
+        if (key === 'type') {
+          const pricing = getShowcasePricing(value)
+          next.price = pricing.price
+          if (pricing.oldPrice) next.oldPrice = pricing.oldPrice
+          else delete next.oldPrice
+        }
+        return next
+      }),
     }))
 
   const updateImages = (id, value) =>
@@ -58,7 +67,8 @@ export default function ShowcasePanel() {
           >
             <div className="flex flex-wrap gap-3 text-sm text-ink/60">
               <span className="rounded-full bg-wine/10 px-3 py-1 text-wine">{room.type}</span>
-              <span>{room.price}</span>
+              {room.oldPrice && <span className="line-through">{room.oldPrice}</span>}
+              <span className="font-medium text-wine">{room.price}</span>
             </div>
 
             {isOpen && (
@@ -76,6 +86,13 @@ export default function ShowcasePanel() {
                   </AdminField>
                   <AdminField label="Fiyat">
                     <AdminInput value={room.price} onChange={(e) => updateRoom(room.id, 'price', e.target.value)} />
+                  </AdminField>
+                  <AdminField label="Eski Fiyat (indirimli odalar)">
+                    <AdminInput
+                      value={room.oldPrice || ''}
+                      onChange={(e) => updateRoom(room.id, 'oldPrice', e.target.value || undefined)}
+                      placeholder="Örn. 3.200 TL"
+                    />
                   </AdminField>
                 </div>
 
