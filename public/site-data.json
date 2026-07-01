@@ -307,26 +307,24 @@
     {
       "id": 11,
       "number": "Oda 011",
-      "type": "3 Kişilik",
-      "description": "Üst katın köşesinde yer alan, bol ışıklı ve geniş üç kişilik odamız. Kalabalık aileler için uygun.",
-      "price": "2.700 TL",
+      "type": "Tek",
+      "description": "Üst katta yer alan, aydınlık ve minimalist odamız. Konforlu tek kişilik yatak, mermer zemin, geniş ayna, Smart TV, mini buzdolabı, çalışma köşesi ve yağmur duşlu mermer banyosuyla yalnız seyahat eden misafirler için idealdir.",
+      "price": "2.200 TL",
       "images": [
-        "room-3.png",
-        "room.png",
-        "bathroom.png",
-        "hero-building.png"
+        "rooms/011/01.png",
+        "rooms/011/02.png",
+        "rooms/011/03.png",
+        "rooms/011/04.png"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
         "Klima",
-        "Geniş Aile Yatağı",
         "Çay & Kahve İkramı",
         "Smart TV",
         "Özel Banyo",
         "Mini Buzdolabı",
         "Günlük Temizlik"
-      ],
-      "oldPrice": "3.500 TL"
+      ]
     }
   ],
   "gallery": [
