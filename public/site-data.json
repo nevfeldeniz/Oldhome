@@ -187,26 +187,26 @@
     {
       "id": 6,
       "number": "Oda 006",
-      "type": "Çift",
-      "description": "Üst katta, gün ışığı alan keyifli çift kişilik odamız. Dinlenme koltuğu ve şehir köşesi manzarası.",
+      "type": "3 Kişilik",
+      "description": "Tek kişilik ve çift kişilik yatak düzeniyle üç kişilik gruplar için ideal ferah odamız. Pencere kenarı oturma köşesi, Smart TV, mini buzdolabı ve mermer kaplı özel banyosuyla konforlu bir konaklama sunar.",
       "price": "2.700 TL",
       "images": [
-        "room-2.png",
-        "room.png",
-        "bathroom.png",
-        "hero-building.png"
+        "rooms/006/01.png",
+        "rooms/006/02.png",
+        "rooms/006/03.png",
+        "rooms/006/04.png"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
         "Klima",
-        "Çift Kişilik Yatak",
+        "Geniş Aile Yatağı",
         "Çay & Kahve İkramı",
         "Smart TV",
         "Özel Banyo",
-        "Saç Kurutma Makinesi",
+        "Mini Buzdolabı",
         "Günlük Temizlik"
       ],
-      "oldPrice": "3.200 TL"
+      "oldPrice": "3.500 TL"
     },
     {
       "id": 7,
