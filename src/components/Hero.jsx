@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative sm:min-h-screen" aria-label="Welcome">
       {/* Görsel katmanı */}
-      <div className="relative h-[38svh] min-h-[200px] max-h-[320px] overflow-hidden sm:absolute sm:inset-0 sm:h-full sm:max-h-none">
+      <div className="relative h-[40svh] min-h-[220px] max-h-[340px] overflow-hidden sm:absolute sm:inset-0 sm:h-full sm:max-h-none">
         <OptimizedImage
           src={heroImage}
           alt="Old Home Guest House boutique hotel exterior in Cyprus"
@@ -26,7 +26,7 @@ export default function Hero() {
           height={1080}
           sizes="100vw"
           priority
-          className="h-full w-full object-cover object-[center_22%] sm:object-center"
+          className="h-full w-full object-cover object-[center_48%] sm:object-center"
         />
         <div
           className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent sm:bg-gradient-to-t sm:from-black/70 sm:via-black/40 sm:to-black/20"
