@@ -71,6 +71,13 @@
       transition-all duration-200 hover:border-cream/70 hover:bg-cream/25
       focus:outline-none focus-visible:ring-2 focus-visible:ring-cream/50 sm:w-auto;
   }
+
+  .sr-only {
+    @apply absolute h-px w-px overflow-hidden whitespace-nowrap border-0 p-0;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    margin: -1px;
+  }
 }
 
 ::-webkit-scrollbar {

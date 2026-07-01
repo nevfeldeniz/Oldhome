@@ -2,6 +2,7 @@ import { BedDouble } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import WhatsAppIcon from './WhatsAppIcon'
+import OptimizedImage from './ui/OptimizedImage'
 
 const FALLBACK_HERO = `${import.meta.env.BASE_URL}oldhome-cyprus-hotel-exterior.jpg`
 
@@ -15,13 +16,15 @@ export default function Hero() {
   )
 
   return (
-    <section id="home" className="relative flex min-h-[88vh] items-end sm:min-h-screen sm:items-center">
-      <div className="absolute inset-0">
-        <img
+    <section id="home" className="relative flex min-h-[88vh] items-end sm:min-h-screen sm:items-center" aria-label="Welcome">
+      <div className="absolute inset-0" aria-hidden="true">
+        <OptimizedImage
           src={heroImage}
-          alt="Old Home Guest House dış cephe ve teras görünümü"
-          fetchPriority="high"
-          decoding="async"
+          alt="Old Home Guest House boutique hotel exterior and terrace in Cyprus"
+          width={1920}
+          height={1080}
+          sizes="100vw"
+          priority
           className="h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-black/15" />
@@ -42,12 +45,18 @@ export default function Hero() {
         </p>
 
         <div className="mx-auto mt-10 flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-cta">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-cta"
+            aria-label="WhatsApp ile rezervasyon yapın"
+          >
             <WhatsAppIcon />
             WhatsApp ile Rezervasyon
           </a>
-          <a href="#rooms" className="btn-hero-secondary">
-            <BedDouble className="h-5 w-5" />
+          <a href="#rooms" className="btn-hero-secondary" aria-label="Odalar bölümüne git">
+            <BedDouble className="h-5 w-5" aria-hidden />
             Odaları Gör
           </a>
         </div>

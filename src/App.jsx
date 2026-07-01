@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SiteProvider } from './context/SiteContext'
 import HomePage from './pages/HomePage'
+import NotFoundPage from './pages/NotFoundPage'
 import AdminApp from './admin/AdminApp'
 
-// GitHub Pages alt yolu: /Oldhome/
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 export default function App() {
@@ -13,6 +13,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/admin/*" element={<AdminApp />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </SiteProvider>

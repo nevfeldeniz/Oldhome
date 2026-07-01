@@ -31,7 +31,7 @@ export default function Navbar() {
         isSolid ? 'border-b border-wine/[0.08] bg-cream/95 shadow-nav backdrop-blur-md' : 'bg-transparent'
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:px-8" aria-label="Ana navigasyon">
         <a href="#home" className="flex min-w-0 items-center gap-2.5">
           <span
             className={`grid h-10 w-10 flex-none place-items-center rounded-ui border ${

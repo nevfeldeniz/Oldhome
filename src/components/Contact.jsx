@@ -20,9 +20,10 @@ export default function Contact() {
   const secondaryTel = contact.phoneLinks[1]
 
   return (
-    <section id="contact" className="section-parchment">
+    <section id="contact" className="section-parchment" aria-labelledby="contact-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
+          id="contact-heading"
           eyebrow="İletişim"
           title="Rezervasyon & Bilgi"
           subtitle="Sorularınız ve rezervasyonlarınız için WhatsApp üzerinden anında ulaşabilirsiniz."
@@ -40,6 +41,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-cta mt-5 w-full !text-sm"
+                aria-label="WhatsApp ile mesaj gönderin"
               >
                 <WhatsAppIcon />
                 WhatsApp ile Yaz

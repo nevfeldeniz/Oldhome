@@ -30,12 +30,14 @@ function Stars({ count }) {
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="section-cream">
+    <section id="reviews" className="section-cream" aria-labelledby="reviews-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <header className="mx-auto max-w-2xl text-center">
           <p className="section-eyebrow justify-center">Misafir Yorumları</p>
-          <h2 className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">Misafirlerimiz ne diyor?</h2>
-        </div>
+          <h2 id="reviews-heading" className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">
+            Misafirlerimiz ne diyor?
+          </h2>
+        </header>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review) => (

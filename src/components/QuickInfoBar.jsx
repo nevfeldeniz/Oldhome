@@ -9,7 +9,7 @@ const items = [
 
 export default function QuickInfoBar() {
   return (
-    <section aria-label="Hızlı bilgiler" className="border-y border-wine/[0.06] bg-parchment py-5">
+    <aside aria-label="Hızlı bilgiler" className="border-y border-wine/[0.06] bg-parchment py-5">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 sm:grid-cols-4 sm:gap-4 sm:px-8">
         {items.map(({ icon: Icon, label }) => (
           <div
@@ -21,6 +21,6 @@ export default function QuickInfoBar() {
           </div>
         ))}
       </div>
-    </section>
+    </aside>
   )
 }

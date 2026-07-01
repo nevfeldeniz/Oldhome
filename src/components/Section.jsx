@@ -22,12 +22,15 @@ export function Reveal({ children, delay = 0, className = '' }) {
 }
 
 // Bölüm başlıkları için ortak düzen.
-export function SectionHeading({ eyebrow, title, subtitle, align = 'center' }) {
+export function SectionHeading({ eyebrow, title, subtitle, align = 'center', id }) {
   const alignment = align === 'center' ? 'items-center text-center mx-auto' : 'items-start text-left'
+  const headingId = id || 'section-heading'
   return (
     <Reveal className={`flex flex-col ${alignment} max-w-2xl gap-4`}>
       {eyebrow && <span className="section-eyebrow">{eyebrow}</span>}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-wine-dark">{title}</h2>
+      <h2 id={headingId} className="text-3xl sm:text-4xl md:text-5xl font-semibold text-wine-dark">
+        {title}
+      </h2>
       {subtitle && <p className="text-ink/70 leading-relaxed">{subtitle}</p>}
     </Reveal>
   )

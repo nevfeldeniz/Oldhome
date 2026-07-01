@@ -22,6 +22,7 @@ import { getRoomGallery } from '../data/roomGalleries'
 import { resolveAsset } from '../utils/storage'
 import RoomGallery from './RoomGallery'
 import RoomPriceDisplay from './RoomPriceDisplay'
+import OptimizedImage from './ui/OptimizedImage'
 
 const featureIcons = {
   'Ücretsiz Wi-Fi': Wifi,
@@ -149,9 +150,11 @@ export default function RoomModal({ room, onClose }) {
         {hasExtendedGallery ? (
           <div className="space-y-8 px-4 pb-8 pt-16 sm:px-8">
             {/* Hero — genel görünüm */}
-            <img
+            <OptimizedImage
               src={resolveAsset(extendedGallery.images[0].src)}
               alt={extendedGallery.images[0].alt}
+              width={1200}
+              height={675}
               className="w-full rounded-ui object-cover"
             />
 
@@ -163,10 +166,13 @@ export default function RoomModal({ room, onClose }) {
           <>
             <div className="relative h-64 bg-charcoal-900 sm:h-80 lg:h-auto lg:min-h-[420px]">
               {sliderImages.map((src, i) => (
-                <img
+                <OptimizedImage
                   key={i}
                   src={src}
-                  alt={`${room.number} photo ${i + 1} at Old Home Boutique Hotel Cyprus`}
+                  alt={`${room.number} photo ${i + 1} at Old Home Guest House Cyprus`}
+                  width={960}
+                  height={720}
+                  priority={i === 0}
                   className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
                     i === current ? 'opacity-100' : 'opacity-0'
                   }`}

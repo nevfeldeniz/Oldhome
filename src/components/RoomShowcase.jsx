@@ -5,6 +5,7 @@ import { useSite } from '../context/SiteContext'
 import { SectionHeading, fadeUp } from './Section'
 import RoomModal from './RoomModal'
 import RoomPriceDisplay from './RoomPriceDisplay'
+import OptimizedImage from './ui/OptimizedImage'
 import { getShowcasePricing } from '../utils/roomPricing'
 
 const filters = [
@@ -31,9 +32,10 @@ export default function RoomShowcase() {
       : showcaseRooms.filter((room) => room.type === activeFilter)
 
   return (
-    <section id="room-showcase" className="section-parchment">
+    <section id="room-showcase" className="section-parchment" aria-labelledby="room-showcase-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
+          id="room-showcase-heading"
           eyebrow="Oda Galerisi"
           title="11 Odamızı Yakından İnceleyin"
           subtitle="Her odanın fotoğraflarını, özelliklerini ve fiyatını detaylıca görebilir, size en uygun olanı seçebilirsiniz."
@@ -73,9 +75,11 @@ export default function RoomShowcase() {
                 className="card-booking-alt group flex cursor-pointer flex-col"
               >
                 <div className="relative h-52 overflow-hidden">
-                  <img
+                  <OptimizedImage
                     src={room.images[0]}
-                    alt={`${room.number} at Old Home Boutique Hotel Cyprus`}
+                    alt={`${room.number} at Old Home Guest House boutique hotel in Cyprus`}
+                    width={800}
+                    height={416}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />

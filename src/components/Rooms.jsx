@@ -4,6 +4,7 @@ import { useSite } from '../context/SiteContext'
 import { SectionHeading, fadeUp } from './Section'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import WhatsAppIcon from './WhatsAppIcon'
+import OptimizedImage from './ui/OptimizedImage'
 
 export default function Rooms() {
   const { site } = useSite()
@@ -14,9 +15,10 @@ export default function Rooms() {
   )
 
   return (
-    <section id="fiyatlar" className="section-parchment">
+    <section id="fiyatlar" className="section-parchment" aria-labelledby="rooms-pricing-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
+          id="rooms-pricing-heading"
           eyebrow="Odalarımız & Fiyatlar"
           title="Size en uygun odayı seçin"
           subtitle="Her bütçeye ve ihtiyaca uygun, temiz ve konforlu oda seçenekleri."
@@ -60,11 +62,11 @@ export default function Rooms() {
               )}
 
               <div className="relative h-56 overflow-hidden">
-                <img
+                <OptimizedImage
                   src={room.image}
-                  alt={room.imageAlt || `${room.name} at Old Home Guest House`}
-                  loading="lazy"
-                  decoding="async"
+                  alt={room.imageAlt || `${room.name} at Old Home Guest House Cyprus`}
+                  width={800}
+                  height={448}
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -100,6 +102,7 @@ export default function Rooms() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-cta !min-h-[44px] !px-4 !py-2.5 !text-xs"
+                    aria-label={`${room.name} için WhatsApp rezervasyon`}
                   >
                     <WhatsAppIcon className="h-4 w-4" />
                     Rezervasyon

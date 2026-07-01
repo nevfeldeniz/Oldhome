@@ -59,7 +59,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-cream/90">Menü</h4>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-cream/90">Menü</h3>
             <ul className="mt-4 grid gap-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2 lg:col-span-2">
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-cream/90">İletişim</h4>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-cream/90">İletişim</h3>
             <ul className="mt-4 flex flex-col gap-3 text-sm text-cream/70">
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 flex-none text-cream" />

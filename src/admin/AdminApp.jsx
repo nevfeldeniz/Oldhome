@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { isAdminLoggedIn } from '../utils/storage'
+import SeoManager from '../components/seo/SeoManager'
 import AdminLogin from './AdminLogin'
 import AdminLayout from './AdminLayout'
 import DashboardPanel from './panels/DashboardPanel'
@@ -25,18 +26,26 @@ export default function AdminApp() {
   const [active, setActive] = useState('dashboard')
 
   if (!loggedIn) {
-    return <AdminLogin onSuccess={() => setLoggedIn(true)} />
+    return (
+      <>
+        <SeoManager title="Admin Girişi | Old Home Guest House" robots="noindex, nofollow" canonicalPath="/admin" />
+        <AdminLogin onSuccess={() => setLoggedIn(true)} />
+      </>
+    )
   }
 
   const Panel = panels[active] || DashboardPanel
 
   return (
-    <AdminLayout
+    <>
+      <SeoManager title="Admin Paneli | Old Home Guest House" robots="noindex, nofollow" canonicalPath="/admin" />
+      <AdminLayout
       active={active}
       onNavigate={setActive}
       onLogout={() => setLoggedIn(false)}
     >
       <Panel />
     </AdminLayout>
+    </>
   )
 }

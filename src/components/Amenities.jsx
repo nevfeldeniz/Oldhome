@@ -7,9 +7,10 @@ const iconMap = { Wifi, Snowflake, ShieldCheck, Coffee, UtensilsCrossed, Sparkle
 
 export default function Amenities() {
   return (
-    <section id="amenities" className="section-cream">
+    <section id="amenities" className="section-cream" aria-labelledby="amenities-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
+          id="amenities-heading"
           eyebrow="İmkanlarımız & Hizmetler"
           title="Konforunuz için her detay düşünüldü"
           subtitle="Misafirlerimizin kendini evinde hissetmesi için sunduğumuz ayrıcalıklar."

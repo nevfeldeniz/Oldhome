@@ -9,14 +9,16 @@ export default function LocationSection() {
   const mapsOpenUrl = getMapsOpenUrl(contact)
 
   return (
-    <section id="location" className="section-parchment">
+    <section id="location" className="section-parchment" aria-labelledby="location-heading">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <header className="mx-auto max-w-2xl text-center">
           <p className="section-eyebrow justify-center">
-            <MapPin className="h-4 w-4" />
+            <MapPin className="h-4 w-4" aria-hidden />
             Konum
           </p>
-          <h2 className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">Bizi ziyaret edin</h2>
+          <h2 id="location-heading" className="mt-3 text-3xl font-semibold text-wine-dark sm:text-4xl">
+            Bizi ziyaret edin
+          </h2>
           <p className="mt-4 text-base leading-relaxed text-ink/65">
             Kıbrıs&apos;ta merkezi ve ulaşımı kolay bir konumda yer almaktadır.
           </p>
@@ -29,9 +31,9 @@ export default function LocationSection() {
             className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-wine hover:underline"
           >
             Google Maps&apos;te aç
-            <ExternalLink className="h-4 w-4" />
+            <ExternalLink className="h-4 w-4" aria-hidden />
           </a>
-        </div>
+        </header>
 
         <div className="card-booking mt-10 overflow-hidden">
           <iframe
