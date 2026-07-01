@@ -54,7 +54,7 @@
     },
     {
       "name": "3 Kişilik Oda",
-      "price": "3.500 TL",
+      "price": "2.700 TL",
       "capacity": "3 Misafir",
       "image": "room-3.png",
       "features": [
@@ -63,7 +63,8 @@
         "Özel banyo",
         "Esnek yatak düzeni"
       ],
-      "featured": false
+      "featured": false,
+      "oldPrice": "3.500 TL"
     }
   ],
   "showcaseRooms": [
@@ -88,14 +89,15 @@
         "Özel Banyo",
         "Saç Kurutma Makinesi",
         "Günlük Temizlik"
-      ]
+      ],
+      "oldPrice": "3.200 TL"
     },
     {
       "id": 2,
       "number": "Oda 002",
-      "type": "Tek",
-      "description": "Tek başına seyahat edenler için ideal, sakin ve kompakt odamız. Çalışma için uygun, sessiz bir köşe.",
-      "price": "2.200 TL",
+      "type": "3 Kişilik",
+      "description": "Tek kişilik ve çift kişilik yatak düzeniyle aileler veya üç kişilik gruplar için ideal ferah odamız. Oturma köşesi ve geniş banyosuyla konforlu bir konaklama sunar.",
+      "price": "2.700 TL",
       "images": [
         "rooms/002/01.png",
         "rooms/002/02.png",
@@ -105,28 +107,30 @@
       "features": [
         "Ücretsiz Wi-Fi",
         "Klima",
+        "Geniş Aile Yatağı",
         "Çay & Kahve İkramı",
         "Smart TV",
         "Özel Banyo",
+        "Mini Buzdolabı",
         "Günlük Temizlik"
-      ]
+      ],
+      "oldPrice": "3.500 TL"
     },
     {
       "id": 3,
       "number": "Oda 003",
-      "type": "3 Kişilik",
-      "description": "Aileler için geniş, üç kişilik konaklamaya uygun ferah odamız. Esnek yatak düzeni ve bol depolama alanı.",
-      "price": "3.500 TL",
+      "type": "Tek",
+      "description": "Minimalist ve aydınlık tek kişilik odamız. Konforlu yatak, çalışma masası, Smart TV ve mini buzdolabı ile sakin bir konaklama sunar.",
+      "price": "2.200 TL",
       "images": [
-        "room-3.png",
-        "room.png",
-        "bathroom.png",
-        "hero-building.png"
+        "rooms/003/01.png",
+        "rooms/003/02.png",
+        "rooms/003/03.png",
+        "rooms/003/04.png"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
         "Klima",
-        "Geniş Aile Yatağı",
         "Çay & Kahve İkramı",
         "Smart TV",
         "Özel Banyo",
@@ -155,7 +159,8 @@
         "Özel Banyo",
         "Saç Kurutma Makinesi",
         "Günlük Temizlik"
-      ]
+      ],
+      "oldPrice": "3.200 TL"
     },
     {
       "id": 5,
@@ -199,14 +204,15 @@
         "Özel Banyo",
         "Saç Kurutma Makinesi",
         "Günlük Temizlik"
-      ]
+      ],
+      "oldPrice": "3.200 TL"
     },
     {
       "id": 7,
       "number": "Oda 007",
       "type": "3 Kişilik",
       "description": "En geniş aile odalarımızdan biri. İki ayrı yatak alanı ve rahat bir oturma köşesi sunar.",
-      "price": "3.500 TL",
+      "price": "2.700 TL",
       "images": [
         "room-3.png",
         "room.png",
@@ -222,7 +228,8 @@
         "Özel Banyo",
         "Mini Buzdolabı",
         "Günlük Temizlik"
-      ]
+      ],
+      "oldPrice": "3.500 TL"
     },
     {
       "id": 8,
@@ -245,7 +252,8 @@
         "Özel Banyo",
         "Saç Kurutma Makinesi",
         "Günlük Temizlik"
-      ]
+      ],
+      "oldPrice": "3.200 TL"
     },
     {
       "id": 9,
@@ -289,14 +297,15 @@
         "Özel Banyo",
         "Saç Kurutma Makinesi",
         "Günlük Temizlik"
-      ]
+      ],
+      "oldPrice": "3.200 TL"
     },
     {
       "id": 11,
       "number": "Oda 011",
       "type": "3 Kişilik",
       "description": "Üst katın köşesinde yer alan, bol ışıklı ve geniş üç kişilik odamız. Kalabalık aileler için uygun.",
-      "price": "3.500 TL",
+      "price": "2.700 TL",
       "images": [
         "room-3.png",
         "room.png",
@@ -312,7 +321,8 @@
         "Özel Banyo",
         "Mini Buzdolabı",
         "Günlük Temizlik"
-      ]
+      ],
+      "oldPrice": "3.500 TL"
     }
   ],
   "gallery": [
