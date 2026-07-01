@@ -1,6 +1,9 @@
 import { Instagram } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 
+/** Resmi Instagram profili — mobil uygulama ve tarayıcıda açılır */
+export const INSTAGRAM_URL = 'https://www.instagram.com/oldhomecyprus/'
+
 const variants = {
   nav: 'grid h-10 w-10 place-items-center rounded-ui border border-wine/20 bg-parchment/80 text-wine transition-colors hover:border-wine/40 hover:bg-parchment sm:border-cream/40 sm:bg-cream/10 sm:text-white sm:hover:bg-cream/20',
   navSolid:
@@ -13,16 +16,14 @@ const variants = {
 
 export default function InstagramLink({ variant = 'nav', className = '', label }) {
   const { site } = useSite()
-  const url = site.social?.instagram
-
-  if (!url || url === '#') return null
+  const url = site.social?.instagram || INSTAGRAM_URL
 
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Old Home Guest House Instagram — @oldhomecyprus"
+      aria-label="Instagram profilimiz @oldhomecyprus"
       className={`${variants[variant] || variants.nav} ${className}`}
     >
       <Instagram className="h-5 w-5 shrink-0" aria-hidden />

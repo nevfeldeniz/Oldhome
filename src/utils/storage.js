@@ -14,8 +14,12 @@ export function resolveAsset(path) {
 }
 
 /** Eksik veya eski localStorage kayıtlarını varsayılanlarla birleştirir. */
+function cloneData(data) {
+  return JSON.parse(JSON.stringify(data))
+}
+
 export function mergeSiteData(raw) {
-  const base = structuredClone(defaultSiteData)
+  const base = cloneData(defaultSiteData)
   if (!raw || typeof raw !== 'object') return base
 
   return {
@@ -110,7 +114,7 @@ export function loadRawSiteData() {
   } catch {
     // Bozuk kayıt varsa varsayılana dön
   }
-  return structuredClone(defaultSiteData)
+  return cloneData(defaultSiteData)
 }
 
 export function saveRawSiteData(data) {
@@ -119,7 +123,7 @@ export function saveRawSiteData(data) {
 
 export function resetRawSiteData() {
   localStorage.removeItem(STORAGE_KEY)
-  return structuredClone(defaultSiteData)
+  return cloneData(defaultSiteData)
 }
 
 export function getAdminPassword() {

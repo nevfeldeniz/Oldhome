@@ -3,7 +3,7 @@ import { navLinks } from '../data/site'
 import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import WhatsAppIcon from './WhatsAppIcon'
-import InstagramLink from './InstagramLink'
+import InstagramLink, { INSTAGRAM_URL } from './InstagramLink'
 
 export default function Footer() {
   const { site } = useSite()
@@ -51,7 +51,7 @@ export default function Footer() {
             </div>
             {social?.instagram && (
               <a
-                href={social.instagram}
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-3 inline-block text-sm text-cream/60 transition-colors hover:text-cream"

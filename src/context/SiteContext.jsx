@@ -11,58 +11,46 @@ import {
 
 const SiteContext = createContext(null)
 
-async function fetchPublishedData() {
-  const controller = new AbortController()
-  const timeout = setTimeout(() => controller.abort(), 5000)
-
-  try {
-    const res = await fetch(`${import.meta.env.BASE_URL}site-data.json`, {
-      signal: controller.signal,
-    })
-    if (res.ok) {
-      const json = await res.json()
-      return mergeSiteData(json)
-    }
-  } catch {
-    // Ağ hatası veya zaman aşımı
-  } finally {
-    clearTimeout(timeout)
-  }
-  return null
-}
-
-function loadInitialData() {
+function readStoredData() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY)
     if (saved) return mergeSiteData(JSON.parse(saved))
   } catch {
-    localStorage.removeItem(STORAGE_KEY)
+    try {
+      localStorage.removeItem(STORAGE_KEY)
+    } catch {
+      /* private mode */
+    }
+  }
+  return null
+}
+
+async function fetchPublishedData() {
+  if (typeof fetch === 'undefined') return null
+
+  try {
+    const res = await fetch(`${import.meta.env.BASE_URL}site-data.json`)
+    if (res.ok) return mergeSiteData(await res.json())
+  } catch {
+    /* offline veya yavaş bağlantı */
   }
   return null
 }
 
 export function SiteProvider({ children }) {
-  const [rawData, setRawData] = useState(defaultSiteData)
-  const [loading, setLoading] = useState(true)
+  const [rawData, setRawData] = useState(() => readStoredData() || defaultSiteData)
 
   useEffect(() => {
-    async function init() {
-      try {
-        const local = loadInitialData()
-        if (local) {
-          setRawData(local)
-          return
-        }
+    if (readStoredData()) return
 
-        const published = await fetchPublishedData()
-        setRawData(published || structuredClone(defaultSiteData))
-      } catch {
-        setRawData(structuredClone(defaultSiteData))
-      } finally {
-        setLoading(false)
-      }
+    let cancelled = false
+    fetchPublishedData().then((published) => {
+      if (!cancelled && published) setRawData(published)
+    })
+
+    return () => {
+      cancelled = true
     }
-    init()
   }, [])
 
   const site = useMemo(() => {
@@ -76,7 +64,11 @@ export function SiteProvider({ children }) {
   const updateSite = (updater) => {
     setRawData((prev) => {
       const next = typeof updater === 'function' ? updater(prev) : { ...prev, ...updater }
-      saveRawSiteData(next)
+      try {
+        saveRawSiteData(next)
+      } catch {
+        /* localStorage dolu veya gizli mod */
+      }
       return next
     })
   }
@@ -97,14 +89,6 @@ export function SiteProvider({ children }) {
   }
 
   const exportSite = () => exportSiteJson(rawData)
-
-  if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-cream text-wine">
-        <p className="font-serif text-lg">Yükleniyor...</p>
-      </div>
-    )
-  }
 
   return (
     <SiteContext.Provider value={{ site, rawData, updateSite, resetSite, importSite, exportSite }}>

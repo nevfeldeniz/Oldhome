@@ -35,29 +35,22 @@
     <link rel="icon" type="image/svg+xml" href="__BASE_PATH__favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="__BASE_PATH__apple-touch-icon.svg" />
 
-    <!-- Performance: non-blocking fonts -->
+    <!-- Fonts: doğrudan yükle (Instagram uygulaması içi tarayıcıda daha güvenilir) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-    />
-    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-      media="print"
-      onload="this.media='all'"
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-      />
-    </noscript>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <noscript>
+        <p style="padding:2rem;font-family:system-ui,sans-serif;text-align:center">
+          Old Home Guest House sitesini görüntülemek için JavaScript gerekir.
+        </p>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
