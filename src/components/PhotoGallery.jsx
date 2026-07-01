@@ -41,7 +41,7 @@ export default function PhotoGallery() {
 
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-3">
           {images.map((image, index) => (
-            <figure key={image.src} className="card-booking group">
+            <figure key={image.src} className="card-booking group overflow-hidden">
               <OptimizedImage
                 src={image.src}
                 alt={image.alt || `Old Home Guest House Cyprus photo gallery image ${index + 1}`}
@@ -50,9 +50,6 @@ export default function PhotoGallery() {
                 sizes="(max-width: 1024px) 50vw, 33vw"
                 className="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
               />
-              {image.label && (
-                <figcaption className="px-4 py-3 text-xs font-medium text-ink/60">{image.label}</figcaption>
-              )}
             </figure>
           ))}
         </div>

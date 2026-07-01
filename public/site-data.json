@@ -335,22 +335,10 @@
   ],
   "outdoorGallery": [
     {
-      "src": "oldhome-cyprus-hotel-exterior-02.jpg",
-      "alt": "Wide view of the boutique hotel exterior at Old Home Boutique Hotel Cyprus",
-      "label": "Genel Dış Cephe",
-      "category": "exterior"
-    },
-    {
       "src": "oldhome-cyprus-hotel-exterior-03.jpg",
       "alt": "Front facade and outdoor terrace at Old Home Boutique Hotel Cyprus",
-      "label": "Cephe & Teras",
+      "label": "Genel Dış Cephe",
       "category": "exterior"
-    },
-    {
-      "src": "oldhome-cyprus-terrace-01.jpg",
-      "alt": "Outdoor terrace with seating at Old Home Boutique Hotel Cyprus",
-      "label": "Bahçe Terası",
-      "category": "terrace"
     },
     {
       "src": "oldhome-cyprus-terrace-02.jpg",
