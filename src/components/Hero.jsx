@@ -16,8 +16,9 @@ export default function Hero() {
   )
 
   return (
-    <section id="home" className="relative flex min-h-[88vh] items-end sm:min-h-screen sm:items-center" aria-label="Welcome">
-      <div className="absolute inset-0" aria-hidden="true">
+    <section id="home" className="relative" aria-label="Welcome">
+      {/* Mobilde 16:9 — bina tam genişlikte görünür; masaüstünde tam ekran */}
+      <div className="relative aspect-video w-full sm:aspect-auto sm:min-h-screen">
         <OptimizedImage
           src={heroImage}
           alt="Old Home Guest House boutique hotel exterior and terrace in Cyprus"
@@ -25,40 +26,43 @@ export default function Hero() {
           height={1080}
           sizes="100vw"
           priority
-          className="h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/35 to-black/15" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-transparent to-black/10" />
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/15" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/10 sm:from-black/25 sm:to-black/10"
+          aria-hidden="true"
+        />
 
-      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 pb-14 pt-28 text-center sm:px-8 sm:pb-20 sm:pt-36">
-        <p className="mb-4 text-xs font-medium uppercase tracking-[0.25em] text-white/75">
-          Köşklüçiftlik · Lefkoşa, Kıbrıs
-        </p>
+        <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-8 pt-16 text-center sm:inset-0 sm:flex sm:flex-col sm:items-center sm:justify-end sm:px-8 sm:pb-20 sm:pt-32 md:justify-center md:pb-24">
+          <p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] text-white/75 sm:mb-4">
+            Köşklüçiftlik · Lefkoşa, Kıbrıs
+          </p>
 
-        <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl md:text-6xl">
-          Old Home Guest House
-        </h1>
+          <h1 className="font-serif text-3xl font-semibold leading-tight text-white sm:text-5xl md:text-6xl">
+            Old Home Guest House
+          </h1>
 
-        <p className="mx-auto mt-5 max-w-xl text-lg font-normal leading-relaxed text-white/90 sm:text-xl">
-          Konforlu konaklama, sıcak bir yuva hissi
-        </p>
+          <p className="mx-auto mt-4 max-w-xl text-base font-normal leading-relaxed text-white/90 sm:mt-5 sm:text-xl">
+            Konforlu konaklama, sıcak bir yuva hissi
+          </p>
 
-        <div className="mx-auto mt-10 flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-cta"
-            aria-label="WhatsApp ile rezervasyon yapın"
-          >
-            <WhatsAppIcon />
-            WhatsApp ile Rezervasyon
-          </a>
-          <a href="#rooms" className="btn-hero-secondary" aria-label="Odalar bölümüne git">
-            <BedDouble className="h-5 w-5" aria-hidden />
-            Odaları Gör
-          </a>
+          <div className="mx-auto mt-8 flex w-full max-w-md flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:justify-center">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-cta"
+              aria-label="WhatsApp ile rezervasyon yapın"
+            >
+              <WhatsAppIcon />
+              WhatsApp ile Rezervasyon
+            </a>
+            <a href="#rooms" className="btn-hero-secondary" aria-label="Odalar bölümüne git">
+              <BedDouble className="h-5 w-5" aria-hidden />
+              Odaları Gör
+            </a>
+          </div>
         </div>
       </div>
     </section>
