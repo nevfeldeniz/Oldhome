@@ -1,6 +1,7 @@
 import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { SectionHeading, Reveal } from './Section'
+import { getMapsOpenUrl } from '../utils/maps'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 
 export default function Contact() {
@@ -74,8 +75,14 @@ export default function Contact() {
 
         <Reveal delay={0.12} className="mt-6">
           <ContactCard icon={MapPin} title="Adres">
-            <p className="text-ink/75">{contact.address}</p>
-            <a href="#location" className="mt-3 inline-block text-sm font-medium text-wine hover:underline">
+            <p className="font-medium text-wine-dark">{contact.placeName || 'Old Home Guest House'}</p>
+            <p className="mt-1 text-ink/75">{contact.address}</p>
+            <a
+              href={getMapsOpenUrl(contact)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block text-sm font-medium text-wine hover:underline"
+            >
               Haritada gör →
             </a>
           </ContactCard>

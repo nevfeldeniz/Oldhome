@@ -29,6 +29,12 @@ export default function ContactPanel() {
         <AdminField label="Adres">
           <AdminInput value={rawData.contact.address} onChange={(e) => setContact('address', e.target.value)} />
         </AdminField>
+        <AdminField label="Harita adı" hint="Google Maps'te görünen işletme adı">
+          <AdminInput
+            value={rawData.contact.placeName || ''}
+            onChange={(e) => setContact('placeName', e.target.value)}
+          />
+        </AdminField>
         <AdminField label="E-Posta">
           <AdminInput type="email" value={rawData.contact.email} onChange={(e) => setContact('email', e.target.value)} />
         </AdminField>
