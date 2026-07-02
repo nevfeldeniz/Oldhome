@@ -1,15 +1,18 @@
 import { BedDouble } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
+import { resolveAsset } from '../utils/storage'
 import WhatsAppIcon from './WhatsAppIcon'
-import OptimizedImage from './ui/OptimizedImage'
 
-const FALLBACK_HERO = `${import.meta.env.BASE_URL}oldhome-cyprus-hotel-exterior.jpg`
+const FALLBACK_HERO = 'oldhome-cyprus-hotel-exterior.jpg'
+const FALLBACK_HERO_MOBILE = 'oldhome-cyprus-hero-mobile.jpg'
+const HERO_ALT = 'Old Home Guest House boutique hotel exterior in Cyprus'
 
 export default function Hero() {
   const { site } = useSite()
   const { hero, contact, social } = site
-  const heroImage = hero.image || FALLBACK_HERO
+  const heroImage = hero.image || resolveAsset(FALLBACK_HERO)
+  const heroImageMobile = hero.imageMobile || resolveAsset(FALLBACK_HERO_MOBILE)
   const whatsappUrl = getWhatsAppUrl(
     social?.whatsapp || contact.phoneLinks[0],
     social?.whatsappMessage,
@@ -21,17 +24,20 @@ export default function Hero() {
       className="relative min-h-[100svh] w-full overflow-hidden sm:min-h-screen"
       aria-label="Welcome"
     >
-      {/* Tam ekran görsel — mobilde basık değil, cover + center */}
+      {/* Mobil: dikey hero — masaüstü: mevcut geniş görsel */}
       <div className="absolute inset-0">
-        <OptimizedImage
-          src={heroImage}
-          alt="Old Home Guest House boutique hotel exterior in Cyprus"
-          width={1920}
-          height={1080}
-          sizes="100vw"
-          priority
-          className="h-full w-full object-cover object-center"
-        />
+        <picture className="block h-full w-full">
+          <source media="(min-width: 640px)" srcSet={heroImage} />
+          <img
+            src={heroImageMobile}
+            alt={HERO_ALT}
+            width={1080}
+            height={1440}
+            decoding="async"
+            fetchPriority="high"
+            className="h-full w-full object-cover object-[center_42%] sm:object-center"
+          />
+        </picture>
         <div
           className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/10 sm:from-black/70 sm:via-black/40 sm:to-black/20"
           aria-hidden="true"

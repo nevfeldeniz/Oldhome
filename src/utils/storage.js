@@ -52,6 +52,7 @@ export function hydrateSiteData(raw) {
     hero: {
       ...data.hero,
       image: resolveAsset(data.hero?.image),
+      imageMobile: resolveAsset(data.hero?.imageMobile),
     },
     about: {
       ...data.about,
