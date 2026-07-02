@@ -5,7 +5,7 @@ import { resolveAsset } from '../utils/storage'
 import WhatsAppIcon from './WhatsAppIcon'
 
 const FALLBACK_HERO = 'oldhome-cyprus-hotel-exterior.jpg'
-const FALLBACK_HERO_MOBILE = 'oldhome-cyprus-hero-mobile.jpg'
+const FALLBACK_HERO_MOBILE = 'oldhome-cyprus-hero-mobile.png'
 const HERO_ALT = 'Old Home Guest House boutique hotel exterior in Cyprus'
 
 export default function Hero() {
@@ -24,20 +24,27 @@ export default function Hero() {
       className="relative min-h-[100svh] w-full overflow-hidden sm:min-h-screen"
       aria-label="Welcome"
     >
-      {/* Mobil: dikey hero — masaüstü: mevcut geniş görsel */}
       <div className="absolute inset-0">
-        <picture className="block h-full w-full">
-          <source media="(min-width: 640px)" srcSet={heroImage} />
-          <img
-            src={heroImageMobile}
-            alt={HERO_ALT}
-            width={1080}
-            height={1440}
-            decoding="async"
-            fetchPriority="high"
-            className="h-full w-full object-cover object-[center_42%] sm:object-center"
-          />
-        </picture>
+        {/* Mobil: dikey görsel */}
+        <img
+          src={heroImageMobile}
+          alt={HERO_ALT}
+          width={1080}
+          height={1920}
+          decoding="async"
+          fetchPriority="high"
+          className="h-full w-full object-cover object-center sm:hidden"
+        />
+        {/* Masaüstü: mevcut yatay görsel */}
+        <img
+          src={heroImage}
+          alt={HERO_ALT}
+          width={1920}
+          height={1080}
+          decoding="async"
+          fetchPriority="high"
+          className="hidden h-full w-full object-cover object-center sm:block"
+        />
         <div
           className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/10 sm:from-black/70 sm:via-black/40 sm:to-black/20"
           aria-hidden="true"
@@ -48,7 +55,6 @@ export default function Hero() {
         />
       </div>
 
-      {/* Metin ve butonlar — mobilde altta, gradient üzerinde; masaüstünde ortada */}
       <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-5 pb-10 pt-24 sm:absolute sm:inset-0 sm:min-h-0 sm:items-center sm:justify-center sm:px-8 sm:pb-20 sm:pt-32 sm:text-center">
         <div className="w-full sm:max-w-3xl">
           <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/80 sm:mb-4">

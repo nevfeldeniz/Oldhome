@@ -31,7 +31,7 @@ export function mergeSiteData(raw) {
   return {
     ...base,
     ...raw,
-    hero: { ...base.hero, ...(raw.hero || {}) },
+    hero: { ...base.hero, ...(raw.hero || {}), imageMobile: raw.hero?.imageMobile || base.hero.imageMobile },
     about: { ...base.about, ...(raw.about || {}) },
     contact: { ...base.contact, ...(raw.contact || {}) },
     social: { ...base.social, ...(raw.social || {}) },
