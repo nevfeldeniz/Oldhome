@@ -131,22 +131,22 @@ export const roomGalleries = {
     images: [
       {
         src: 'oldhome-cyprus-room-006-01.jpg',
-        alt: 'Wide view of Room 006 at Old Home Boutique Hotel Cyprus showing double and single beds, Smart TV, mini-fridge and wicker seating area',
+        alt: 'Wide view of Room 006 at Old Home Boutique Hotel Cyprus showing double bed, wicker seating area, Smart TV and mini-fridge',
         category: 'overview',
       },
       {
         src: 'oldhome-cyprus-room-006-02.jpg',
-        alt: 'Triple room sleeping area at Old Home Boutique Hotel Cyprus Room 006 with single and double beds and white linens',
+        alt: 'Double bed with full-length mirror and wardrobe in Room 006 at Old Home Boutique Hotel Cyprus',
         category: 'bed',
       },
       {
         src: 'oldhome-cyprus-room-006-03.jpg',
-        alt: 'Second angle of Room 006 at Old Home Boutique Hotel Cyprus featuring single and double beds, air conditioning and zebra blinds',
+        alt: 'Room 006 at Old Home Boutique Hotel Cyprus featuring double bed, grey nest chair and wall mirror',
         category: 'angle',
       },
       {
         src: 'oldhome-cyprus-room-006-04.jpg',
-        alt: 'Window seating area in Room 006 at Old Home Boutique Hotel Cyprus with two grey nest chairs, white cushions and zebra blinds',
+        alt: 'Double bed with grey upholstered headboard and wicker accent chair in Room 006 at Old Home Boutique Hotel Cyprus',
         category: 'view',
       },
       {
@@ -161,12 +161,12 @@ export const roomGalleries = {
       },
       {
         src: 'oldhome-cyprus-room-interior-006-01.jpg',
-        alt: 'In-room entertainment at Old Home Boutique Hotel Cyprus Room 006 with flat-screen TV, mini-fridge, kettle and refreshment station',
+        alt: 'In-room entertainment at Old Home Boutique Hotel Cyprus Room 006 with flat-screen TV, mini-fridge and refreshment station',
         category: 'detail',
       },
       {
         src: 'oldhome-cyprus-room-interior-006-02.jpg',
-        alt: 'White wardrobe and full-length mirror in Room 006 at Old Home Boutique Hotel Cyprus with bright minimalist triple room interior',
+        alt: 'Window seating area and TV corner in Room 006 at Old Home Boutique Hotel Cyprus with wicker chairs and zebra blinds',
         category: 'detail',
       },
     ],

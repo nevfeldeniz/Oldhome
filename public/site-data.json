@@ -192,8 +192,8 @@
     {
       "id": 6,
       "number": "Oda 006",
-      "type": "3 Kişilik",
-      "description": "Üç kişilik odamız; çift kişilik ve tek kişilik yatak düzeniyle en fazla 3 misafir konaklayabilir. Pencere kenarı oturma köşesi, Smart TV, mini buzdolabı ve mermer kaplı özel banyosuyla aileler ve arkadaş grupları için idealdir.",
+      "type": "Çift",
+      "description": "Yenilenen ferah çift kişilik odamız. Geniş yatak, hasır oturma köşesi, boy aynası, Smart TV, mini buzdolabı ve mermer banyosuyla konforlu bir konaklama sunar.",
       "price": "2.700 TL",
       "images": [
         "oldhome-cyprus-room-006-01.jpg",
@@ -204,14 +204,14 @@
       "features": [
         "Ücretsiz Wi-Fi",
         "Klima",
-        "Geniş Aile Yatağı",
+        "Çift Kişilik Yatak",
         "Çay & Kahve İkramı",
         "Smart TV",
         "Özel Banyo",
         "Mini Buzdolabı",
         "Günlük Temizlik"
       ],
-      "oldPrice": "3.500 TL"
+      "oldPrice": "3.200 TL"
     },
     {
       "id": 7,
