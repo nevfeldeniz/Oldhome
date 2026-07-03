@@ -150,11 +150,6 @@ export const roomGalleries = {
         category: 'view',
       },
       {
-        src: 'oldhome-cyprus-room-bathroom-004-01.jpg',
-        alt: 'Bathroom vanity and sink at Old Home Boutique Hotel Cyprus Room 004 with grey marble tiles and mirror',
-        category: 'sink',
-      },
-      {
         src: 'oldhome-cyprus-room-bathroom-004-02.jpg',
         alt: 'Ensuite bathroom at Old Home Boutique Hotel Cyprus Room 004 with glass shower cabin and grey marble tiling',
         category: 'shower',
@@ -263,6 +258,52 @@ export const roomGalleries = {
       },
     ],
   },
+  '007': {
+    id: 'room-7',
+    title: 'Room 007',
+    images: [
+      {
+        src: 'oldhome-cyprus-room-007-01.jpg',
+        alt: 'Wide view of Room 007 at Old Home Boutique Hotel Cyprus showing double and single beds, wicker seating and Smart TV',
+        category: 'overview',
+      },
+      {
+        src: 'oldhome-cyprus-room-007-02.jpg',
+        alt: 'Triple room sleeping area at Old Home Boutique Hotel Cyprus Room 007 with double and single beds',
+        category: 'bed',
+      },
+      {
+        src: 'oldhome-cyprus-room-007-03.jpg',
+        alt: 'Window seating area with neighbourhood view in Room 007 at Old Home Boutique Hotel Cyprus',
+        category: 'angle',
+      },
+      {
+        src: 'oldhome-cyprus-room-007-04.jpg',
+        alt: 'Room 007 at Old Home Boutique Hotel Cyprus featuring double bed, single bed and curved window lounge',
+        category: 'view',
+      },
+      {
+        src: 'oldhome-cyprus-room-bathroom-007-01.jpg',
+        alt: 'Bathroom vanity and sink at Old Home Boutique Hotel Cyprus Room 007 with grey marble tiles and mirror',
+        category: 'sink',
+      },
+      {
+        src: 'oldhome-cyprus-room-bathroom-007-02.jpg',
+        alt: 'Ensuite bathroom at Old Home Boutique Hotel Cyprus Room 007 with glass shower cabin and grey marble tiling',
+        category: 'shower',
+      },
+      {
+        src: 'oldhome-cyprus-room-interior-007-01.jpg',
+        alt: 'In-room entertainment at Old Home Boutique Hotel Cyprus Room 007 with flat-screen TV, mini-fridge and kettle',
+        category: 'detail',
+      },
+      {
+        src: 'oldhome-cyprus-room-interior-007-02.jpg',
+        alt: 'Wall-mounted Smart TV and refreshment station in Room 007 at Old Home Boutique Hotel Cyprus',
+        category: 'detail',
+      },
+    ],
+  },
   '008': {
     id: 'room-8',
     title: 'Room 008',
@@ -351,6 +392,47 @@ export const roomGalleries = {
       {
         src: 'oldhome-cyprus-room-interior-009-02.jpg',
         alt: 'Modern ensuite bathroom detail in Room 009 at Old Home Boutique Hotel Cyprus with marble tiles, toilet and fresh towels',
+        category: 'detail',
+      },
+    ],
+  },
+  '010': {
+    id: 'room-10',
+    title: 'Room 010',
+    images: [
+      {
+        src: 'oldhome-cyprus-room-010-01.jpg',
+        alt: 'Wide view of Room 010 at Old Home Boutique Hotel Cyprus showing double bed, wicker armchairs, zebra blinds and marble floor',
+        category: 'overview',
+      },
+      {
+        src: 'oldhome-cyprus-room-010-02.jpg',
+        alt: 'Room 010 at Old Home Boutique Hotel Cyprus with mirrored wardrobe, double bed and wicker seating corner',
+        category: 'angle',
+      },
+      {
+        src: 'oldhome-cyprus-room-010-03.jpg',
+        alt: 'Double bed and seating area in Room 010 at Old Home Boutique Hotel Cyprus with brown headboard and natural light',
+        category: 'bed',
+      },
+      {
+        src: 'oldhome-cyprus-room-010-04.jpg',
+        alt: 'Full room layout of Room 010 at Old Home Boutique Hotel Cyprus with double bed, two wicker chairs and side table',
+        category: 'view',
+      },
+      {
+        src: 'oldhome-cyprus-room-bathroom-010-02.jpg',
+        alt: 'Ensuite bathroom at Old Home Boutique Hotel Cyprus Room 010 with glass shower cabin, rain shower and grey marble tiling',
+        category: 'shower',
+      },
+      {
+        src: 'oldhome-cyprus-room-interior-010-01.jpg',
+        alt: 'In-room entertainment at Old Home Boutique Hotel Cyprus Room 010 with flat-screen TV, mini-fridge and tea and coffee station',
+        category: 'detail',
+      },
+      {
+        src: 'oldhome-cyprus-room-interior-010-02.jpg',
+        alt: 'Seating and refreshment corner in Room 010 at Old Home Boutique Hotel Cyprus with TV, kettle, mini-fridge and wicker chair',
         category: 'detail',
       },
     ],

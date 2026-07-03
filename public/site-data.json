@@ -217,13 +217,13 @@
       "id": 7,
       "number": "Oda 007",
       "type": "3 Kişilik",
-      "description": "En geniş aile odalarımızdan biri. İki ayrı yatak alanı ve rahat bir oturma köşesi sunar.",
+      "description": "Yenilenen üç kişilik odamız. Çift ve tek kişilik yatak düzeni, manzaralı pencere kenarı hasır oturma köşesi, Smart TV, mini buzdolabı ve mermer banyosuyla aileler için idealdir.",
       "price": "2.700 TL",
       "images": [
-        "oldhome-cyprus-room-002-01.jpg",
-        "oldhome-cyprus-room-001-02.jpg",
-        "oldhome-cyprus-room-bathroom-001-01.jpg",
-        "oldhome-cyprus-hotel-exterior-02.jpg"
+        "oldhome-cyprus-room-007-01.jpg",
+        "oldhome-cyprus-room-007-02.jpg",
+        "oldhome-cyprus-room-007-03.jpg",
+        "oldhome-cyprus-room-007-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -289,13 +289,13 @@
       "id": 10,
       "number": "Oda 010",
       "type": "Çift",
-      "description": "Geniş yatağı ve ferah banyosuyla öne çıkan, romantik bir konaklama için ideal odamız.",
+      "description": "Yenilenen çift kişilik odamız. Geniş yatak, hasır oturma köşesi, boy aynalı gardırop, Smart TV, mini buzdolabı ve mermer banyosuyla romantik bir konaklama sunar.",
       "price": "2.700 TL",
       "images": [
-        "oldhome-cyprus-room-001-01.jpg",
-        "oldhome-cyprus-room-001-02.jpg",
-        "oldhome-cyprus-room-bathroom-001-01.jpg",
-        "oldhome-cyprus-hotel-exterior-02.jpg"
+        "oldhome-cyprus-room-010-01.jpg",
+        "oldhome-cyprus-room-010-02.jpg",
+        "oldhome-cyprus-room-010-03.jpg",
+        "oldhome-cyprus-room-010-04.jpg"
       ],
       "features": [
         "Ücretsiz Wi-Fi",
@@ -304,7 +304,7 @@
         "Çay & Kahve İkramı",
         "Smart TV",
         "Özel Banyo",
-        "Saç Kurutma Makinesi",
+        "Mini Buzdolabı",
         "Günlük Temizlik"
       ],
       "oldPrice": "3.200 TL"
