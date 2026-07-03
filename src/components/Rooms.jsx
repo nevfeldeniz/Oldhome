@@ -54,13 +54,13 @@ export default function Rooms() {
                 </span>
               )}
 
-              <div className={`relative overflow-hidden ${room.name === '2 Kişilik Oda' ? 'h-64' : 'h-56'}`}>
+              <div className={`relative overflow-hidden ${room.featured ? 'h-64' : 'h-56'}`}>
                 <OptimizedImage
                   src={room.image}
                   alt={room.imageAlt || `${room.name} at Old Home Guest House Cyprus`}
                   width={800}
-                  height={room.name === '2 Kişilik Oda' ? 512 : 448}
-                  className={`h-full w-full object-cover ${room.name === '2 Kişilik Oda' ? 'object-center' : ''}`}
+                  height={room.featured ? 512 : 448}
+                  className={`h-full w-full object-cover ${room.featured ? 'object-center' : ''}`}
                 />
               </div>
 

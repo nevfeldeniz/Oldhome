@@ -6,8 +6,7 @@ import RoomModal from './RoomModal'
 import RoomPriceDisplay from './RoomPriceDisplay'
 import RoomAvailabilityBadge from './RoomAvailabilityBadge'
 import OptimizedImage from './ui/OptimizedImage'
-import { getShowcasePricing } from '../utils/roomPricing'
-import { getRoomGallery } from '../data/roomGalleries'
+import { getRoomCapacityShort } from '../utils/roomCapacity'
 import { SectionIntro, SectionHeading, fadeUp } from './Section'
 
 const filters = [
@@ -17,16 +16,11 @@ const filters = [
   { value: '3 Kişilik', label: '3 Kişilik' },
 ]
 
-const typeLabel = (type) => {
-  if (type === 'Tek') return 'Tek Kişilik'
-  if (type === '3 Kişilik') return '3 Kişilik'
-  return 'Çift Kişilik'
-}
+const typeLabel = (type) => getRoomCapacityShort(type)
 
-const capacityLabel = (type) =>
-  type === 'Tek' ? '1 Misafir' : type === 'Çift' ? '2 Misafir' : '3 Misafir'
+const capacityLabel = (type) => getRoomCapacityShort(type)
 
-const showcaseTypeLabel = (type) => (type === '3 Kişilik' ? '3 Kişilik' : `${type} Kişilik`)
+const showcaseTypeLabel = (type) => getRoomCapacityShort(type)
 
 export default function DiscoverRooms() {
   const { site } = useSite()

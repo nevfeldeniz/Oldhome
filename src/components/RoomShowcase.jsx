@@ -9,6 +9,8 @@ import OptimizedImage from './ui/OptimizedImage'
 import { getShowcasePricing } from '../utils/roomPricing'
 import { getRoomGallery } from '../data/roomGalleries'
 
+import { getRoomCapacityShort } from '../utils/roomCapacity'
+
 const filters = [
   { value: 'Tümü', label: 'Tümü' },
   { value: 'Tek', label: 'Tek Kişilik' },
@@ -16,10 +18,9 @@ const filters = [
   { value: '3 Kişilik', label: '3 Kişilik' },
 ]
 
-const capacityLabel = (type) =>
-  type === 'Tek' ? '1 Misafir' : type === 'Çift' ? '2 Misafir' : '3 Misafir'
+const capacityLabel = (type) => getRoomCapacityShort(type)
 
-const typeLabel = (type) => (type === '3 Kişilik' ? '3 Kişilik' : `${type} Kişilik`)
+const typeLabel = (type) => getRoomCapacityShort(type)
 
 export default function RoomShowcase() {
   const { site } = useSite()
