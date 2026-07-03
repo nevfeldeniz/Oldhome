@@ -33,9 +33,11 @@ export default function HomePage() {
         <Rooms />
         <WhyUs />
         <About />
-        <DiscoverRooms />
+        <div id="rooms">
+          <DiscoverRooms />
+          <RoomShowcase />
+        </div>
         <Amenities />
-        <RoomShowcase />
         <PhotoGallery />
         <LocationSection />
         <Reviews />

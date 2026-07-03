@@ -18,10 +18,10 @@ export default function DiscoverRooms() {
   const [selectedRoom, setSelectedRoom] = useState(null)
 
   return (
-    <section id="rooms" className="section-parchment" aria-labelledby="discover-rooms-heading">
+    <section className="section-parchment lg:hidden" aria-labelledby="discover-rooms-heading-mobile">
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionIntro
-          id="discover-rooms-heading"
+          id="discover-rooms-heading-mobile"
           eyebrow="Odalarımız"
           title="Odalarımızı Keşfedin"
           subtitle="11 konforlu odamızdan birini seçin, tek dokunuşla detayları inceleyin."

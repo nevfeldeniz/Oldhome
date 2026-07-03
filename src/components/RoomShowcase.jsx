@@ -34,15 +34,14 @@ export default function RoomShowcase() {
 
   return (
     <section
-      id="room-showcase"
       className="section-parchment hidden lg:block"
-      aria-labelledby="room-showcase-heading"
+      aria-labelledby="discover-rooms-heading-desktop"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-8">
         <SectionHeading
-          id="room-showcase-heading"
-          eyebrow="Oda Galerisi"
-          title="11 Odamızı Yakından İnceleyin"
+          id="discover-rooms-heading-desktop"
+          eyebrow="Odalarımız"
+          title="Odalarımızı Keşfedin"
           subtitle="Her odanın fotoğraflarını, özelliklerini ve fiyatını detaylıca görebilir, size en uygun olanı seçebilirsiniz."
         />
 

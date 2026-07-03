@@ -36,7 +36,7 @@ export default function FeaturedRooms() {
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-ink/65 line-clamp-2">
                   {room.description.split('.')[0]}.
                 </p>
-                <a href="#room-showcase" className="btn-outline mt-6 w-full sm:w-auto" aria-label={`Oda ${index + 1} detaylarını görüntüle`}>
+                <a href="#rooms" className="btn-outline mt-6 w-full sm:w-auto" aria-label={`Oda ${index + 1} detaylarını görüntüle`}>
                   Detayları Gör
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </a>
