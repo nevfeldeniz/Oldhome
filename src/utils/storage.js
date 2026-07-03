@@ -18,19 +18,23 @@ const STALE_PRICING_ROOM_IMAGES = new Set([
   'oldhome-cyprus-room-003-01.jpg',
   'oldhome-cyprus-room-001-01.jpg',
   'oldhome-cyprus-room-002-01.jpg',
+  'oldhome-cyprus-pricing-room-double.jpg',
 ])
 
 function usesStaleRoomImages(images = []) {
   return images.some((img) => STALE_ROOM_IMAGE_MARKERS.some((marker) => String(img).includes(marker)))
 }
 
-function mergePricingRooms(baseRooms, savedRooms) {
+function mergePricingRooms(baseRooms, savedRooms, savedRevision = 0) {
+  const baseRevision = defaultSiteData.pricingRoomsRevision ?? 0
+  const needsImageRefresh = savedRevision < baseRevision
+
   if (!Array.isArray(savedRooms)) return baseRooms
   const savedByName = new Map(savedRooms.map((room) => [room.name, room]))
   return baseRooms.map((room) => {
     const saved = savedByName.get(room.name)
     if (!saved) return room
-    const stale = STALE_PRICING_ROOM_IMAGES.has(saved.image)
+    const stale = STALE_PRICING_ROOM_IMAGES.has(saved.image) || needsImageRefresh
     return {
       ...saved,
       ...room,
@@ -94,7 +98,8 @@ export function mergeSiteData(raw) {
     social: { ...base.social, ...(raw.social || {}) },
     footer: { ...base.footer, ...(raw.footer || {}) },
     roomsNote: raw.roomsNote ?? base.roomsNote,
-    rooms: mergePricingRooms(base.rooms, raw.rooms),
+    pricingRoomsRevision: base.pricingRoomsRevision,
+    rooms: mergePricingRooms(base.rooms, raw.rooms, raw.pricingRoomsRevision ?? 0),
     showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms),
     outdoorGallery: filterOutdoorGallery(Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery),
     gallery: filterOutdoorGallery(Array.isArray(raw.gallery) ? raw.gallery : base.gallery),

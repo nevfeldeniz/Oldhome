@@ -38,10 +38,14 @@ async function fetchPublishedData() {
 }
 
 export function SiteProvider({ children }) {
-  const [rawData, setRawData] = useState(() => readStoredData() || defaultSiteData)
+  const [rawData, setRawData] = useState(() => readStoredData() || mergeSiteData(defaultSiteData))
 
   useEffect(() => {
-    if (readStoredData()) return
+    const stored = readStoredData()
+    if (stored) {
+      setRawData(stored)
+      return
+    }
 
     let cancelled = false
     fetchPublishedData().then((published) => {
