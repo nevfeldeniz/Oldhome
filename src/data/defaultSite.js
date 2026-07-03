@@ -34,6 +34,7 @@ export const defaultSiteData = {
 
   rooms: [
     {
+      id: 'pricing-single',
       name: '1–2 Kişi Konaklamaya Uygun',
       price: '2.200 TL',
       capacity: '1–2 Misafir',
@@ -43,6 +44,7 @@ export const defaultSiteData = {
       featured: false,
     },
     {
+      id: 'pricing-double',
       name: '1–2 Kişi Konaklamaya Uygun',
       price: '2.700 TL',
       oldPrice: '3.200 TL',
@@ -53,6 +55,7 @@ export const defaultSiteData = {
       featured: true,
     },
     {
+      id: 'pricing-triple',
       name: '1–3 Kişi Konaklamaya Uygun',
       price: '2.700 TL',
       oldPrice: '3.500 TL',
