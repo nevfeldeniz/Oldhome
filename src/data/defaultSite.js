@@ -5,7 +5,7 @@ const withDefaultAvailability = (rooms) =>
   rooms.map((room) => ({ availability: 'available', ...room }))
 
 export const defaultSiteData = {
-  pricingRoomsRevision: 3,
+  pricingRoomsRevision: 4,
 
   hero: {
     brand: 'Old Home Guest House',
@@ -35,34 +35,35 @@ export const defaultSiteData = {
   rooms: [
     {
       id: 'pricing-single',
-      name: '1–2 Kişi Konaklamaya Uygun',
-      price: '2.200 TL',
+      name: '1 Kişilik Konaklama',
+      price: '2.700 TL',
+      oldPrice: '3.200 TL',
       capacity: '1–2 Misafir',
-      image: 'oldhome-cyprus-pricing-room-single.jpg',
+      image: 'oldhome-cyprus-room-003-01.jpg',
       imageAlt: 'Tek kişilik oda — Old Home Boutique Hotel Kıbrıs',
-      features: ['Tek kişilik konforlu yatak', 'Klima & Ücretsiz Wi-Fi', 'Özel banyo', 'Günlük temizlik'],
+      features: ['Konforlu tek kişilik kullanım', 'Klima', 'Ücretsiz Wi-Fi', 'Özel banyo'],
       featured: false,
     },
     {
       id: 'pricing-double',
-      name: '1–2 Kişi Konaklamaya Uygun',
+      name: '2 Kişilik Konaklama',
       price: '2.700 TL',
       oldPrice: '3.200 TL',
       capacity: '1–2 Misafir',
       image: 'oldhome-cyprus-pricing-room-double-03.jpg',
       imageAlt: 'Geniş çift kişilik oda, TV ünitesi ve oturma köşesi — Old Home Boutique Hotel Kıbrıs',
-      features: ['Çift kişilik geniş yatak', 'Klima & Ücretsiz Wi-Fi', 'Özel banyo', 'Sınırsız çay & kahve'],
+      features: ['Çift kişilik geniş yatak', 'Klima', 'Ücretsiz Wi-Fi', 'Çay & kahve ikramı'],
       featured: true,
     },
     {
       id: 'pricing-triple',
-      name: '1–3 Kişi Konaklamaya Uygun',
+      name: '3 Kişilik Konaklama',
       price: '2.700 TL',
       oldPrice: '3.500 TL',
       capacity: '1–3 Misafir',
       image: 'oldhome-cyprus-pricing-room-triple.jpg',
       imageAlt: 'Üç kişilik oda — Old Home Boutique Hotel Kıbrıs',
-      features: ['Geniş aile odası', 'Klima & Ücretsiz Wi-Fi', 'Özel banyo', 'Esnek yatak düzeni'],
+      features: ['Geniş aile odası', 'Esnek yatak düzeni', 'Klima', 'Ücretsiz Wi-Fi', 'Özel banyo'],
       featured: false,
     },
   ],
