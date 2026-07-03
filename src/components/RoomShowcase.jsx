@@ -7,6 +7,7 @@ import RoomModal from './RoomModal'
 import RoomPriceDisplay from './RoomPriceDisplay'
 import OptimizedImage from './ui/OptimizedImage'
 import { getShowcasePricing } from '../utils/roomPricing'
+import { getRoomGallery } from '../data/roomGalleries'
 
 const filters = [
   { value: 'Tümü', label: 'Tümü' },
@@ -64,7 +65,12 @@ export default function RoomShowcase() {
 
         <motion.div layout className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
-            {visibleRooms.map((room) => (
+            {visibleRooms.map((room) => {
+              const gallery = getRoomGallery(room.number)
+              const coverImage = gallery?.images[0]?.src ?? room.images[0]
+              const photoCount = gallery?.images.length ?? room.images.length
+
+              return (
               <motion.article
                 key={room.id}
                 layout
@@ -80,7 +86,7 @@ export default function RoomShowcase() {
               >
                 <div className="relative h-52 overflow-hidden">
                   <OptimizedImage
-                    src={room.images[0]}
+                    src={coverImage}
                     alt={`${room.number} at Old Home Guest House boutique hotel in Cyprus`}
                     width={800}
                     height={416}
@@ -100,7 +106,7 @@ export default function RoomShowcase() {
 
                   <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-ui bg-black/55 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
                     <Images className="h-3.5 w-3.5" />
-                    {room.images.length}
+                    {photoCount}
                   </span>
                 </div>
 
@@ -127,7 +133,8 @@ export default function RoomShowcase() {
                   </div>
                 </div>
               </motion.article>
-            ))}
+              )
+            })}
           </AnimatePresence>
         </motion.div>
       </div>
