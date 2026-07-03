@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useSite } from '../../context/SiteContext'
 import { getShowcasePricing } from '../../utils/roomPricing'
+import { ROOM_AVAILABILITY, ROOM_AVAILABILITY_OPTIONS } from '../../utils/roomAvailability'
+import RoomAvailabilityBadge from '../../components/RoomAvailabilityBadge'
 import { AdminCard, AdminField, AdminInput, AdminTextarea, AdminSelect, AdminSaveNote } from '../ui/AdminField'
 
 export default function ShowcasePanel() {
@@ -44,6 +46,25 @@ export default function ShowcasePanel() {
       ),
     }))
 
+  const updateAvailability = (id, availability) =>
+    updateSite((prev) => ({
+      ...prev,
+      showcaseRooms: prev.showcaseRooms.map((room) => {
+        if (room.id !== id) return room
+        const next = { ...room, availability }
+        if (availability !== ROOM_AVAILABILITY.OCCUPIED_UNTIL) delete next.occupiedUntil
+        return next
+      }),
+    }))
+
+  const updateOccupiedUntil = (id, occupiedUntil) =>
+    updateSite((prev) => ({
+      ...prev,
+      showcaseRooms: prev.showcaseRooms.map((room) =>
+        room.id === id ? { ...room, occupiedUntil } : room,
+      ),
+    }))
+
   return (
     <div className="space-y-6">
       <AdminSaveNote />
@@ -65,8 +86,9 @@ export default function ShowcasePanel() {
               </button>
             }
           >
-            <div className="flex flex-wrap gap-3 text-sm text-ink/60">
+            <div className="flex flex-wrap items-center gap-3 text-sm text-ink/60">
               <span className="rounded-full bg-wine/10 px-3 py-1 text-wine">{room.type}</span>
+              <RoomAvailabilityBadge room={room} />
               {room.oldPrice && <span className="line-through">{room.oldPrice}</span>}
               <span className="font-medium text-wine">{room.price}</span>
             </div>
@@ -103,6 +125,42 @@ export default function ShowcasePanel() {
                     onChange={(e) => updateRoom(room.id, 'description', e.target.value)}
                   />
                 </AdminField>
+
+                <AdminField
+                  label="Müsaitlik Durumu"
+                  hint="Sitede yalnızca seçtiğiniz durum görünür. Misafirler oda kartında bu bilgiyi görür."
+                >
+                  <AdminSelect
+                    value={room.availability || ROOM_AVAILABILITY.AVAILABLE}
+                    onChange={(e) => updateAvailability(room.id, e.target.value)}
+                  >
+                    {ROOM_AVAILABILITY_OPTIONS.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </AdminSelect>
+                  <p className="mt-2 text-xs text-ink/50">
+                    {
+                      ROOM_AVAILABILITY_OPTIONS.find(
+                        (option) => option.value === (room.availability || ROOM_AVAILABILITY.AVAILABLE),
+                      )?.hint
+                    }
+                  </p>
+                </AdminField>
+
+                {(room.availability || ROOM_AVAILABILITY.AVAILABLE) === ROOM_AVAILABILITY.OCCUPIED_UNTIL && (
+                  <AdminField
+                    label="Dolu olduğu son tarih"
+                    hint="Örn. 15 Temmuz seçilirse sitede “15 Temmuz'a kadar dolu” yazar."
+                  >
+                    <AdminInput
+                      type="date"
+                      value={room.occupiedUntil || ''}
+                      onChange={(e) => updateOccupiedUntil(room.id, e.target.value)}
+                    />
+                  </AdminField>
+                )}
 
                 <AdminField label="Görseller (4 adet, her satıra bir dosya adı)" hint="public/ klasöründeki dosyalar">
                   <AdminTextarea rows={4} value={room.images.join('\n')} onChange={(e) => updateImages(room.id, e.target.value)} />

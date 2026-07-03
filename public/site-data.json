@@ -77,6 +77,7 @@
   ],
   "showcaseRooms": [
     {
+      "availability": "available",
       "id": 1,
       "number": "Oda 001",
       "type": "Çift",
@@ -99,6 +100,7 @@
       "oldPrice": "3.200 TL"
     },
     {
+      "availability": "available",
       "id": 2,
       "number": "Oda 002",
       "type": "Çift",
@@ -121,6 +123,7 @@
       "oldPrice": "3.200 TL"
     },
     {
+      "availability": "available",
       "id": 3,
       "number": "Oda 003",
       "type": "Tek",
@@ -141,6 +144,7 @@
       ]
     },
     {
+      "availability": "available",
       "id": 4,
       "number": "Oda 004",
       "type": "Çift",
@@ -163,6 +167,7 @@
       "oldPrice": "3.200 TL"
     },
     {
+      "availability": "available",
       "id": 5,
       "number": "Oda 005",
       "type": "Tek",
@@ -183,6 +188,7 @@
       ]
     },
     {
+      "availability": "available",
       "id": 6,
       "number": "Oda 006",
       "type": "Çift",
@@ -205,6 +211,7 @@
       "oldPrice": "3.200 TL"
     },
     {
+      "availability": "available",
       "id": 7,
       "number": "Oda 007",
       "type": "3 Kişilik",
@@ -227,6 +234,7 @@
       "oldPrice": "3.500 TL"
     },
     {
+      "availability": "available",
       "id": 8,
       "number": "Oda 008",
       "type": "3 Kişilik",
@@ -249,6 +257,7 @@
       "oldPrice": "3.500 TL"
     },
     {
+      "availability": "available",
       "id": 9,
       "number": "Oda 009",
       "type": "Çift",
@@ -271,6 +280,7 @@
       "oldPrice": "3.200 TL"
     },
     {
+      "availability": "available",
       "id": 10,
       "number": "Oda 010",
       "type": "Çift",
@@ -293,6 +303,7 @@
       "oldPrice": "3.200 TL"
     },
     {
+      "availability": "available",
       "id": 11,
       "number": "Oda 011",
       "type": "Tek",

@@ -22,6 +22,7 @@ import { getRoomGallery } from '../data/roomGalleries'
 import { resolveAsset } from '../utils/storage'
 import RoomGallery from './RoomGallery'
 import RoomPriceDisplay from './RoomPriceDisplay'
+import RoomAvailabilityBadge from './RoomAvailabilityBadge'
 import OptimizedImage from './ui/OptimizedImage'
 
 const featureIcons = {
@@ -86,6 +87,10 @@ export default function RoomModal({ room, onClose }) {
         <Users className="h-3.5 w-3.5" />
         {room.type === 'Tek' ? '1 Misafir' : room.type === 'Çift' ? '2 Misafir' : '3 Misafir'}
       </span>
+
+      <div className="mt-3">
+        <RoomAvailabilityBadge room={room} />
+      </div>
 
       <p className="mt-4 text-sm leading-relaxed text-ink/75">{room.description}</p>
 

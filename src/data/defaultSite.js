@@ -1,6 +1,9 @@
 // Serileştirilebilir varsayılan site verisi (görsel yolları dosya adı olarak).
 // Admin paneli bu yapıyı düzenler; asset() çözümlemesi hydrateSiteData() ile yapılır.
 
+const withDefaultAvailability = (rooms) =>
+  rooms.map((room) => ({ availability: 'available', ...room }))
+
 export const defaultSiteData = {
   pricingRoomsRevision: 3,
 
@@ -61,7 +64,7 @@ export const defaultSiteData = {
     },
   ],
 
-  showcaseRooms: [
+  showcaseRooms: withDefaultAvailability([
     { id: 1, number: 'Oda 001', type: 'Çift', description: 'Zemin katta, ferah ve aydınlık çift kişilik odamız. Sıcak ahşap tonları ve konforlu yatağıyla huzurlu bir konaklama sunar.', price: '2.700 TL', oldPrice: '3.200 TL', images: ['oldhome-cyprus-room-001-01.jpg', 'oldhome-cyprus-room-001-03.jpg'], features: ['Ücretsiz Wi-Fi', 'Klima', 'Çift Kişilik Yatak', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Saç Kurutma Makinesi', 'Günlük Temizlik'] },
     { id: 2, number: 'Oda 002', type: 'Çift', description: 'Yenilenen ferah çift kişilik odamız. Geniş yatak, pencere kenarı hasır oturma köşesi, Smart TV, mini buzdolabı ve mermer banyosuyla konforlu bir konaklama sunar.', price: '2.700 TL', oldPrice: '3.200 TL', images: ['oldhome-cyprus-room-002-01.jpg', 'oldhome-cyprus-room-002-02.jpg'], features: ['Ücretsiz Wi-Fi', 'Klima', 'Çift Kişilik Yatak', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Mini Buzdolabı', 'Günlük Temizlik'] },
     { id: 3, number: 'Oda 003', type: 'Tek', description: 'Minimalist ve aydınlık tek kişilik odamız. Konforlu yatak, çalışma masası, Smart TV ve mini buzdolabı ile sakin bir konaklama sunar.', price: '2.200 TL', images: ['oldhome-cyprus-room-003-01.jpg', 'oldhome-cyprus-room-003-02.jpg'], features: ['Ücretsiz Wi-Fi', 'Klima', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Mini Buzdolabı', 'Günlük Temizlik'] },
@@ -73,7 +76,7 @@ export const defaultSiteData = {
     { id: 9, number: 'Oda 009', type: 'Çift', description: 'Aydınlık ve minimalist odamız. Konforlu çift kişilik yatak, pencere kenarı hasır oturma köşesi, geniş gömme gardırop, Smart TV, mini buzdolabı ve mermer kaplı özel banyosuyla keyifli bir konaklama sunar.', price: '2.700 TL', oldPrice: '3.200 TL', images: ['oldhome-cyprus-room-009-01.jpg', 'oldhome-cyprus-room-009-04.jpg'], features: ['Ücretsiz Wi-Fi', 'Klima', 'Çift Kişilik Yatak', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Mini Buzdolabı', 'Günlük Temizlik'] },
     { id: 10, number: 'Oda 010', type: 'Çift', description: 'Yenilenen çift kişilik odamız. Geniş yatak, hasır oturma köşesi, boy aynalı gardırop, Smart TV, mini buzdolabı ve mermer banyosuyla romantik bir konaklama sunar.', price: '2.700 TL', oldPrice: '3.200 TL', images: ['oldhome-cyprus-room-010-01.jpg', 'oldhome-cyprus-room-010-02.jpg'], features: ['Ücretsiz Wi-Fi', 'Klima', 'Çift Kişilik Yatak', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Mini Buzdolabı', 'Günlük Temizlik'] },
     { id: 11, number: 'Oda 011', type: 'Tek', description: 'Üst katta yer alan, aydınlık ve minimalist odamız. Konforlu tek kişilik yatak, mermer zemin, geniş ayna, Smart TV, mini buzdolabı, çalışma köşesi ve yağmur duşlu mermer banyosuyla yalnız seyahat eden misafirler için idealdir.', price: '2.200 TL', images: ['oldhome-cyprus-room-011-01.jpg', 'oldhome-cyprus-room-011-04.jpg'], features: ['Ücretsiz Wi-Fi', 'Klima', 'Çay & Kahve İkramı', 'Smart TV', 'Özel Banyo', 'Mini Buzdolabı', 'Günlük Temizlik'] },
-  ],
+  ]),
 
   outdoorGallery: [
     {

@@ -4,6 +4,7 @@ import { BedDouble, ChevronRight, Users, Eye, Images } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import RoomModal from './RoomModal'
 import RoomPriceDisplay from './RoomPriceDisplay'
+import RoomAvailabilityBadge from './RoomAvailabilityBadge'
 import OptimizedImage from './ui/OptimizedImage'
 import { getShowcasePricing } from '../utils/roomPricing'
 import { getRoomGallery } from '../data/roomGalleries'
@@ -65,7 +66,10 @@ export default function DiscoverRooms() {
                     </span>
 
                     <div className="min-w-0 flex-1">
-                      <h3 className="truncate font-semibold text-wine-dark">{room.number}</h3>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="truncate font-semibold text-wine-dark">{room.number}</h3>
+                        <RoomAvailabilityBadge room={room} compact />
+                      </div>
                       <p className="mt-0.5 text-xs text-ink/55">{typeLabel(room.type)}</p>
                       <p className="mt-1 text-sm font-semibold text-wine">{pricing.price}</p>
                     </div>
@@ -163,10 +167,14 @@ export default function DiscoverRooms() {
                         <Images className="h-3.5 w-3.5" />
                         {photoCount}
                       </span>
+
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <RoomAvailabilityBadge room={room} />
+                      </div>
                     </div>
 
                     <div className="flex flex-1 flex-col p-5">
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between gap-2">
                         <h3 className="font-serif text-xl font-semibold text-wine-dark">{room.number}</h3>
                         <span className="inline-flex items-center gap-1.5 text-xs text-ink/55">
                           <Users className="h-4 w-4 text-wine" />

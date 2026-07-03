@@ -65,6 +65,11 @@ function mergeShowcaseRooms(baseRooms, savedRooms) {
       description: stale ? room.description : saved.description || room.description,
       type: stale ? room.type : saved.type || room.type,
       features: stale || !saved.features?.length ? room.features : saved.features,
+      availability: saved.availability ?? room.availability ?? 'available',
+      occupiedUntil:
+        (saved.availability ?? room.availability ?? 'available') === 'occupied_until'
+          ? saved.occupiedUntil || room.occupiedUntil || ''
+          : undefined,
     }
   })
 }
