@@ -6,6 +6,8 @@ import RoomModal from './RoomModal'
 import RoomPriceDisplay from './RoomPriceDisplay'
 import RoomAvailabilityBadge from './RoomAvailabilityBadge'
 import OptimizedImage from './ui/OptimizedImage'
+import { getShowcasePricing } from '../utils/roomPricing'
+import { getRoomGallery } from '../data/roomGalleries'
 import { getRoomCapacityShort } from '../utils/roomCapacity'
 import { SectionIntro, SectionHeading, fadeUp } from './Section'
 
