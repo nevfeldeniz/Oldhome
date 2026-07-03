@@ -7,6 +7,37 @@ export const DEFAULT_ADMIN_PASSWORD = 'oldhome2024'
 
 const REMOVED_OUTDOOR_IMAGES = new Set(['oldhome-cyprus-hotel-exterior-02.jpg'])
 
+const STALE_ROOM_IMAGE_MARKERS = [
+  'oldhome-cyprus-room-001-',
+  'oldhome-cyprus-room-002-01',
+  'oldhome-cyprus-hotel-exterior-02',
+  'oldhome-cyprus-room-bathroom-001-01',
+]
+
+function usesStaleRoomImages(images = []) {
+  return images.some((img) => STALE_ROOM_IMAGE_MARKERS.some((marker) => String(img).includes(marker)))
+}
+
+function mergeShowcaseRooms(baseRooms, savedRooms) {
+  if (!Array.isArray(savedRooms)) return baseRooms
+  const savedById = new Map(savedRooms.map((room) => [room.id, room]))
+  return baseRooms.map((room) => {
+    const saved = savedById.get(room.id)
+    if (!saved) return room
+    const stale = usesStaleRoomImages(saved.images)
+    return {
+      ...saved,
+      ...room,
+      price: saved.price ?? room.price,
+      oldPrice: saved.oldPrice ?? room.oldPrice,
+      images: stale ? room.images : saved.images?.length ? saved.images : room.images,
+      description: stale ? room.description : saved.description || room.description,
+      type: stale ? room.type : saved.type || room.type,
+      features: stale || !saved.features?.length ? room.features : saved.features,
+    }
+  })
+}
+
 function filterOutdoorGallery(items) {
   return (items || []).filter((item) => item?.src && !REMOVED_OUTDOOR_IMAGES.has(item.src))
 }
@@ -38,7 +69,7 @@ export function mergeSiteData(raw) {
     footer: { ...base.footer, ...(raw.footer || {}) },
     roomsNote: raw.roomsNote ?? base.roomsNote,
     rooms: Array.isArray(raw.rooms) ? raw.rooms : base.rooms,
-    showcaseRooms: Array.isArray(raw.showcaseRooms) ? raw.showcaseRooms : base.showcaseRooms,
+    showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms),
     outdoorGallery: filterOutdoorGallery(Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery),
     gallery: filterOutdoorGallery(Array.isArray(raw.gallery) ? raw.gallery : base.gallery),
   }

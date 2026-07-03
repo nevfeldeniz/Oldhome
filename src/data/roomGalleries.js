@@ -150,8 +150,13 @@ export const roomGalleries = {
         category: 'view',
       },
       {
+        src: 'oldhome-cyprus-room-bathroom-004-01.jpg',
+        alt: 'Modern ensuite bathroom at Old Home Boutique Hotel Cyprus Room 004 with marble tiles, glass shower and white vanity',
+        category: 'sink',
+      },
+      {
         src: 'oldhome-cyprus-room-bathroom-004-02.jpg',
-        alt: 'Ensuite bathroom at Old Home Boutique Hotel Cyprus Room 004 with glass shower cabin and grey marble tiling',
+        alt: 'Ensuite bathroom at Old Home Boutique Hotel Cyprus Room 004 with glass shower cabin, towel rack and grey marble tiling',
         category: 'shower',
       },
       {
@@ -284,13 +289,13 @@ export const roomGalleries = {
       },
       {
         src: 'oldhome-cyprus-room-bathroom-007-01.jpg',
-        alt: 'Bathroom vanity and sink at Old Home Boutique Hotel Cyprus Room 007 with grey marble tiles and mirror',
-        category: 'sink',
+        alt: 'Wide view of ensuite bathroom at Old Home Boutique Hotel Cyprus Room 007 with glass shower cabin and grey marble tiles',
+        category: 'shower',
       },
       {
         src: 'oldhome-cyprus-room-bathroom-007-02.jpg',
-        alt: 'Ensuite bathroom at Old Home Boutique Hotel Cyprus Room 007 with glass shower cabin and grey marble tiling',
-        category: 'shower',
+        alt: 'Modern ensuite bathroom at Old Home Boutique Hotel Cyprus Room 007 with vanity, toilet and marble wall tiles',
+        category: 'sink',
       },
       {
         src: 'oldhome-cyprus-room-interior-007-01.jpg',
@@ -419,6 +424,11 @@ export const roomGalleries = {
         src: 'oldhome-cyprus-room-010-04.jpg',
         alt: 'Full room layout of Room 010 at Old Home Boutique Hotel Cyprus with double bed, two wicker chairs and side table',
         category: 'view',
+      },
+      {
+        src: 'oldhome-cyprus-room-bathroom-010-01.jpg',
+        alt: 'Modern ensuite bathroom at Old Home Boutique Hotel Cyprus Room 010 with marble tiles, vanity and glass shower',
+        category: 'sink',
       },
       {
         src: 'oldhome-cyprus-room-bathroom-010-02.jpg',
