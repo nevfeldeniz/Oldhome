@@ -39,22 +39,22 @@ export const roomGalleries = {
     images: [
       {
         src: 'oldhome-cyprus-room-002-01.jpg',
-        alt: 'Wide view of Room 002 at Old Home Boutique Hotel Cyprus showing single and double beds, wicker seating area and ensuite bathroom entrance',
+        alt: 'Wide view of Room 002 at Old Home Boutique Hotel Cyprus showing double bed, wicker seating area, wardrobe and Smart TV',
         category: 'overview',
       },
       {
         src: 'oldhome-cyprus-room-002-02.jpg',
-        alt: 'Triple room sleeping area at Old Home Boutique Hotel Cyprus Room 002 with single and double beds, white linens and marble bathroom view',
+        alt: 'Double bed and window seating area in Room 002 at Old Home Boutique Hotel Cyprus with grey nest chairs and zebra blinds',
         category: 'bed',
       },
       {
         src: 'oldhome-cyprus-room-002-03.jpg',
-        alt: 'Second angle of Room 002 at Old Home Boutique Hotel Cyprus featuring single and double beds, grey headboard and bathroom doorway',
+        alt: 'Room 002 at Old Home Boutique Hotel Cyprus featuring double bed, side tables and wicker lounge chairs by the window',
         category: 'angle',
       },
       {
         src: 'oldhome-cyprus-room-002-04.jpg',
-        alt: 'Window seating area in Room 002 at Old Home Boutique Hotel Cyprus with two grey nest chairs, white cushions and zebra blinds',
+        alt: 'Double bed with grey upholstered headboard in Room 002 at Old Home Boutique Hotel Cyprus',
         category: 'view',
       },
       {
@@ -69,12 +69,12 @@ export const roomGalleries = {
       },
       {
         src: 'oldhome-cyprus-room-interior-002-01.jpg',
-        alt: 'In-room entertainment and storage at Old Home Boutique Hotel Cyprus Room 002 with flat-screen TV, mini-fridge, wardrobe and wicker chair',
+        alt: 'In-room entertainment and refreshment station at Old Home Boutique Hotel Cyprus Room 002 with flat-screen TV, mini-fridge and kettle',
         category: 'detail',
       },
       {
         src: 'oldhome-cyprus-room-interior-002-02.jpg',
-        alt: 'Bathroom vanity in Room 002 at Old Home Boutique Hotel Cyprus looking into the bedroom with marble tiles and modern white sink',
+        alt: 'Wardrobe and seating corner in Room 002 at Old Home Boutique Hotel Cyprus with white cabinet, wicker chairs and window blinds',
         category: 'detail',
       },
     ],
