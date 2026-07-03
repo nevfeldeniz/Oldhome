@@ -38,7 +38,7 @@ export default function Rooms() {
         >
           {rooms.map((room) => (
             <motion.article
-              key={room.name}
+              key={room.id || room.name}
               variants={fadeUp}
               transition={{ duration: 0.4, ease: 'easeOut' }}
               className={`card-booking-alt relative flex flex-col ${room.featured ? 'ring-1 ring-wine/15' : ''}`}
