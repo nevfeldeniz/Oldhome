@@ -6,7 +6,6 @@ import WhyUs from '../components/WhyUs'
 import About from '../components/About'
 import Rooms from '../components/Rooms'
 import Amenities from '../components/Amenities'
-import RoomShowcase from '../components/RoomShowcase'
 import PhotoGallery from '../components/PhotoGallery'
 import LocationSection from '../components/LocationSection'
 import Reviews from '../components/Reviews'
@@ -33,10 +32,7 @@ export default function HomePage() {
         <Rooms />
         <WhyUs />
         <About />
-        <div id="rooms">
-          <DiscoverRooms />
-          <RoomShowcase />
-        </div>
+        <DiscoverRooms />
         <Amenities />
         <PhotoGallery />
         <LocationSection />
