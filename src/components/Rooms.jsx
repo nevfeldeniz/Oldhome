@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Users, Check, Baby, ChevronRight } from 'lucide-react'
+import { Check, Baby, ChevronRight } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { SectionHeading, fadeUp } from './Section'
 import OptimizedImage from './ui/OptimizedImage'
@@ -65,13 +65,7 @@ export default function Rooms() {
               </div>
 
               <div className="flex flex-1 flex-col p-6">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-semibold text-wine-dark">{room.name}</h3>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-ink/55">
-                    <Users className="h-4 w-4 text-wine" />
-                    {room.capacity}
-                  </span>
-                </div>
+                <h3 className="text-xl font-semibold text-wine-dark">{room.name}</h3>
 
                 <ul className="mt-5 flex flex-1 flex-col gap-2.5">
                   {room.features.map((feature) => (
