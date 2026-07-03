@@ -5,7 +5,7 @@ const withDefaultAvailability = (rooms) =>
   rooms.map((room) => ({ availability: 'available', ...room }))
 
 export const defaultSiteData = {
-  pricingRoomsRevision: 5,
+  pricingRoomsRevision: 6,
 
   hero: {
     brand: 'Old Home Guest House',
@@ -38,7 +38,7 @@ export const defaultSiteData = {
       name: '1 Kişilik Konaklama',
       price: '2.200 TL',
       capacity: '1–2 Misafir',
-      image: 'oldhome-cyprus-pricing-room-single.jpg',
+      image: 'oldhome-cyprus-pricing-room-single.png',
       imageAlt: 'Tek kişilik oda — Old Home Boutique Hotel Kıbrıs',
       features: ['Konforlu tek kişilik kullanım', 'Klima', 'Ücretsiz Wi-Fi', 'Özel banyo'],
       featured: false,
@@ -49,7 +49,7 @@ export const defaultSiteData = {
       price: '2.700 TL',
       oldPrice: '3.200 TL',
       capacity: '1–2 Misafir',
-      image: 'oldhome-cyprus-pricing-room-double-03.jpg',
+      image: 'oldhome-cyprus-pricing-room-double-03.png',
       imageAlt: 'Geniş çift kişilik oda, TV ünitesi ve oturma köşesi — Old Home Boutique Hotel Kıbrıs',
       features: ['Çift kişilik geniş yatak', 'Klima', 'Ücretsiz Wi-Fi', 'Çay & kahve ikramı'],
       featured: true,
@@ -60,7 +60,7 @@ export const defaultSiteData = {
       price: '2.700 TL',
       oldPrice: '3.500 TL',
       capacity: '1–3 Misafir',
-      image: 'oldhome-cyprus-pricing-room-triple.jpg',
+      image: 'oldhome-cyprus-pricing-room-triple.png',
       imageAlt: 'Üç kişilik oda — Old Home Boutique Hotel Kıbrıs',
       features: ['Geniş aile odası', 'Esnek yatak düzeni', 'Klima', 'Ücretsiz Wi-Fi', 'Özel banyo'],
       featured: false,
