@@ -20,7 +20,6 @@ const STALE_PRICING_ROOM_IMAGES = new Set([
   'oldhome-cyprus-room-002-01.jpg',
   'oldhome-cyprus-pricing-room-double.jpg',
   'oldhome-cyprus-pricing-room-double-wide.jpg',
-  'oldhome-cyprus-pricing-room-single.jpg',
 ])
 
 function usesStaleRoomImages(images = []) {

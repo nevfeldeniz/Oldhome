@@ -4,7 +4,6 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Users,
   Check,
   Wifi,
   Snowflake,
@@ -23,7 +22,6 @@ import { resolveAsset } from '../utils/storage'
 import RoomGallery from './RoomGallery'
 import RoomPriceDisplay from './RoomPriceDisplay'
 import RoomAvailabilityBadge from './RoomAvailabilityBadge'
-import { getRoomCapacityShort } from '../utils/roomCapacity'
 
 const featureIcons = {
   'Ücretsiz Wi-Fi': Wifi,
@@ -82,11 +80,6 @@ export default function RoomModal({ room, onClose }) {
     <>
       <span className="section-eyebrow">{room.type} Oda</span>
       <h3 className="mt-2 font-serif text-3xl font-semibold text-wine-dark">{room.number}</h3>
-
-      <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-wine/10 px-3 py-1 text-xs font-medium text-wine">
-        <Users className="h-3.5 w-3.5" />
-        {getRoomCapacityShort(room.type)}
-      </span>
 
       <div className="mt-3">
         <RoomAvailabilityBadge room={room} />

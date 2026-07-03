@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BedDouble, ChevronRight, Users, Eye, Images } from 'lucide-react'
+import { BedDouble, ChevronRight, Eye, Images } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import RoomModal from './RoomModal'
 import RoomPriceDisplay from './RoomPriceDisplay'
@@ -8,7 +8,7 @@ import RoomAvailabilityBadge from './RoomAvailabilityBadge'
 import OptimizedImage from './ui/OptimizedImage'
 import { getShowcasePricing } from '../utils/roomPricing'
 import { getRoomGallery } from '../data/roomGalleries'
-import { getRoomCapacityShort } from '../utils/roomCapacity'
+import { getRoomTypeLabel } from '../utils/roomCapacity'
 import { SectionIntro, SectionHeading, fadeUp } from './Section'
 
 const filters = [
@@ -18,11 +18,7 @@ const filters = [
   { value: '3 Kişilik', label: '3 Kişilik' },
 ]
 
-const typeLabel = (type) => getRoomCapacityShort(type)
-
-const capacityLabel = (type) => getRoomCapacityShort(type)
-
-const showcaseTypeLabel = (type) => getRoomCapacityShort(type)
+const typeLabel = (type) => getRoomTypeLabel(type)
 
 export default function DiscoverRooms() {
   const { site } = useSite()
@@ -150,14 +146,10 @@ export default function DiscoverRooms() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
                       {getShowcasePricing(room.type).oldPrice && (
-                        <span className="absolute left-3 top-12 rounded-ui bg-wine-dark px-2.5 py-1 text-[10px] font-semibold text-white">
+                        <span className="absolute left-3 top-3 rounded-ui bg-wine-dark px-2.5 py-1 text-[10px] font-semibold text-white">
                           İndirim
                         </span>
                       )}
-
-                      <span className="absolute left-3 top-3 rounded-ui bg-wine-dark px-3 py-1 text-xs font-semibold text-white">
-                        {showcaseTypeLabel(room.type)}
-                      </span>
 
                       <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-ui bg-black/55 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
                         <Images className="h-3.5 w-3.5" />
@@ -170,13 +162,7 @@ export default function DiscoverRooms() {
                     </div>
 
                     <div className="flex flex-1 flex-col p-5">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="font-serif text-xl font-semibold text-wine-dark">{room.number}</h3>
-                        <span className="inline-flex items-center gap-1.5 text-xs text-ink/55">
-                          <Users className="h-4 w-4 text-wine" />
-                          {capacityLabel(room.type)}
-                        </span>
-                      </div>
+                      <h3 className="font-serif text-xl font-semibold text-wine-dark">{room.number}</h3>
 
                       <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-ink/65">{room.description}</p>
 

@@ -13,6 +13,19 @@ export function getRoomCapacityTitle(type) {
   }
 }
 
+export function getRoomTypeLabel(type) {
+  switch (type) {
+    case 'Tek':
+      return 'Tek Kişilik'
+    case 'Çift':
+      return 'Çift Kişilik'
+    case '3 Kişilik':
+      return '3 Kişilik'
+    default:
+      return type
+  }
+}
+
 export function getRoomCapacityShort(type) {
   switch (type) {
     case 'Tek':

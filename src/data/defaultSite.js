@@ -5,7 +5,7 @@ const withDefaultAvailability = (rooms) =>
   rooms.map((room) => ({ availability: 'available', ...room }))
 
 export const defaultSiteData = {
-  pricingRoomsRevision: 4,
+  pricingRoomsRevision: 5,
 
   hero: {
     brand: 'Old Home Guest House',
@@ -36,10 +36,9 @@ export const defaultSiteData = {
     {
       id: 'pricing-single',
       name: '1 Kişilik Konaklama',
-      price: '2.700 TL',
-      oldPrice: '3.200 TL',
+      price: '2.200 TL',
       capacity: '1–2 Misafir',
-      image: 'oldhome-cyprus-room-003-01.jpg',
+      image: 'oldhome-cyprus-pricing-room-single.jpg',
       imageAlt: 'Tek kişilik oda — Old Home Boutique Hotel Kıbrıs',
       features: ['Konforlu tek kişilik kullanım', 'Klima', 'Ücretsiz Wi-Fi', 'Özel banyo'],
       featured: false,
