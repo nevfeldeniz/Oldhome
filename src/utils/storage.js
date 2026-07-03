@@ -227,3 +227,14 @@ export function exportSiteJson(data) {
   a.click()
   URL.revokeObjectURL(url)
 }
+
+/** Canlı site için public/site-data.json dosyasını indirir. */
+export function exportPublishedSiteJson(data) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'site-data.json'
+  a.click()
+  URL.revokeObjectURL(url)
+}

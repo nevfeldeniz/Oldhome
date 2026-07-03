@@ -5,7 +5,7 @@ import { getAdminPassword, setAdminPassword } from '../../utils/storage'
 import { AdminCard, AdminField, AdminInput } from '../ui/AdminField'
 
 export default function SettingsPanel() {
-  const { exportSite, importSite, resetSite } = useSite()
+  const { exportSite, publishSite, importSite, resetSite } = useSite()
   const fileRef = useRef(null)
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -61,10 +61,14 @@ export default function SettingsPanel() {
           Admin değişiklikleri önce bu tarayıcıya kaydedilir. Tüm ziyaretçilerin görmesi için:
         </p>
         <ol className="list-decimal space-y-2 pl-5 text-sm text-ink/70">
-          <li><strong>Dışa Aktar (JSON)</strong> butonuna tıklayın.</li>
-          <li>İndirilen dosyayı <code className="text-wine">public/site-data.json</code> olarak kaydedin.</li>
+          <li><strong>Canlı Siteye Yayınla</strong> butonuna tıklayın (dosya adı: <code className="text-wine">site-data.json</code>).</li>
+          <li>İndirilen dosyayı projenizde <code className="text-wine">public/site-data.json</code> üzerine kaydedin.</li>
           <li>GitHub Desktop ile commit + push yapın (1-2 dk sonra site güncellenir).</li>
         </ol>
+        <button type="button" onClick={publishSite} className="btn-primary mt-4">
+          <Download className="h-4 w-4" />
+          Canlı Siteye Yayınla (site-data.json)
+        </button>
       </AdminCard>
 
       <AdminCard title="Yedekleme">

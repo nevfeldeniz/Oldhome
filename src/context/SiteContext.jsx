@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { defaultSiteData } from '../data/defaultSite'
 import {
   hydrateSiteData,
@@ -6,6 +7,7 @@ import {
   saveRawSiteData,
   resetRawSiteData,
   exportSiteJson,
+  exportPublishedSiteJson,
   STORAGE_KEY,
 } from '../utils/storage'
 
@@ -29,7 +31,7 @@ async function fetchPublishedData() {
   if (typeof fetch === 'undefined') return null
 
   try {
-    const res = await fetch(`${import.meta.env.BASE_URL}site-data.json`)
+    const res = await fetch(`${import.meta.env.BASE_URL}site-data.json`, { cache: 'no-store' })
     if (res.ok) return mergeSiteData(await res.json())
   } catch {
     /* offline veya yavaş bağlantı */
@@ -37,25 +39,32 @@ async function fetchPublishedData() {
   return null
 }
 
+function isAdminPath(pathname = '') {
+  return /\/admin(\/|$)/.test(pathname)
+}
+
 export function SiteProvider({ children }) {
-  const [rawData, setRawData] = useState(() => readStoredData() || mergeSiteData(defaultSiteData))
+  const location = useLocation()
+  const onAdmin = isAdminPath(location.pathname)
+
+  const [rawData, setRawData] = useState(() => mergeSiteData(defaultSiteData))
 
   useEffect(() => {
-    const stored = readStoredData()
-    if (stored) {
-      setRawData(stored)
-      return
+    let cancelled = false
+
+    if (onAdmin) {
+      setRawData(readStoredData() || mergeSiteData(defaultSiteData))
+      return undefined
     }
 
-    let cancelled = false
     fetchPublishedData().then((published) => {
-      if (!cancelled && published) setRawData(published)
+      if (!cancelled) setRawData(published || mergeSiteData(defaultSiteData))
     })
 
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [onAdmin, location.pathname])
 
   const site = useMemo(() => {
     try {
@@ -93,9 +102,12 @@ export function SiteProvider({ children }) {
   }
 
   const exportSite = () => exportSiteJson(rawData)
+  const publishSite = () => exportPublishedSiteJson(rawData)
 
   return (
-    <SiteContext.Provider value={{ site, rawData, updateSite, resetSite, importSite, exportSite }}>
+    <SiteContext.Provider
+      value={{ site, rawData, updateSite, resetSite, importSite, exportSite, publishSite, onAdmin }}
+    >
       {children}
     </SiteContext.Provider>
   )

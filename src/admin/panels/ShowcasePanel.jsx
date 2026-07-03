@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, Upload } from 'lucide-react'
 import { useSite } from '../../context/SiteContext'
 import { getShowcasePricing } from '../../utils/roomPricing'
 import { ROOM_AVAILABILITY, ROOM_AVAILABILITY_OPTIONS } from '../../utils/roomAvailability'
@@ -7,7 +7,7 @@ import RoomAvailabilityBadge from '../../components/RoomAvailabilityBadge'
 import { AdminCard, AdminField, AdminInput, AdminTextarea, AdminSelect, AdminSaveNote } from '../ui/AdminField'
 
 export default function ShowcasePanel() {
-  const { rawData, updateSite } = useSite()
+  const { rawData, updateSite, publishSite } = useSite()
   const [openId, setOpenId] = useState(rawData.showcaseRooms[0]?.id)
 
   const updateRoom = (id, key, value) =>
@@ -67,6 +67,19 @@ export default function ShowcasePanel() {
 
   return (
     <div className="space-y-6">
+      <div className="rounded-xl border border-amber-300/60 bg-amber-50 px-4 py-4 text-sm text-amber-950">
+        <p className="font-semibold">Müsaitlik durumları canlıya ancak yayınladıktan sonra yansır</p>
+        <p className="mt-1 leading-relaxed text-amber-900/80">
+          Burada yaptığınız değişiklikler önce bu tarayıcıya kaydedilir. Mobil ve diğer ziyaretçiler
+          ancak <code className="rounded bg-amber-100 px-1">site-data.json</code> dosyasını GitHub&apos;a
+          yükledikten sonra güncel durumu görür.
+        </p>
+        <button type="button" onClick={publishSite} className="btn-primary mt-4">
+          <Upload className="h-4 w-4" />
+          Canlı Siteye Yayınla (site-data.json indir)
+        </button>
+      </div>
+
       <AdminSaveNote />
 
       {rawData.showcaseRooms.map((room) => {

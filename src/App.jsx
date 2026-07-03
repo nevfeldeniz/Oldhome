@@ -10,15 +10,15 @@ const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
 export default function App() {
   return (
     <ErrorBoundary>
-      <SiteProvider>
-        <BrowserRouter basename={basename}>
+      <BrowserRouter basename={basename}>
+        <SiteProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/admin/*" element={<AdminApp />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </BrowserRouter>
-      </SiteProvider>
+        </SiteProvider>
+      </BrowserRouter>
     </ErrorBoundary>
   )
 }
