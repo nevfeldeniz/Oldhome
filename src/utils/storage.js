@@ -14,8 +14,34 @@ const STALE_ROOM_IMAGE_MARKERS = [
   'oldhome-cyprus-room-bathroom-001-01',
 ]
 
+const STALE_PRICING_ROOM_IMAGES = new Set([
+  'oldhome-cyprus-room-003-01.jpg',
+  'oldhome-cyprus-room-001-01.jpg',
+  'oldhome-cyprus-room-002-01.jpg',
+])
+
 function usesStaleRoomImages(images = []) {
   return images.some((img) => STALE_ROOM_IMAGE_MARKERS.some((marker) => String(img).includes(marker)))
+}
+
+function mergePricingRooms(baseRooms, savedRooms) {
+  if (!Array.isArray(savedRooms)) return baseRooms
+  const savedByName = new Map(savedRooms.map((room) => [room.name, room]))
+  return baseRooms.map((room) => {
+    const saved = savedByName.get(room.name)
+    if (!saved) return room
+    const stale = STALE_PRICING_ROOM_IMAGES.has(saved.image)
+    return {
+      ...saved,
+      ...room,
+      price: saved.price ?? room.price,
+      oldPrice: saved.oldPrice ?? room.oldPrice,
+      image: stale ? room.image : saved.image || room.image,
+      imageAlt: stale ? room.imageAlt : saved.imageAlt || room.imageAlt,
+      features: stale || !saved.features?.length ? room.features : saved.features,
+      featured: saved.featured ?? room.featured,
+    }
+  })
 }
 
 function mergeShowcaseRooms(baseRooms, savedRooms) {
@@ -68,7 +94,7 @@ export function mergeSiteData(raw) {
     social: { ...base.social, ...(raw.social || {}) },
     footer: { ...base.footer, ...(raw.footer || {}) },
     roomsNote: raw.roomsNote ?? base.roomsNote,
-    rooms: Array.isArray(raw.rooms) ? raw.rooms : base.rooms,
+    rooms: mergePricingRooms(base.rooms, raw.rooms),
     showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms),
     outdoorGallery: filterOutdoorGallery(Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery),
     gallery: filterOutdoorGallery(Array.isArray(raw.gallery) ? raw.gallery : base.gallery),

@@ -33,8 +33,8 @@
       "name": "1 Kişilik Oda",
       "price": "2.200 TL",
       "capacity": "1 Misafir",
-      "image": "oldhome-cyprus-room-003-01.jpg",
-      "imageAlt": "Single room at Old Home Boutique Hotel Cyprus",
+      "image": "oldhome-cyprus-pricing-room-single.jpg",
+      "imageAlt": "Tek kişilik oda — Old Home Boutique Hotel Kıbrıs",
       "features": [
         "Tek kişilik konforlu yatak",
         "Klima & Ücretsiz Wi-Fi",
@@ -48,8 +48,8 @@
       "price": "2.700 TL",
       "oldPrice": "3.200 TL",
       "capacity": "2 Misafir",
-      "image": "oldhome-cyprus-room-001-01.jpg",
-      "imageAlt": "Double room at Old Home Boutique Hotel Cyprus",
+      "image": "oldhome-cyprus-pricing-room-double.jpg",
+      "imageAlt": "Çift kişilik oda — Old Home Boutique Hotel Kıbrıs",
       "features": [
         "Çift kişilik geniş yatak",
         "Klima & Ücretsiz Wi-Fi",
@@ -62,8 +62,8 @@
       "name": "3 Kişilik Oda",
       "price": "2.700 TL",
       "capacity": "3 Misafir",
-      "image": "oldhome-cyprus-room-002-01.jpg",
-      "imageAlt": "Triple room at Old Home Boutique Hotel Cyprus",
+      "image": "oldhome-cyprus-pricing-room-triple.jpg",
+      "imageAlt": "Üç kişilik oda — Old Home Boutique Hotel Kıbrıs",
       "features": [
         "Geniş aile odası",
         "Klima & Ücretsiz Wi-Fi",
