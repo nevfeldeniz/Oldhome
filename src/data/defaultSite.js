@@ -2,7 +2,7 @@
 // Admin paneli bu yapıyı düzenler; asset() çözümlemesi hydrateSiteData() ile yapılır.
 
 export const defaultSiteData = {
-  pricingRoomsRevision: 2,
+  pricingRoomsRevision: 3,
 
   hero: {
     brand: 'Old Home Guest House',
@@ -44,7 +44,7 @@ export const defaultSiteData = {
       price: '2.700 TL',
       oldPrice: '3.200 TL',
       capacity: '2 Misafir',
-      image: 'oldhome-cyprus-pricing-room-double-wide.jpg',
+      image: 'oldhome-cyprus-pricing-room-double-03.jpg',
       imageAlt: 'Geniş çift kişilik oda, TV ünitesi ve oturma köşesi — Old Home Boutique Hotel Kıbrıs',
       features: ['Çift kişilik geniş yatak', 'Klima & Ücretsiz Wi-Fi', 'Özel banyo', 'Sınırsız çay & kahve'],
       featured: true,

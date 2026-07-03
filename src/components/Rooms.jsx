@@ -60,7 +60,7 @@ export default function Rooms() {
                   alt={room.imageAlt || `${room.name} at Old Home Guest House Cyprus`}
                   width={800}
                   height={room.name === '2 Kişilik Oda' ? 512 : 448}
-                  className={`h-full w-full object-cover ${room.name === '2 Kişilik Oda' ? 'object-[center_42%]' : ''}`}
+                  className={`h-full w-full object-cover ${room.name === '2 Kişilik Oda' ? 'object-center' : ''}`}
                 />
               </div>
 
