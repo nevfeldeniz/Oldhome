@@ -22,6 +22,7 @@ import { resolveAsset } from '../utils/storage'
 import RoomGallery from './RoomGallery'
 import RoomPriceDisplay from './RoomPriceDisplay'
 import RoomAvailabilityBadge from './RoomAvailabilityBadge'
+import OptimizedImage from './ui/OptimizedImage'
 
 const featureIcons = {
   'Ücretsiz Wi-Fi': Wifi,
