@@ -1,10 +1,10 @@
-import { BedDouble, MapPin, MessageCircle, Wifi } from 'lucide-react'
+import { BedDouble, Coffee, MessageCircle, Wifi } from 'lucide-react'
 
 const items = [
-  { icon: MapPin, label: 'Kıbrıs Konumu' },
-  { icon: BedDouble, label: 'Özel Odalar' },
-  { icon: Wifi, label: 'Ücretsiz WiFi' },
-  { icon: MessageCircle, label: 'Kolay WhatsApp Rezervasyon' },
+  { icon: BedDouble, label: '11 Konforlu Oda' },
+  { icon: Wifi, label: 'Ücretsiz Wi-Fi' },
+  { icon: Coffee, label: 'Ücretsiz Çay & Kahve' },
+  { icon: MessageCircle, label: '7/24 WhatsApp Desteği' },
 ]
 
 export default function QuickInfoBar() {

@@ -26,6 +26,10 @@ export function getRoomTypeLabel(type) {
   }
 }
 
+export function getRoomMaxCapacityLabel(type) {
+  return type === '3 Kişilik' ? 'Maksimum 3 Misafir' : 'Maksimum 2 Misafir'
+}
+
 export function getRoomCapacityShort(type) {
   switch (type) {
     case 'Tek':

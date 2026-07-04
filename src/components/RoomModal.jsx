@@ -13,6 +13,14 @@ import {
   BedDouble,
   Wind,
   Sparkles,
+  Shirt,
+  Refrigerator,
+  Laptop,
+  Maximize2,
+  LayoutGrid,
+  Archive,
+  LampDesk,
+  Package,
 } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
@@ -20,9 +28,10 @@ import WhatsAppIcon from './WhatsAppIcon'
 import { getRoomGallery } from '../data/roomGalleries'
 import { resolveAsset } from '../utils/storage'
 import RoomGallery from './RoomGallery'
-import RoomPriceDisplay from './RoomPriceDisplay'
+import RoomRateList from './RoomRateList'
 import RoomAvailabilityBadge from './RoomAvailabilityBadge'
 import OptimizedImage from './ui/OptimizedImage'
+import { getRoomMaxCapacityLabel } from '../utils/roomCapacity'
 
 const featureIcons = {
   'Ücretsiz Wi-Fi': Wifi,
@@ -31,9 +40,18 @@ const featureIcons = {
   'Smart TV': Tv,
   'Özel Banyo': Bath,
   'Çift Kişilik Yatak': BedDouble,
+  'Geniş Çift Kişilik Yatak': BedDouble,
   'Geniş Aile Yatağı': BedDouble,
   'Saç Kurutma Makinesi': Wind,
   'Günlük Temizlik': Sparkles,
+  Ütü: Shirt,
+  'Mini Buzdolabı': Refrigerator,
+  'Çalışma Masası': Laptop,
+  'Geniş Oda': Maximize2,
+  'Esnek Yatak Düzeni': LayoutGrid,
+  'Elbise Dolabı': Archive,
+  Komodin: LampDesk,
+  Askılık: Package,
 }
 
 export default function RoomModal({ room, onClose }) {
@@ -79,7 +97,7 @@ export default function RoomModal({ room, onClose }) {
 
   const detailsBlock = (
     <>
-      <span className="section-eyebrow">{room.type} Oda</span>
+      <span className="section-eyebrow">{getRoomMaxCapacityLabel(room.type)}</span>
       <h3 className="mt-2 font-serif text-3xl font-semibold text-wine-dark">{room.number}</h3>
 
       <div className="mt-3">
@@ -105,12 +123,12 @@ export default function RoomModal({ room, onClose }) {
         </ul>
       </div>
 
-      <div className="mt-6 flex flex-col gap-4 border-t border-wine/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <RoomPriceDisplay type={room.type} price={room.price} oldPrice={room.oldPrice} size="lg" />
-          <p className="text-xs text-ink/50">gecelik · 0-6 yaş çocuk ücretsiz</p>
+      <div className="mt-6 flex flex-col gap-4 border-t border-wine/10 pt-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="min-w-0 flex-1">
+          <RoomRateList type={room.type} />
+          <p className="mt-2 text-xs text-ink/50">0-6 yaş çocuk ücretsiz</p>
         </div>
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-cta">
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-cta shrink-0">
           <WhatsAppIcon className="h-4 w-4" />
           Bu Odayı Rezerve Et
         </a>

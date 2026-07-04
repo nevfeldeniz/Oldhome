@@ -52,22 +52,25 @@ function mergePricingRooms(baseRooms, savedRooms, savedRevision = 0) {
   })
 }
 
-function mergeShowcaseRooms(baseRooms, savedRooms) {
+function mergeShowcaseRooms(baseRooms, savedRooms, savedRevision = 0) {
+  const baseRevision = defaultSiteData.showcaseRoomsRevision ?? 0
+  const needsContentRefresh = savedRevision < baseRevision
+
   if (!Array.isArray(savedRooms)) return baseRooms
   const savedById = new Map(savedRooms.map((room) => [room.id, room]))
   return baseRooms.map((room) => {
     const saved = savedById.get(room.id)
     if (!saved) return room
     const stale = usesStaleRoomImages(saved.images)
+    const refresh = needsContentRefresh || stale
     return {
       ...saved,
       ...room,
-      price: saved.price ?? room.price,
-      oldPrice: saved.oldPrice ?? room.oldPrice,
+      number: refresh ? room.number : saved.number || room.number,
+      description: refresh ? room.description : saved.description || room.description,
+      type: refresh ? room.type : saved.type || room.type,
+      features: refresh || !saved.features?.length ? room.features : saved.features,
       images: stale ? room.images : saved.images?.length ? saved.images : room.images,
-      description: stale ? room.description : saved.description || room.description,
-      type: stale ? room.type : saved.type || room.type,
-      features: stale || !saved.features?.length ? room.features : saved.features,
       availability: saved.availability ?? room.availability ?? 'available',
       occupiedUntil:
         (saved.availability ?? room.availability ?? 'available') === 'occupied_until'
@@ -108,8 +111,9 @@ export function mergeSiteData(raw) {
     footer: { ...base.footer, ...(raw.footer || {}) },
     roomsNote: raw.roomsNote ?? base.roomsNote,
     pricingRoomsRevision: base.pricingRoomsRevision,
+    showcaseRoomsRevision: base.showcaseRoomsRevision,
     rooms: mergePricingRooms(base.rooms, raw.rooms, raw.pricingRoomsRevision ?? 0),
-    showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms),
+    showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms, raw.showcaseRoomsRevision ?? 0),
     outdoorGallery: filterOutdoorGallery(Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery),
     gallery: filterOutdoorGallery(Array.isArray(raw.gallery) ? raw.gallery : base.gallery),
   }

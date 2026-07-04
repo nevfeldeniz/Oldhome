@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { BedDouble, ChevronRight, Eye, Images } from 'lucide-react'
 import { useSite } from '../context/SiteContext'
 import RoomModal from './RoomModal'
-import RoomPriceDisplay from './RoomPriceDisplay'
+import RoomRateList from './RoomRateList'
 import RoomAvailabilityBadge from './RoomAvailabilityBadge'
 import OptimizedImage from './ui/OptimizedImage'
-import { getShowcasePricing } from '../utils/roomPricing'
+import { hasDiscountedRates, getLowestRate } from '../utils/roomPricing'
 import { getRoomGallery } from '../data/roomGalleries'
-import { getRoomTypeLabel } from '../utils/roomCapacity'
+import { getRoomMaxCapacityLabel } from '../utils/roomCapacity'
 import { SectionIntro, SectionHeading, fadeUp } from './Section'
 
 const filters = [
@@ -17,8 +17,6 @@ const filters = [
   { value: 'Çift', label: 'Çift Kişilik' },
   { value: '3 Kişilik', label: '3 Kişilik' },
 ]
-
-const typeLabel = (type) => getRoomTypeLabel(type)
 
 export default function DiscoverRooms() {
   const { site } = useSite()
@@ -44,10 +42,7 @@ export default function DiscoverRooms() {
           />
 
           <ul className="mt-8 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
-            {showcaseRooms.map((room) => {
-              const pricing = getShowcasePricing(room.type)
-
-              return (
+            {showcaseRooms.map((room) => (
                 <li key={room.id}>
                   <article className="flex items-center gap-3 rounded-ui border border-wine/[0.08] bg-parchment/50 px-3 py-3 transition-colors hover:border-wine/20 hover:bg-parchment sm:px-4 sm:py-3.5">
                     <span
@@ -62,8 +57,8 @@ export default function DiscoverRooms() {
                         <h3 className="truncate font-semibold text-wine-dark">{room.number}</h3>
                         <RoomAvailabilityBadge room={room} compact />
                       </div>
-                      <p className="mt-0.5 text-xs text-ink/55">{typeLabel(room.type)}</p>
-                      <p className="mt-1 text-sm font-semibold text-wine">{pricing.price}</p>
+                      <p className="mt-0.5 text-xs text-ink/55">{getRoomMaxCapacityLabel(room.type)}</p>
+                      <p className="mt-1 text-sm font-semibold text-wine">{getLowestRate(room.type)} / gece&apos;den</p>
                     </div>
 
                     <button
@@ -77,8 +72,7 @@ export default function DiscoverRooms() {
                     </button>
                   </article>
                 </li>
-              )
-            })}
+              ))}
           </ul>
 
           <p className="mt-6 text-center text-sm text-ink/50">
@@ -145,11 +139,19 @@ export default function DiscoverRooms() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-                      {getShowcasePricing(room.type).oldPrice && (
+                      {hasDiscountedRates(room.type) && (
                         <span className="absolute left-3 top-3 rounded-ui bg-wine-dark px-2.5 py-1 text-[10px] font-semibold text-white">
                           İndirim
                         </span>
                       )}
+
+                      <span
+                        className={`absolute left-3 rounded-ui bg-wine-dark px-3 py-1 text-xs font-semibold text-white ${
+                          hasDiscountedRates(room.type) ? 'top-10' : 'top-3'
+                        }`}
+                      >
+                        {getRoomMaxCapacityLabel(room.type)}
+                      </span>
 
                       <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-ui bg-black/55 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
                         <Images className="h-3.5 w-3.5" />
@@ -166,20 +168,14 @@ export default function DiscoverRooms() {
 
                       <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-ink/65">{room.description}</p>
 
-                      <div className="mt-5 flex items-end justify-between border-t border-black/[0.06] pt-4">
-                        <div>
-                          <RoomPriceDisplay
-                            type={room.type}
-                            price={room.price}
-                            oldPrice={room.oldPrice}
-                            size="sm"
-                          />
-                          <p className="text-[11px] text-ink/50">gecelik</p>
+                      <div className="mt-5 border-t border-black/[0.06] pt-4">
+                        <RoomRateList type={room.type} compact />
+                        <div className="mt-3 flex justify-end">
+                          <span className="btn-primary !min-h-[40px] !px-4 !py-2 !text-xs">
+                            <Eye className="h-4 w-4" />
+                            Detayları İncele
+                          </span>
                         </div>
-                        <span className="btn-primary !min-h-[40px] !px-4 !py-2 !text-xs">
-                          <Eye className="h-4 w-4" />
-                          Detayları İncele
-                        </span>
                       </div>
                     </div>
                   </motion.article>
