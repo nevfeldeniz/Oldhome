@@ -11,8 +11,13 @@ import {
   ExternalLink,
   Search,
   TreePine,
+  Save,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
 } from 'lucide-react'
 import { setAdminSession } from '../utils/storage'
+import { useSite } from '../context/SiteContext'
 
 const menu = [
   { id: 'dashboard', label: 'Genel Bakış', icon: LayoutDashboard },
@@ -26,9 +31,27 @@ const menu = [
 ]
 
 export default function AdminLayout({ active, onNavigate, onLogout, children }) {
+  const {
+    saveAndPublish,
+    publishing,
+    publishMessage,
+    publishError,
+    publishConfigured,
+    clearPublishFeedback,
+  } = useSite()
+
   const handleLogout = () => {
     setAdminSession(false)
     onLogout()
+  }
+
+  const handlePublish = async () => {
+    clearPublishFeedback()
+    if (!publishConfigured) {
+      onNavigate('settings')
+      return
+    }
+    await saveAndPublish()
   }
 
   return (
@@ -82,14 +105,52 @@ export default function AdminLayout({ active, onNavigate, onLogout, children }) 
       </aside>
 
       <div className="flex min-h-screen flex-col">
-        <header className="flex items-center justify-between border-b border-wine/10 bg-parchment px-5 py-4 lg:px-8">
-          <div>
-            <h2 className="font-serif text-2xl font-semibold text-wine-dark">
-              {menu.find((m) => m.id === active)?.label}
-            </h2>
-            <p className="text-sm text-ink/55">Site içeriğini buradan yönetin</p>
+        <header className="border-b border-wine/10 bg-parchment px-5 py-4 lg:px-8">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <h2 className="font-serif text-2xl font-semibold text-wine-dark">
+                {menu.find((m) => m.id === active)?.label}
+              </h2>
+              <p className="text-sm text-ink/55">Site içeriğini buradan yönetin</p>
+            </div>
+
+            <div className="flex flex-col items-stretch gap-2 sm:items-end">
+              <button
+                type="button"
+                onClick={handlePublish}
+                disabled={publishing}
+                className="btn-primary !px-5 !py-3 text-sm shadow-md disabled:opacity-70"
+              >
+                {publishing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
+                {publishing ? 'Yayınlanıyor…' : 'Değişiklikleri Kaydet ve Yayınla'}
+              </button>
+              {!publishConfigured && (
+                <p className="text-xs text-amber-800">
+                  İlk kullanım: <button type="button" className="underline" onClick={() => onNavigate('settings')}>Ayarlar</button>
+                  {' '}bölümünden yayın bağlantısını bir kez kurun.
+                </p>
+              )}
+            </div>
           </div>
-          <div className="flex gap-2 lg:hidden">
+
+          {(publishMessage || publishError) && (
+            <div
+              className={`mt-4 flex items-start gap-2 rounded-xl px-4 py-3 text-sm ${
+                publishError
+                  ? 'border border-red-200 bg-red-50 text-red-900'
+                  : 'border border-emerald-200 bg-emerald-50 text-emerald-900'
+              }`}
+            >
+              {publishError ? (
+                <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+              ) : (
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+              )}
+              <p>{publishError || publishMessage}</p>
+            </div>
+          )}
+
+          <div className="mt-4 flex gap-2 lg:hidden">
             <Link to="/" className="btn-outline !px-4 !py-2 text-xs">
               Site
             </Link>

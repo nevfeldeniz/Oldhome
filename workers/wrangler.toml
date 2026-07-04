@@ -1,0 +1,16 @@
+name = "oldhome-publish"
+main = "publish-site-data.js"
+compatibility_date = "2024-01-01"
+
+# wrangler secret put PUBLISH_SECRET
+# wrangler secret put GITHUB_TOKEN
+# wrangler vars set GITHUB_OWNER nevfeldeniz
+# wrangler vars set GITHUB_REPO Oldhome
+# wrangler vars set GITHUB_BRANCH main
+# wrangler vars put FILE_PATH public/site-data.json
+
+[vars]
+GITHUB_OWNER = "nevfeldeniz"
+GITHUB_REPO = "Oldhome"
+GITHUB_BRANCH = "main"
+FILE_PATH = "public/site-data.json"

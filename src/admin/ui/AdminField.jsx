@@ -50,10 +50,13 @@ export function AdminCard({ title, children, action }) {
   )
 }
 
-export function AdminSaveNote() {
+export function AdminSaveNote({ liveHint = false } = {}) {
   return (
     <p className="rounded-xl border border-wine/15 bg-wine/5 px-4 py-3 text-sm text-wine">
-      Değişiklikler otomatik kaydedilir. Siteyi yenilediğinizde güncel içerik görünür.
+      Değişiklikler otomatik kaydedilir.
+      {liveHint
+        ? ' Canlı sitede görünmesi için üstteki «Değişiklikleri Kaydet ve Yayınla» butonuna basın.'
+        : ' Admin panelini yenilediğinizde güncel içerik görünür.'}
     </p>
   )
 }

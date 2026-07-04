@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronDown, ChevronUp, Upload } from 'lucide-react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useSite } from '../../context/SiteContext'
 import { getRoomMaxCapacityLabel } from '../../utils/roomCapacity'
 import { ROOM_AVAILABILITY, ROOM_AVAILABILITY_OPTIONS } from '../../utils/roomAvailability'
@@ -9,7 +9,7 @@ import SortableImageList from '../ui/SortableImageList'
 import { AdminCard, AdminField, AdminInput, AdminTextarea, AdminSelect, AdminSaveNote } from '../ui/AdminField'
 
 export default function ShowcasePanel() {
-  const { rawData, updateSite, publishSite } = useSite()
+  const { rawData, updateSite } = useSite()
   const [openId, setOpenId] = useState(rawData.showcaseRooms[0]?.id)
 
   const updateRoom = (id, key, value) =>
@@ -61,19 +61,7 @@ export default function ShowcasePanel() {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-xl border border-amber-300/60 bg-amber-50 px-4 py-4 text-sm text-amber-950">
-        <p className="font-semibold">Canlı site için yayın gerekli</p>
-        <p className="mt-1 leading-relaxed text-amber-900/80">
-          Değişiklikler bu tarayıcıya kaydedilir. Ziyaretçiler için{' '}
-          <code className="rounded bg-amber-100 px-1">site-data.json</code> dosyasını GitHub&apos;a yükleyin.
-        </p>
-        <button type="button" onClick={publishSite} className="btn-primary mt-4">
-          <Upload className="h-4 w-4" />
-          Canlı Siteye Yayınla
-        </button>
-      </div>
-
-      <AdminSaveNote />
+      <AdminSaveNote liveHint />
 
       {rawData.showcaseRooms.map((room) => {
         const isOpen = openId === room.id

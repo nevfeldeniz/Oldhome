@@ -34,6 +34,9 @@ jobs:
         run: npm ci
 
       - name: Build
+        env:
+          VITE_PUBLISH_API_URL: ${{ secrets.VITE_PUBLISH_API_URL }}
+          VITE_PUBLISH_SECRET: ${{ secrets.VITE_PUBLISH_SECRET }}
         run: |
           REPO="${{ github.event.repository.name }}"
           OWNER="${{ github.repository_owner }}"
