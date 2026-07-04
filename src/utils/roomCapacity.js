@@ -26,8 +26,16 @@ export function getRoomTypeLabel(type) {
   }
 }
 
-export function getRoomMaxCapacityLabel(type) {
-  return type === '3 Kişilik' ? 'Maksimum 3 Misafir' : 'Maksimum 2 Misafir'
+export function getRoomMaxGuests(roomOrType) {
+  if (roomOrType && typeof roomOrType === 'object') {
+    if (roomOrType.maxGuests != null) return roomOrType.maxGuests >= 3 ? 3 : 2
+    return roomOrType.type === '3 Kişilik' ? 3 : 2
+  }
+  return roomOrType === '3 Kişilik' ? 3 : 2
+}
+
+export function getRoomMaxCapacityLabel(roomOrType) {
+  return getRoomMaxGuests(roomOrType) >= 3 ? 'Maksimum 3 Misafir' : 'Maksimum 2 Misafir'
 }
 
 export function getRoomCapacityShort(type) {

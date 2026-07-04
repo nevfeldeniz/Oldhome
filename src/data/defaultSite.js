@@ -1,12 +1,34 @@
 // Serileştirilebilir varsayılan site verisi (görsel yolları dosya adı olarak).
 // Admin paneli bu yapıyı düzenler; asset() çözümlemesi hydrateSiteData() ile yapılır.
 
+import { DEFAULT_RATE_PLANS } from '../utils/roomPricing.js'
+
 const withDefaultAvailability = (rooms) =>
   rooms.map((room) => ({ availability: 'available', ...room }))
 
 export const defaultSiteData = {
   pricingRoomsRevision: 6,
-  showcaseRoomsRevision: 1,
+  showcaseRoomsRevision: 2,
+
+  seo: {
+    title: "Old Home Guest House | Kıbrıs'ta Konforlu Konaklama",
+    description:
+      "Old Home Guest House, Kıbrıs'ta konforlu odalar, sıcak bir yuva hissi ve kolay WhatsApp rezervasyonu sunmaktadır.",
+    keywords: 'old home guest house, kıbrıs otel, lefkoşa otel, butik otel, köşklüçiftlik konaklama',
+    ogTitle: 'Old Home Guest House',
+    ogDescription: "Kıbrıs'ta konforlu konaklama ve sıcak bir yuva hissi.",
+    ogImage: 'oldhome-cyprus-hotel-exterior.jpg',
+    ogImageAlt: 'Old Home Guest House boutique hotel exterior in Cyprus',
+  },
+
+  quickInfoBar: [
+    { icon: 'bed', label: '11 Konforlu Oda' },
+    { icon: 'wifi', label: 'Ücretsiz Wi-Fi' },
+    { icon: 'coffee', label: 'Ücretsiz Çay & Kahve' },
+    { icon: 'message', label: '7/24 WhatsApp Desteği' },
+  ],
+
+  ratePlans: DEFAULT_RATE_PLANS,
 
   hero: {
     brand: 'Old Home Guest House',

@@ -9,12 +9,14 @@ import ContactPanel from './panels/ContactPanel'
 import RoomTypesPanel from './panels/RoomTypesPanel'
 import ShowcasePanel from './panels/ShowcasePanel'
 import GalleryPanel from './panels/GalleryPanel'
+import SeoPanel from './panels/SeoPanel'
 import SettingsPanel from './panels/SettingsPanel'
 
 const panels = {
   dashboard: DashboardPanel,
   general: GeneralPanel,
   contact: ContactPanel,
+  seo: SeoPanel,
   'room-types': RoomTypesPanel,
   showcase: ShowcasePanel,
   gallery: GalleryPanel,

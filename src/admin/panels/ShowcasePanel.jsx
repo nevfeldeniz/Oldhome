@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { ChevronDown, ChevronUp, Upload } from 'lucide-react'
 import { useSite } from '../../context/SiteContext'
-import { getShowcasePricing } from '../../utils/roomPricing'
+import { getRoomMaxCapacityLabel } from '../../utils/roomCapacity'
 import { ROOM_AVAILABILITY, ROOM_AVAILABILITY_OPTIONS } from '../../utils/roomAvailability'
 import RoomAvailabilityBadge from '../../components/RoomAvailabilityBadge'
+import FeatureChecklist from '../ui/FeatureChecklist'
+import SortableImageList from '../ui/SortableImageList'
 import { AdminCard, AdminField, AdminInput, AdminTextarea, AdminSelect, AdminSaveNote } from '../ui/AdminField'
 
 export default function ShowcasePanel() {
@@ -16,33 +18,25 @@ export default function ShowcasePanel() {
       showcaseRooms: prev.showcaseRooms.map((room) => {
         if (room.id !== id) return room
         const next = { ...room, [key]: value }
-        if (key === 'type') {
-          const pricing = getShowcasePricing(value)
-          next.price = pricing.price
-          if (pricing.oldPrice) next.oldPrice = pricing.oldPrice
-          else delete next.oldPrice
-        }
+        if (key === 'type' && value === '3 Kişilik') next.maxGuests = 3
+        if (key === 'type' && value !== '3 Kişilik' && !next.maxGuests) next.maxGuests = 2
         return next
       }),
     }))
 
-  const updateImages = (id, value) =>
+  const updateImages = (id, images) =>
     updateSite((prev) => ({
       ...prev,
       showcaseRooms: prev.showcaseRooms.map((room) =>
-        room.id === id
-          ? { ...room, images: value.split('\n').map((s) => s.trim()).filter(Boolean) }
-          : room,
+        room.id === id ? { ...room, images: images.filter(Boolean) } : room,
       ),
     }))
 
-  const updateFeatures = (id, value) =>
+  const updateFeatures = (id, features) =>
     updateSite((prev) => ({
       ...prev,
       showcaseRooms: prev.showcaseRooms.map((room) =>
-        room.id === id
-          ? { ...room, features: value.split('\n').map((s) => s.trim()).filter(Boolean) }
-          : room,
+        room.id === id ? { ...room, features } : room,
       ),
     }))
 
@@ -68,15 +62,14 @@ export default function ShowcasePanel() {
   return (
     <div className="space-y-6">
       <div className="rounded-xl border border-amber-300/60 bg-amber-50 px-4 py-4 text-sm text-amber-950">
-        <p className="font-semibold">Müsaitlik durumları canlıya ancak yayınladıktan sonra yansır</p>
+        <p className="font-semibold">Canlı site için yayın gerekli</p>
         <p className="mt-1 leading-relaxed text-amber-900/80">
-          Burada yaptığınız değişiklikler önce bu tarayıcıya kaydedilir. Mobil ve diğer ziyaretçiler
-          ancak <code className="rounded bg-amber-100 px-1">site-data.json</code> dosyasını GitHub&apos;a
-          yükledikten sonra güncel durumu görür.
+          Değişiklikler bu tarayıcıya kaydedilir. Ziyaretçiler için{' '}
+          <code className="rounded bg-amber-100 px-1">site-data.json</code> dosyasını GitHub&apos;a yükleyin.
         </p>
         <button type="button" onClick={publishSite} className="btn-primary mt-4">
           <Upload className="h-4 w-4" />
-          Canlı Siteye Yayınla (site-data.json indir)
+          Canlı Siteye Yayınla
         </button>
       </div>
 
@@ -100,10 +93,10 @@ export default function ShowcasePanel() {
             }
           >
             <div className="flex flex-wrap items-center gap-3 text-sm text-ink/60">
-              <span className="rounded-full bg-wine/10 px-3 py-1 text-wine">{room.type}</span>
+              <span className="rounded-full bg-wine/10 px-3 py-1 font-medium text-wine">
+                {getRoomMaxCapacityLabel(room)}
+              </span>
               <RoomAvailabilityBadge room={room} />
-              {room.oldPrice && <span className="line-through">{room.oldPrice}</span>}
-              <span className="font-medium text-wine">{room.price}</span>
             </div>
 
             {isOpen && (
@@ -112,22 +105,21 @@ export default function ShowcasePanel() {
                   <AdminField label="Oda Numarası">
                     <AdminInput value={room.number} onChange={(e) => updateRoom(room.id, 'number', e.target.value)} />
                   </AdminField>
-                  <AdminField label="Oda Tipi">
+                  <AdminField label="Oda Tipi (filtre)">
                     <AdminSelect value={room.type} onChange={(e) => updateRoom(room.id, 'type', e.target.value)}>
                       <option value="Tek">Tek Kişilik</option>
                       <option value="Çift">Çift Kişilik</option>
                       <option value="3 Kişilik">3 Kişilik</option>
                     </AdminSelect>
                   </AdminField>
-                  <AdminField label="Fiyat">
-                    <AdminInput value={room.price} onChange={(e) => updateRoom(room.id, 'price', e.target.value)} />
-                  </AdminField>
-                  <AdminField label="Eski Fiyat (indirimli odalar)">
-                    <AdminInput
-                      value={room.oldPrice || ''}
-                      onChange={(e) => updateRoom(room.id, 'oldPrice', e.target.value || undefined)}
-                      placeholder="Örn. 3.200 TL"
-                    />
+                  <AdminField label="Maksimum Kapasite">
+                    <AdminSelect
+                      value={room.maxGuests ?? (room.type === '3 Kişilik' ? 3 : 2)}
+                      onChange={(e) => updateRoom(room.id, 'maxGuests', Number(e.target.value))}
+                    >
+                      <option value={2}>Maksimum 2 Misafir</option>
+                      <option value={3}>Maksimum 3 Misafir</option>
+                    </AdminSelect>
                   </AdminField>
                 </div>
 
@@ -139,10 +131,7 @@ export default function ShowcasePanel() {
                   />
                 </AdminField>
 
-                <AdminField
-                  label="Müsaitlik Durumu"
-                  hint="Sitede yalnızca seçtiğiniz durum görünür. Misafirler oda kartında bu bilgiyi görür."
-                >
+                <AdminField label="Müsaitlik Durumu">
                   <AdminSelect
                     value={room.availability || ROOM_AVAILABILITY.AVAILABLE}
                     onChange={(e) => updateAvailability(room.id, e.target.value)}
@@ -153,20 +142,10 @@ export default function ShowcasePanel() {
                       </option>
                     ))}
                   </AdminSelect>
-                  <p className="mt-2 text-xs text-ink/50">
-                    {
-                      ROOM_AVAILABILITY_OPTIONS.find(
-                        (option) => option.value === (room.availability || ROOM_AVAILABILITY.AVAILABLE),
-                      )?.hint
-                    }
-                  </p>
                 </AdminField>
 
                 {(room.availability || ROOM_AVAILABILITY.AVAILABLE) === ROOM_AVAILABILITY.OCCUPIED_UNTIL && (
-                  <AdminField
-                    label="Dolu olduğu son tarih"
-                    hint="Örn. 15 Temmuz seçilirse sitede “15 Temmuz'a kadar dolu” yazar."
-                  >
+                  <AdminField label="Dolu olduğu son tarih">
                     <AdminInput
                       type="date"
                       value={room.occupiedUntil || ''}
@@ -175,21 +154,20 @@ export default function ShowcasePanel() {
                   </AdminField>
                 )}
 
-                <AdminField label="Görseller (4 adet, her satıra bir dosya adı)" hint="public/ klasöründeki dosyalar">
-                  <AdminTextarea rows={4} value={room.images.join('\n')} onChange={(e) => updateImages(room.id, e.target.value)} />
-                </AdminField>
-
-                <AdminField label="Özellikler (her satıra bir tane)">
-                  <AdminTextarea rows={5} value={room.features.join('\n')} onChange={(e) => updateFeatures(room.id, e.target.value)} />
-                </AdminField>
-
-                {room.images[0] && (
-                  <img
-                    src={`${import.meta.env.BASE_URL}${room.images[0]}`}
-                    alt={`${room.number} at Old Home Boutique Hotel Cyprus`}
-                    className="h-40 w-full rounded-xl object-cover"
+                <AdminField label="Galeri Görselleri" hint="Sürükleyerek sıralayın">
+                  <SortableImageList
+                    items={room.images?.length ? room.images : ['']}
+                    onChange={(images) => updateImages(room.id, images)}
+                    previewBase={import.meta.env.BASE_URL}
                   />
-                )}
+                </AdminField>
+
+                <AdminField label="Oda Özellikleri">
+                  <FeatureChecklist
+                    selected={room.features}
+                    onChange={(features) => updateFeatures(room.id, features)}
+                  />
+                </AdminField>
               </div>
             )}
           </AdminCard>

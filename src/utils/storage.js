@@ -1,4 +1,5 @@
 import { defaultSiteData } from '../data/defaultSite'
+import { normalizeRatePlans } from './roomPricing'
 
 export const STORAGE_KEY = 'oldhome_site_data'
 export const ADMIN_PASSWORD_KEY = 'oldhome_admin_password'
@@ -67,6 +68,7 @@ function mergeShowcaseRooms(baseRooms, savedRooms, savedRevision = 0) {
       ...saved,
       ...room,
       number: refresh ? room.number : saved.number || room.number,
+      maxGuests: refresh ? room.maxGuests : saved.maxGuests ?? room.maxGuests,
       description: refresh ? room.description : saved.description || room.description,
       type: refresh ? room.type : saved.type || room.type,
       features: refresh || !saved.features?.length ? room.features : saved.features,
@@ -109,6 +111,9 @@ export function mergeSiteData(raw) {
     contact: { ...base.contact, ...(raw.contact || {}) },
     social: { ...base.social, ...(raw.social || {}) },
     footer: { ...base.footer, ...(raw.footer || {}) },
+    seo: { ...base.seo, ...(raw.seo || {}) },
+    quickInfoBar: Array.isArray(raw.quickInfoBar) ? raw.quickInfoBar : base.quickInfoBar,
+    ratePlans: normalizeRatePlans(raw.ratePlans ?? base.ratePlans),
     roomsNote: raw.roomsNote ?? base.roomsNote,
     pricingRoomsRevision: base.pricingRoomsRevision,
     showcaseRoomsRevision: base.showcaseRoomsRevision,

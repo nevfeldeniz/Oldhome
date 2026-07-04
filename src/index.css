@@ -60,11 +60,15 @@
   }
 
   .btn-cta {
-    @apply inline-flex min-h-[48px] w-full items-center justify-center gap-2.5 rounded-ui bg-wine-dark
-      px-7 py-3.5 text-sm font-semibold text-white transition-all duration-200
+    @apply inline-flex min-h-[48px] w-full items-center justify-center gap-3 rounded-ui bg-wine-dark
+      px-6 py-3.5 text-sm font-semibold tracking-wide text-white transition-all duration-200
       hover:bg-wine hover:shadow-card sm:w-auto
       focus:outline-none focus-visible:ring-2 focus-visible:ring-wine-dark focus-visible:ring-offset-2
       focus-visible:ring-offset-cream;
+  }
+
+  .btn-cta-reserve {
+    @apply sm:min-w-[240px];
   }
 
   .btn-outline {

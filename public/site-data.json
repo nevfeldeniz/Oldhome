@@ -419,5 +419,68 @@
   "footer": {
     "slogan": "Rahat, Temiz ve Güvenli. Sizi Bekliyor..."
   },
-  "showcaseRoomsRevision": 1
+  "showcaseRoomsRevision": 2,
+  "seo": {
+    "title": "Old Home Guest House | Kıbrıs'ta Konforlu Konaklama",
+    "description": "Old Home Guest House, Kıbrıs'ta konforlu odalar, sıcak bir yuva hissi ve kolay WhatsApp rezervasyonu sunmaktadır.",
+    "keywords": "old home guest house, kıbrıs otel, lefkoşa otel, butik otel, köşklüçiftlik konaklama",
+    "ogTitle": "Old Home Guest House",
+    "ogDescription": "Kıbrıs'ta konforlu konaklama ve sıcak bir yuva hissi.",
+    "ogImage": "oldhome-cyprus-hotel-exterior.jpg",
+    "ogImageAlt": "Old Home Guest House boutique hotel exterior in Cyprus"
+  },
+  "quickInfoBar": [
+    {
+      "icon": "bed",
+      "label": "11 Konforlu Oda"
+    },
+    {
+      "icon": "wifi",
+      "label": "Ücretsiz Wi-Fi"
+    },
+    {
+      "icon": "coffee",
+      "label": "Ücretsiz Çay & Kahve"
+    },
+    {
+      "icon": "message",
+      "label": "7/24 WhatsApp Desteği"
+    }
+  ],
+  "ratePlans": {
+    "max2": [
+      {
+        "guests": 1,
+        "label": "1 Kişilik Konaklama",
+        "price": "2.200 TL",
+        "oldPrice": "2.200 TL"
+      },
+      {
+        "guests": 2,
+        "label": "2 Kişilik Konaklama",
+        "price": "2.700 TL",
+        "oldPrice": "3.200 TL"
+      }
+    ],
+    "max3": [
+      {
+        "guests": 1,
+        "label": "1 Kişilik Konaklama",
+        "price": "2.200 TL",
+        "oldPrice": "2.200 TL"
+      },
+      {
+        "guests": 2,
+        "label": "2 Kişilik Konaklama",
+        "price": "2.700 TL",
+        "oldPrice": "3.200 TL"
+      },
+      {
+        "guests": 3,
+        "label": "3 Kişilik Konaklama",
+        "price": "2.700 TL",
+        "oldPrice": "3.500 TL"
+      }
+    ]
+  }
 }

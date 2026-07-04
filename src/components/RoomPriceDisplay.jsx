@@ -6,15 +6,24 @@ const sizeClasses = {
   lg: { old: 'text-base', current: 'text-3xl', badge: 'text-xs' },
 }
 
-export default function RoomPriceDisplay({ type, price, oldPrice, size = 'md', className = '' }) {
-  const defaults = getShowcasePricing(type)
+export default function RoomPriceDisplay({
+  type,
+  price,
+  oldPrice,
+  maxGuests,
+  ratePlans,
+  size = 'md',
+  className = '',
+}) {
+  const defaults = getShowcasePricing(type, ratePlans, maxGuests)
   const displayPrice = price || defaults.price
   const displayOldPrice = oldPrice !== undefined ? oldPrice : defaults.oldPrice
+  const hasDiscount = displayOldPrice && displayOldPrice !== displayPrice
   const s = sizeClasses[size] || sizeClasses.md
 
   return (
     <div className={className}>
-      {displayOldPrice && (
+      {hasDiscount && (
         <p className={`${s.old} font-medium text-ink/40 line-through`}>{displayOldPrice}</p>
       )}
       <p className={`font-serif ${s.current} font-semibold text-wine`}>{displayPrice}</p>

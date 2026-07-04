@@ -20,7 +20,7 @@ const filters = [
 
 export default function DiscoverRooms() {
   const { site } = useSite()
-  const { showcaseRooms } = site
+  const { showcaseRooms, ratePlans } = site
   const [selectedRoom, setSelectedRoom] = useState(null)
   const [activeFilter, setActiveFilter] = useState('Tümü')
 
@@ -57,8 +57,8 @@ export default function DiscoverRooms() {
                         <h3 className="truncate font-semibold text-wine-dark">{room.number}</h3>
                         <RoomAvailabilityBadge room={room} compact />
                       </div>
-                      <p className="mt-0.5 text-xs text-ink/55">{getRoomMaxCapacityLabel(room.type)}</p>
-                      <p className="mt-1 text-sm font-semibold text-wine">{getLowestRate(room.type)} / gece&apos;den</p>
+                      <p className="mt-0.5 text-xs text-ink/55">{getRoomMaxCapacityLabel(room)}</p>
+                      <p className="mt-1 text-sm font-semibold text-wine">{getLowestRate(room.type, ratePlans, room.maxGuests)} / gece&apos;den</p>
                     </div>
 
                     <button
@@ -129,17 +129,17 @@ export default function DiscoverRooms() {
                     onClick={() => setSelectedRoom(room)}
                     className="card-booking-alt group flex cursor-pointer flex-col"
                   >
-                    <div className="relative h-52 overflow-hidden">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-parchment">
                       <OptimizedImage
                         src={coverImage}
                         alt={`${room.number} at Old Home Guest House boutique hotel in Cyprus`}
                         width={800}
-                        height={416}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        height={600}
+                        className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-                      {hasDiscountedRates(room.type) && (
+                      {hasDiscountedRates(room.type, ratePlans, room.maxGuests) && (
                         <span className="absolute left-3 top-3 rounded-ui bg-wine-dark px-2.5 py-1 text-[10px] font-semibold text-white">
                           İndirim
                         </span>
@@ -147,10 +147,10 @@ export default function DiscoverRooms() {
 
                       <span
                         className={`absolute left-3 rounded-ui bg-wine-dark px-3 py-1 text-xs font-semibold text-white ${
-                          hasDiscountedRates(room.type) ? 'top-10' : 'top-3'
+                          hasDiscountedRates(room.type, ratePlans, room.maxGuests) ? 'top-10' : 'top-3'
                         }`}
                       >
-                        {getRoomMaxCapacityLabel(room.type)}
+                        {getRoomMaxCapacityLabel(room)}
                       </span>
 
                       <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-ui bg-black/55 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
@@ -169,7 +169,7 @@ export default function DiscoverRooms() {
                       <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-ink/65">{room.description}</p>
 
                       <div className="mt-5 border-t border-black/[0.06] pt-4">
-                        <RoomRateList type={room.type} compact />
+                        <RoomRateList type={room.type} maxGuests={room.maxGuests} ratePlans={ratePlans} compact />
                         <div className="mt-3 flex justify-end">
                           <span className="btn-primary !min-h-[40px] !px-4 !py-2 !text-xs">
                             <Eye className="h-4 w-4" />

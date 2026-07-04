@@ -9,6 +9,7 @@ import {
   Settings,
   LogOut,
   ExternalLink,
+  Search,
   TreePine,
 } from 'lucide-react'
 import { setAdminSession } from '../utils/storage'
@@ -16,8 +17,9 @@ import { setAdminSession } from '../utils/storage'
 const menu = [
   { id: 'dashboard', label: 'Genel Bakış', icon: LayoutDashboard },
   { id: 'general', label: 'Ana Sayfa & Hakkımızda', icon: Home },
-  { id: 'contact', label: 'İletişim', icon: Phone },
-  { id: 'room-types', label: 'Oda Tipleri', icon: BedDouble },
+  { id: 'contact', label: 'İletişim & WhatsApp', icon: Phone },
+  { id: 'seo', label: 'SEO & Sosyal', icon: Search },
+  { id: 'room-types', label: 'Fiyat Kartları', icon: BedDouble },
   { id: 'showcase', label: 'Oda Galerisi (11 Oda)', icon: Grid3X3 },
   { id: 'gallery', label: 'Dış Mekân', icon: Images },
   { id: 'settings', label: 'Ayarlar', icon: Settings },

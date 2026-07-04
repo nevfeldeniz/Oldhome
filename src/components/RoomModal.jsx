@@ -56,7 +56,7 @@ const featureIcons = {
 
 export default function RoomModal({ room, onClose }) {
   const { site } = useSite()
-  const { contact, social } = site
+  const { contact, social, ratePlans } = site
   const extendedGallery = getRoomGallery(room.number)
   const hasExtendedGallery = !!extendedGallery
 
@@ -97,7 +97,7 @@ export default function RoomModal({ room, onClose }) {
 
   const detailsBlock = (
     <>
-      <span className="section-eyebrow">{getRoomMaxCapacityLabel(room.type)}</span>
+      <span className="section-eyebrow">{getRoomMaxCapacityLabel(room)}</span>
       <h3 className="mt-2 font-serif text-3xl font-semibold text-wine-dark">{room.number}</h3>
 
       <div className="mt-3">
@@ -125,12 +125,12 @@ export default function RoomModal({ room, onClose }) {
 
       <div className="mt-6 flex flex-col gap-4 border-t border-wine/10 pt-6 sm:flex-row sm:items-end sm:justify-between">
         <div className="min-w-0 flex-1">
-          <RoomRateList type={room.type} />
+          <RoomRateList type={room.type} maxGuests={room.maxGuests} ratePlans={ratePlans} />
           <p className="mt-2 text-xs text-ink/50">0-6 yaş çocuk ücretsiz</p>
         </div>
-        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-cta shrink-0">
-          <WhatsAppIcon className="h-4 w-4" />
-          Bu Odayı Rezerve Et
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-cta btn-cta-reserve shrink-0">
+          <WhatsAppIcon className="h-[18px] w-[18px]" monochrome />
+          Hemen Rezervasyon Yap
         </a>
       </div>
     </>
@@ -167,13 +167,16 @@ export default function RoomModal({ room, onClose }) {
         {hasExtendedGallery ? (
           <div className="space-y-8 px-4 pb-8 pt-16 sm:px-8">
             {/* Hero — genel görünüm */}
-            <OptimizedImage
-              src={resolveAsset(extendedGallery.images[0].src)}
-              alt={extendedGallery.images[0].alt}
-              width={1200}
-              height={675}
-              className="w-full rounded-ui object-cover"
-            />
+            <div className="aspect-[16/10] overflow-hidden rounded-ui bg-parchment">
+              <OptimizedImage
+                src={resolveAsset(extendedGallery.images[0].src)}
+                alt={extendedGallery.images[0].alt}
+                width={1200}
+                height={750}
+                priority
+                className="h-full w-full object-cover object-center"
+              />
+            </div>
 
             <div>{detailsBlock}</div>
 
