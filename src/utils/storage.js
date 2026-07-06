@@ -2,8 +2,9 @@ import { defaultSiteData } from '../data/defaultSite'
 import { normalizeRatePlans } from './roomPricing'
 
 export const STORAGE_KEY = 'oldhome_site_data'
-export const ADMIN_PASSWORD_KEY = 'oldhome_admin_password'
 export const ADMIN_SESSION_KEY = 'oldhome_admin_session'
+/** @deprecated Yalnızca eski tarayıcı kayıtları için */
+export const ADMIN_PASSWORD_KEY = 'oldhome_admin_password'
 export const DEFAULT_ADMIN_PASSWORD = 'oldhome2024'
 
 const REMOVED_OUTDOOR_IMAGES = new Set(['oldhome-cyprus-hotel-exterior-02.jpg'])
@@ -117,6 +118,7 @@ export function mergeSiteData(raw) {
     roomsNote: raw.roomsNote ?? base.roomsNote,
     pricingRoomsRevision: base.pricingRoomsRevision,
     showcaseRoomsRevision: base.showcaseRoomsRevision,
+    adminPasswordHash: raw.adminPasswordHash || base.adminPasswordHash,
     rooms: mergePricingRooms(base.rooms, raw.rooms, raw.pricingRoomsRevision ?? 0),
     showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms, raw.showcaseRoomsRevision ?? 0),
     outdoorGallery: filterOutdoorGallery(Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery),

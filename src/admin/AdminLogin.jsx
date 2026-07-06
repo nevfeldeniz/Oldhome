@@ -1,19 +1,40 @@
 import { useState } from 'react'
 import { Lock, TreePine } from 'lucide-react'
-import { getAdminPassword, setAdminSession } from '../utils/storage'
+import { setAdminSession, ADMIN_PASSWORD_KEY, DEFAULT_ADMIN_PASSWORD } from '../utils/storage'
+import { hashAdminPassword, resolveAdminPasswordHash, verifyAdminPassword } from '../utils/adminAuth'
 import { AdminField, AdminInput } from './ui/AdminField'
 
 export default function AdminLogin({ onSuccess }) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (password === getAdminPassword()) {
-      setAdminSession(true)
-      onSuccess()
-    } else {
-      setError('Hatalı şifre. Tekrar deneyin.')
+    setLoading(true)
+    setError('')
+
+    try {
+      const legacyPlain = localStorage.getItem(ADMIN_PASSWORD_KEY)
+      if (legacyPlain && password === legacyPlain) {
+        setAdminSession(true)
+        onSuccess()
+        return
+      }
+
+      const storedHash = await resolveAdminPasswordHash()
+      const valid = await verifyAdminPassword(password, storedHash)
+
+      if (valid || (!storedHash && password === DEFAULT_ADMIN_PASSWORD)) {
+        setAdminSession(true)
+        onSuccess()
+      } else {
+        setError('Hatalı şifre. Tekrar deneyin.')
+      }
+    } catch {
+      setError('Giriş kontrol edilemedi. Tekrar deneyin.')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -39,14 +60,15 @@ export default function AdminLogin({ onSuccess }) {
               }}
               placeholder="Admin şifrenizi girin"
               autoFocus
+              disabled={loading}
             />
           </AdminField>
 
           {error && <p className="text-sm text-red-700">{error}</p>}
 
-          <button type="submit" className="btn-primary w-full">
+          <button type="submit" className="btn-primary w-full" disabled={loading}>
             <Lock className="h-4 w-4" />
-            Giriş Yap
+            {loading ? 'Kontrol ediliyor…' : 'Giriş Yap'}
           </button>
         </form>
       </div>

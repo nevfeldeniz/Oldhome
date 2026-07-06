@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 import { Download, Upload, RotateCcw, KeyRound, Link2, ShieldCheck } from 'lucide-react'
 import { useSite } from '../../context/SiteContext'
-import { setAdminPassword } from '../../utils/storage'
+import { hashAdminPassword } from '../../utils/adminAuth'
 import { getPublishConfig, testPublishConnection } from '../../utils/livePublish'
 import { PUBLISH_TARGET } from '../../config/publish'
 import { AdminCard, AdminField, AdminInput } from '../ui/AdminField'
 
 export default function SettingsPanel() {
-  const { exportSite, importSite, resetSite, saveAndPublish, updatePublishConfig, publishing } = useSite()
+  const { updateSite, exportSite, importSite, resetSite, saveAndPublish, updatePublishConfig, publishing } = useSite()
   const fileRef = useRef(null)
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -38,7 +38,7 @@ export default function SettingsPanel() {
     }
   }
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = async (e) => {
     e.preventDefault()
     if (newPassword.length < 6) {
       setMessage('Şifre en az 6 karakter olmalı.')
@@ -48,10 +48,14 @@ export default function SettingsPanel() {
       setMessage('Şifreler eşleşmiyor.')
       return
     }
-    setAdminPassword(newPassword)
+
+    const adminPasswordHash = await hashAdminPassword(newPassword)
+    updateSite((prev) => ({ ...prev, adminPasswordHash }))
     setNewPassword('')
     setConfirmPassword('')
-    setMessage('Admin şifresi güncellendi.')
+    setMessage(
+      'Şifre kaydedildi. Tüm cihazlarda geçerli olması için üstteki «Değişiklikleri Kaydet ve Yayınla» butonuna basın.',
+    )
   }
 
   const handlePublishConfigSave = (e) => {
@@ -156,7 +160,7 @@ export default function SettingsPanel() {
 
       <AdminCard title="Şifre Değiştir">
         <p className="text-sm text-ink/65">
-          Admin giriş şifrenizi buradan güncelleyebilirsiniz.
+          Şifre tüm admin kullanıcıları için geçerlidir. Değiştirdikten sonra mutlaka yayınlayın.
         </p>
         <form onSubmit={handlePasswordChange} className="grid gap-4 sm:grid-cols-2">
           <AdminField label="Yeni Şifre">
