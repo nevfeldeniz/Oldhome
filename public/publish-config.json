@@ -1,5 +1,6 @@
 {
-  "enabled": false,
-  "binId": "",
-  "accessKey": ""
+  "enabled": true,
+  "binId": "6a4c1052da38895dfe3761da",
+  "accessKey": "",
+  "isPublic": true
 }
