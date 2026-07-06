@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { Download, Upload, RotateCcw, KeyRound, Link2, ShieldCheck } from 'lucide-react'
 import { useSite } from '../../context/SiteContext'
-import { getAdminPassword, setAdminPassword } from '../../utils/storage'
+import { setAdminPassword } from '../../utils/storage'
 import { getPublishConfig, testPublishConnection } from '../../utils/livePublish'
 import { PUBLISH_TARGET } from '../../config/publish'
 import { AdminCard, AdminField, AdminInput } from '../ui/AdminField'
@@ -156,7 +156,7 @@ export default function SettingsPanel() {
 
       <AdminCard title="Şifre Değiştir">
         <p className="text-sm text-ink/65">
-          Mevcut şifre: <code className="text-wine">{getAdminPassword()}</code>
+          Admin giriş şifrenizi buradan güncelleyebilirsiniz.
         </p>
         <form onSubmit={handlePasswordChange} className="grid gap-4 sm:grid-cols-2">
           <AdminField label="Yeni Şifre">

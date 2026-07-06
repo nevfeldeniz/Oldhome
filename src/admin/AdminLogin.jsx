@@ -49,10 +49,6 @@ export default function AdminLogin({ onSuccess }) {
             Giriş Yap
           </button>
         </form>
-
-        <p className="mt-6 text-center text-xs text-ink/45">
-          Varsayılan şifre: <code className="text-wine">oldhome2024</code> — Ayarlar bölümünden değiştirebilirsiniz.
-        </p>
       </div>
     </div>
   )
