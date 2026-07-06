@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <script>
+(function (l) {
+  if (l.search[1] === '/') {
+    var decoded = l.search
+      .slice(1)
+      .split('&')
+      .map(function (s) { return s.replace(/~and~/g, '&'); })
+      .join('?');
+    window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+  }
+}(window.location));
+</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Old Home Guest House | Kıbrıs'ta Konforlu Konaklama</title>
+    <meta name="description" content="Old Home Guest House, Kıbrıs'ta konforlu odalar, sıcak bir yuva hissi ve kolay WhatsApp rezervasyonu sunmaktadır." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Old Home Guest House" />
+    <meta name="theme-color" content="#511f2c" />
+    <link rel="canonical" href="https://nevfeldeniz.github.io/Oldhome/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Old Home Guest House" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:url" content="https://nevfeldeniz.github.io/Oldhome/" />
+    <meta property="og:title" content="Old Home Guest House" />
+    <meta property="og:description" content="Kıbrıs'ta konforlu konaklama ve sıcak bir yuva hissi." />
+    <meta property="og:image" content="https://nevfeldeniz.github.io/Oldhome/oldhome-cyprus-hotel-exterior.jpg" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content="Old Home Guest House boutique hotel exterior in Cyprus" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Old Home Guest House" />
+    <meta name="twitter:description" content="Kıbrıs'ta konforlu konaklama ve sıcak bir yuva hissi." />
+    <meta name="twitter:image" content="https://nevfeldeniz.github.io/Oldhome/oldhome-cyprus-hotel-exterior.jpg" />
+    <meta name="twitter:image:alt" content="Old Home Guest House boutique hotel exterior in Cyprus" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/Oldhome/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Oldhome/apple-touch-icon.svg" />
+
+    <!-- Fonts: doğrudan yükle (Instagram uygulaması içi tarayıcıda daha güvenilir) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    />
+    <script type="module" crossorigin src="/Oldhome/assets/index-CwQgRr3x.js"></script>
+    <link rel="stylesheet" crossorigin href="/Oldhome/assets/index-DRO9Nctu.css">
+  </head>
+  <body>
+    <div id="root">
+      <noscript>
+        <p style="padding:2rem;font-family:system-ui,sans-serif;text-align:center">
+          Old Home Guest House sitesini görüntülemek için JavaScript gerekir.
+        </p>
+      </noscript>
+    </div>
+  </body>
+</html>

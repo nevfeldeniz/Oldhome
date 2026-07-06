@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, follow" />
+    <title>Sayfa Bulunamadı | Old Home Guest House</title>
+    <meta name="description" content="Aradığınız sayfa bulunamadı. Old Home Guest House ana sayfasına dönün." />
+    <link rel="canonical" href="https://nevfeldeniz.github.io/Oldhome/" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: #f5efe3;
+        color: #33272b;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      header, footer {
+        padding: 1rem 1.5rem;
+        background: #faf6ec;
+        border-bottom: 1px solid rgba(110, 43, 61, 0.08);
+      }
+      footer { border-top: 1px solid rgba(110, 43, 61, 0.08); border-bottom: none; text-align: center; font-size: 0.875rem; color: rgba(51, 39, 43, 0.55); margin-top: auto; }
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 1.5rem;
+        text-align: center;
+      }
+      .eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: #6e2b3d; font-weight: 600; }
+      h1 { font-family: Georgia, serif; font-size: clamp(1.75rem, 4vw, 2.25rem); color: #511f2c; margin-top: 1rem; }
+      p { margin-top: 1rem; line-height: 1.65; color: rgba(51, 39, 43, 0.7); max-width: 32rem; }
+      .actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+      a.btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .btn-primary { background: #511f2c; color: #fff; }
+      .btn-primary:hover { background: #6e2b3d; }
+      .btn-outline { border: 1px solid rgba(110, 43, 61, 0.3); color: #511f2c; background: rgba(250, 246, 236, 0.6); }
+    </style>
+    <script>
+      var segmentCount = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+    <header><a href="/Oldhome/" style="color:#511f2c;font-weight:600;text-decoration:none;">Old Home Guest House</a></header>
+    <main>
+      <article>
+        <p class="eyebrow">404</p>
+        <h1>Sayfa bulunamadı</h1>
+        <p>Aradığınız sayfa taşınmış veya silinmiş olabilir. Ana sayfaya dönerek devam edebilirsiniz.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/Oldhome/">Ana Sayfaya Dön</a>
+        </div>
+      </article>
+    </main>
+    <footer>© 2026 Old Home Guest House</footer>
+  </body>
+</html>
