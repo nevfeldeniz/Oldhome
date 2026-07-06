@@ -1,119 +1,153 @@
-/**
- * Cloudflare Worker — admin panelinden gelen site verisini GitHub'a yazar.
- * Tarayıcı CORS sınırını aşmak için bir kez deploy edilir.
- */
-
-function corsHeaders() {
-  return {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  }
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 }
 
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: {
-      ...corsHeaders(),
-      'Content-Type': 'application/json',
-    },
+    headers: { ...CORS, 'Content-Type': 'application/json' },
   })
 }
 
-function utf8ToBase64(str) {
-  const bytes = new TextEncoder().encode(str)
+function utf8ToBase64(text) {
+  const bytes = new TextEncoder().encode(text)
   let binary = ''
-  for (const byte of bytes) binary += String.fromCharCode(byte)
+  for (let i = 0; i < bytes.length; i += 1) binary += String.fromCharCode(bytes[i])
   return btoa(binary)
 }
 
-async function updateGithubFile(env, jsonString) {
-  const owner = env.GITHUB_OWNER
-  const repo = env.GITHUB_REPO
-  const branch = env.GITHUB_BRANCH || 'main'
-  const path = env.FILE_PATH || 'public/site-data.json'
-  const token = env.GITHUB_TOKEN
-
-  if (!owner || !repo || !token) {
-    throw new Error('Worker ortam değişkenleri eksik (GITHUB_OWNER, GITHUB_REPO, GITHUB_TOKEN).')
-  }
-
-  const headers = {
+function githubHeaders(token) {
+  return {
     Authorization: `Bearer ${token}`,
     Accept: 'application/vnd.github+json',
+    'User-Agent': 'oldhome-publish-worker',
     'X-GitHub-Api-Version': '2022-11-28',
   }
+}
 
-  const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`
-  const getRes = await fetch(getUrl, { headers })
-  let sha
-  if (getRes.ok) {
-    sha = (await getRes.json()).sha
-  } else if (getRes.status !== 404) {
-    throw new Error(`GitHub okuma hatası: ${getRes.status}`)
+async function getGitHubFileSha(env) {
+  const owner = env.GITHUB_OWNER
+  const repo = env.GITHUB_REPO
+  const path = env.GITHUB_FILE_PATH || 'public/site-data.json'
+  const branch = env.GITHUB_BRANCH || 'main'
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${encodeURIComponent(branch)}`
+
+  const res = await fetch(url, { headers: githubHeaders(env.GITHUB_TOKEN) })
+  if (res.status === 404) return null
+  if (!res.ok) {
+    const text = await res.text()
+    throw new Error(`GitHub dosya okunamadı (${res.status}): ${text}`)
   }
 
-  const putRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+  const meta = await res.json()
+  return meta.sha
+}
+
+async function commitToGitHub(env, jsonText) {
+  const owner = env.GITHUB_OWNER
+  const repo = env.GITHUB_REPO
+  const path = env.GITHUB_FILE_PATH || 'public/site-data.json'
+  const branch = env.GITHUB_BRANCH || 'main'
+  const sha = await getGitHubFileSha(env)
+
+  const body = {
+    message: `Admin: site içeriği güncellendi (${new Date().toISOString()})`,
+    content: utf8ToBase64(jsonText),
+    branch,
+  }
+  if (sha) body.sha = sha
+
+  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
     method: 'PUT',
     headers: {
-      ...headers,
+      ...githubHeaders(env.GITHUB_TOKEN),
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      message: 'Admin: site içeriği güncellendi',
-      content: utf8ToBase64(jsonString),
-      branch,
-      ...(sha ? { sha } : {}),
-    }),
+    body: JSON.stringify(body),
   })
 
-  if (!putRes.ok) {
-    const details = await putRes.text()
-    throw new Error(`GitHub yazma hatası: ${putRes.status} ${details}`)
+  if (!res.ok) {
+    const text = await res.text()
+    throw new Error(`GitHub kayıt başarısız (${res.status}): ${text}`)
   }
+}
+
+async function fetchGitHubSiteData(env) {
+  const owner = env.GITHUB_OWNER
+  const repo = env.GITHUB_REPO
+  const path = env.GITHUB_FILE_PATH || 'public/site-data.json'
+  const branch = env.GITHUB_BRANCH || 'main'
+  const url = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`
+
+  const res = await fetch(url, { headers: { 'User-Agent': 'oldhome-publish-worker' } })
+  if (!res.ok) return null
+  return res.text()
+}
+
+async function readSiteData(env) {
+  const cached = await env.SITE_DATA.get('current')
+  if (cached) return cached
+  return fetchGitHubSiteData(env)
 }
 
 export default {
   async fetch(request, env) {
     if (request.method === 'OPTIONS') {
-      return new Response(null, { headers: corsHeaders() })
+      return new Response(null, { headers: CORS })
     }
 
     const url = new URL(request.url)
-    const auth = request.headers.get('Authorization') || ''
-    const expected = `Bearer ${env.PUBLISH_SECRET || ''}`
 
-    if (url.pathname.endsWith('/health')) {
-      if (auth !== expected) return jsonResponse({ error: 'Yetkisiz' }, 401)
-      return jsonResponse({ ok: true, repo: `${env.GITHUB_OWNER}/${env.GITHUB_REPO}` })
+    if (url.pathname === '/site-data.json' && request.method === 'GET') {
+      const data = await readSiteData(env)
+      if (!data) {
+        return jsonResponse({ error: 'Site verisi bulunamadı.' }, 404)
+      }
+      return new Response(data, {
+        headers: {
+          ...CORS,
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store',
+        },
+      })
     }
 
-    if (request.method !== 'POST') {
-      return jsonResponse({ error: 'Bulunamadı' }, 404)
+    if (url.pathname === '/publish' && request.method === 'POST') {
+      const auth = request.headers.get('Authorization') || ''
+      const expected = `Bearer ${env.PUBLISH_SECRET || ''}`
+
+      if (!env.PUBLISH_SECRET || auth !== expected) {
+        return jsonResponse({ error: 'Yetkisiz istek.' }, 401)
+      }
+
+      if (!env.GITHUB_TOKEN) {
+        return jsonResponse({ error: 'Worker: GITHUB_TOKEN tanımlı değil.' }, 500)
+      }
+
+      let jsonText
+      try {
+        const parsed = await request.json()
+        jsonText = JSON.stringify(parsed, null, 2)
+        JSON.parse(jsonText)
+      } catch {
+        return jsonResponse({ error: 'Geçersiz JSON verisi.' }, 400)
+      }
+
+      try {
+        await env.SITE_DATA.put('current', jsonText)
+        await commitToGitHub(env, jsonText)
+        return jsonResponse({ ok: true, message: 'Canlı siteye kaydedildi.' })
+      } catch (err) {
+        return jsonResponse({ error: err.message || 'Yayınlama hatası.' }, 500)
+      }
     }
 
-    if (auth !== expected) {
-      return jsonResponse({ error: 'Yetkisiz' }, 401)
-    }
-
-    let body
-    try {
-      body = await request.json()
-    } catch {
-      return jsonResponse({ error: 'Geçersiz JSON gövdesi' }, 400)
-    }
-
-    if (!body?.data || typeof body.data !== 'object') {
-      return jsonResponse({ error: 'data alanı gerekli' }, 400)
-    }
-
-    try {
-      const jsonString = JSON.stringify(body.data, null, 2)
-      await updateGithubFile(env, jsonString)
+    if (url.pathname === '/health' && request.method === 'GET') {
       return jsonResponse({ ok: true })
-    } catch (err) {
-      return jsonResponse({ error: err.message || 'Yayın hatası' }, 502)
     }
+
+    return jsonResponse({ error: 'Bulunamadı.' }, 404)
   },
 }

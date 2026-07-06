@@ -1,40 +1,19 @@
 import { useState } from 'react'
 import { Lock, TreePine } from 'lucide-react'
-import { setAdminSession, ADMIN_PASSWORD_KEY, DEFAULT_ADMIN_PASSWORD } from '../utils/storage'
-import { hashAdminPassword, resolveAdminPasswordHash, verifyAdminPassword } from '../utils/adminAuth'
+import { getAdminPassword, setAdminSession } from '../utils/storage'
 import { AdminField, AdminInput } from './ui/AdminField'
 
 export default function AdminLogin({ onSuccess }) {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setLoading(true)
-    setError('')
-
-    try {
-      const legacyPlain = localStorage.getItem(ADMIN_PASSWORD_KEY)
-      if (legacyPlain && password === legacyPlain) {
-        setAdminSession(true)
-        onSuccess()
-        return
-      }
-
-      const storedHash = await resolveAdminPasswordHash()
-      const valid = await verifyAdminPassword(password, storedHash)
-
-      if (valid || (!storedHash && password === DEFAULT_ADMIN_PASSWORD)) {
-        setAdminSession(true)
-        onSuccess()
-      } else {
-        setError('Hatalı şifre. Tekrar deneyin.')
-      }
-    } catch {
-      setError('Giriş kontrol edilemedi. Tekrar deneyin.')
-    } finally {
-      setLoading(false)
+    if (password === getAdminPassword()) {
+      setAdminSession(true)
+      onSuccess()
+    } else {
+      setError('Hatalı şifre. Tekrar deneyin.')
     }
   }
 
@@ -60,17 +39,20 @@ export default function AdminLogin({ onSuccess }) {
               }}
               placeholder="Admin şifrenizi girin"
               autoFocus
-              disabled={loading}
             />
           </AdminField>
 
           {error && <p className="text-sm text-red-700">{error}</p>}
 
-          <button type="submit" className="btn-primary w-full" disabled={loading}>
+          <button type="submit" className="btn-primary w-full">
             <Lock className="h-4 w-4" />
-            {loading ? 'Kontrol ediliyor…' : 'Giriş Yap'}
+            Giriş Yap
           </button>
         </form>
+
+        <p className="mt-6 text-center text-xs text-ink/45">
+          Varsayılan şifre: <code className="text-wine">oldhome2024</code> — Ayarlar bölümünden değiştirebilirsiniz.
+        </p>
       </div>
     </div>
   )

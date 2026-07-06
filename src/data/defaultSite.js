@@ -9,7 +9,6 @@ const withDefaultAvailability = (rooms) =>
 export const defaultSiteData = {
   pricingRoomsRevision: 6,
   showcaseRoomsRevision: 2,
-  adminPasswordHash: '3bc54e00a941c7f985826ec1c2f7a67a6329173e129a15b33de5c296eca652d5',
 
   seo: {
     title: "Old Home Guest House | Kıbrıs'ta Konforlu Konaklama",

@@ -61,7 +61,7 @@ export default function ShowcasePanel() {
 
   return (
     <div className="space-y-6">
-      <AdminSaveNote liveHint />
+      <AdminSaveNote />
 
       {rawData.showcaseRooms.map((room) => {
         const isOpen = openId === room.id

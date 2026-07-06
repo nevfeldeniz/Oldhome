@@ -1,17 +1,9 @@
 /** Canlı sitedeki site-data.json ile admin (localStorage) verisini karşılaştırır. */
 
-import { getLiveSiteDataUrl } from '../config/publish'
+import { fetchLiveSiteData } from './fetchSiteData'
 
 export async function fetchPublishedSiteSnapshot() {
-  if (typeof fetch === 'undefined') return null
-
-  try {
-    const res = await fetch(getLiveSiteDataUrl(true), { cache: 'no-store' })
-    if (!res.ok) return null
-    return await res.json()
-  } catch {
-    return null
-  }
+  return fetchLiveSiteData()
 }
 
 function roomAvailabilityKey(room = {}) {
