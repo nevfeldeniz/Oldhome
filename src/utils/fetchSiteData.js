@@ -4,7 +4,7 @@ import { mergeSiteData } from './storage'
 
 export async function fetchLiveSiteData() {
   const publicCfg = await getPublicPublishConfig()
-  if (publicCfg?.binId && publicCfg?.accessKey) {
+  if (publicCfg?.binId) {
     try {
       const record = await fetchJsonBinRecord(publicCfg.binId, publicCfg.accessKey)
       if (record) return mergeSiteData(record)

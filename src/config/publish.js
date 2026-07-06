@@ -17,7 +17,7 @@ export async function getPublicPublishConfig() {
     const res = await fetch(`${import.meta.env.BASE_URL}publish-config.json`, { cache: 'no-store' })
     if (res.ok) {
       const data = await res.json()
-      if (data.enabled && data.binId && data.accessKey) {
+      if (data.enabled && data.binId) {
         cachedPublicConfig = data
         return data
       }

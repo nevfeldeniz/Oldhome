@@ -20,48 +20,41 @@ export function clearStoredPublishConfig() {
   localStorage.removeItem(PUBLISH_CONFIG_KEY)
 }
 
-async function parseJsonBinResponse(res) {
+async function parseJsonBinResponse(res, step = '') {
   const payload = await res.json().catch(() => ({}))
   if (!res.ok) {
-    throw new Error(payload.message || payload.error || `JSONBin hatası (HTTP ${res.status})`)
+    const detail = payload.message || payload.error || `HTTP ${res.status}`
+    throw new Error(step ? `${step}: ${detail}` : detail)
   }
   return payload
 }
 
+/** Yeni public bin oluşturur (okuma anahtarı gerekmez — bin herkese açık). */
 export async function createJsonBinWithData(accountMasterKey, data) {
+  const trimmedKey = accountMasterKey.trim()
+  if (!trimmedKey) throw new Error('JSONBin X-Master-Key boş olamaz.')
+
   const res = await fetch(`${JSONBIN_API}/b`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-Master-Key': accountMasterKey,
+      'X-Master-Key': trimmedKey,
       'X-Bin-Private': 'false',
+      'X-Bin-Name': 'oldhome-site-data',
     },
     body: JSON.stringify(data),
   })
 
-  const payload = await parseJsonBinResponse(res)
+  const payload = await parseJsonBinResponse(res, 'Bin oluşturulamadı')
   const binId = payload.metadata?.id
-  if (!binId) throw new Error('JSONBin oluşturulamadı.')
+  if (!binId) throw new Error('Bin oluşturuldu ama ID alınamadı.')
 
-  const keyRes = await fetch(`${JSONBIN_API}/b/${binId}/access-keys`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Master-Key': accountMasterKey,
-    },
-    body: JSON.stringify({ name: 'oldhome-public-read' }),
-  })
-
-  const keyPayload = await parseJsonBinResponse(keyRes)
-  const accessKey = keyPayload.key || keyPayload.accessKey
-
-  if (!accessKey) {
-    throw new Error(
-      'Okuma anahtarı oluşturulamadı. JSONBin panelinden bu bin için «Access Key» oluşturup Ayarlar\'a manuel girin.',
-    )
+  return {
+    binId,
+    masterKey: trimmedKey,
+    accessKey: '',
+    isPublic: true,
   }
-
-  return { binId, masterKey: accountMasterKey, accessKey }
 }
 
 export async function updateJsonBin(binId, masterKey, data) {
@@ -74,22 +67,25 @@ export async function updateJsonBin(binId, masterKey, data) {
     body: JSON.stringify(data),
   })
 
-  await parseJsonBinResponse(res)
+  await parseJsonBinResponse(res, 'Yayınlama başarısız')
   return { ok: true }
 }
 
-export async function fetchJsonBinRecord(binId, accessKey) {
+export async function fetchJsonBinRecord(binId, accessKey = '') {
+  const headers = {}
+  if (accessKey) headers['X-Access-Key'] = accessKey
+
   const res = await fetch(`${JSONBIN_API}/b/${binId}/latest`, {
-    headers: { 'X-Access-Key': accessKey },
+    headers,
     cache: 'no-store',
   })
 
-  const payload = await parseJsonBinResponse(res)
+  const payload = await parseJsonBinResponse(res, 'Site verisi okunamadı')
   return payload.record
 }
 
-export function downloadPublishConfigFile(binId, accessKey) {
-  const content = JSON.stringify({ enabled: true, binId, accessKey }, null, 2)
+export function downloadPublishConfigFile(binId, accessKey = '') {
+  const content = JSON.stringify({ enabled: true, binId, accessKey, isPublic: !accessKey }, null, 2)
   const blob = new Blob([content], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
@@ -97,4 +93,28 @@ export function downloadPublishConfigFile(binId, accessKey) {
   a.download = 'publish-config.json'
   a.click()
   URL.revokeObjectURL(url)
+}
+
+/** Kurulum öncesi anahtarın geçerli olup olmadığını dener. */
+export async function validateJsonBinMasterKey(accountMasterKey) {
+  const res = await fetch(`${JSONBIN_API}/b`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Master-Key': accountMasterKey.trim(),
+      'X-Bin-Private': 'true',
+      'X-Bin-Name': 'oldhome-test',
+    },
+    body: JSON.stringify({ test: true }),
+  })
+
+  const payload = await parseJsonBinResponse(res, 'Anahtar geçersiz')
+  const binId = payload.metadata?.id
+  if (binId) {
+    await fetch(`${JSONBIN_API}/b/${binId}`, {
+      method: 'DELETE',
+      headers: { 'X-Master-Key': accountMasterKey.trim() },
+    }).catch(() => {})
+  }
+  return true
 }

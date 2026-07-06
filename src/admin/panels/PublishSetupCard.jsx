@@ -40,7 +40,11 @@ export default function PublishSetupCard() {
       )
     } catch (err) {
       setStatus('error')
-      setMessage(err.message || 'Kurulum başarısız.')
+      const hint =
+        err.message?.includes('401') || err.message?.toLowerCase().includes('invalid')
+          ? ' X-Master-Key yanlış olabilir — jsonbin.io → API Keys sayfasından tekrar kopyalayın (Access Key değil).'
+          : ''
+      setMessage((err.message || 'Kurulum başarısız.') + hint)
     }
   }
 
@@ -89,11 +93,15 @@ export default function PublishSetupCard() {
           sitesine ücretsiz kayıt olun.
         </li>
         <li>
-          Dashboard → <strong>API Keys</strong> → <strong>X-Master-Key</strong> değerini kopyalayın.
+          Dashboard → <strong>API Keys</strong> → <strong>X-Master-Key</strong> değerini kopyalayın
+          (Access Key değil).
         </li>
         <li>Aşağıya yapıştırıp <strong>Otomatik Kur</strong>&apos;a basın.</li>
-        <li>İndirilen <code className="text-wine">publish-config.json</code> dosyasını projenin{' '}
-          <code className="text-wine">public/</code> klasörüne kaydedin ve GitHub&apos;a yükleyin (bir kez).</li>
+        <li>
+          İndirilen <code className="text-wine">publish-config.json</code> dosyasını{' '}
+          <code className="text-wine">C:\Users\Server\OneDrive\Desktop\oldhome\public\</code> klasörüne
+          kaydedin ve GitHub Desktop ile yükleyin (bir kez).
+        </li>
       </ol>
 
       <form onSubmit={handleSetup} className="mt-4 space-y-4">
