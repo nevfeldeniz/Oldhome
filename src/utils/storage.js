@@ -5,6 +5,7 @@ export const STORAGE_KEY = 'oldhome_site_data'
 export const ADMIN_PASSWORD_KEY = 'oldhome_admin_password'
 export const ADMIN_SESSION_KEY = 'oldhome_admin_session'
 export const DEFAULT_ADMIN_PASSWORD = 'oldhome2024'
+export const SITE_SYNC_CHANNEL = 'oldhome_site_sync'
 
 const REMOVED_OUTDOOR_IMAGES = new Set(['oldhome-cyprus-hotel-exterior-02.jpg'])
 
@@ -30,56 +31,68 @@ function usesStaleRoomImages(images = []) {
   return images.some((img) => STALE_ROOM_IMAGE_MARKERS.some((marker) => String(img).includes(marker)))
 }
 
+function normalizeOldPrice(value) {
+  if (value === undefined || value === null) return undefined
+  const trimmed = String(value).trim()
+  return trimmed ? trimmed : undefined
+}
+
 function mergePricingRooms(baseRooms, savedRooms, savedRevision = 0) {
   const baseRevision = defaultSiteData.pricingRoomsRevision ?? 0
   const needsImageRefresh = savedRevision < baseRevision
 
-  if (!Array.isArray(savedRooms)) return baseRooms
-  const savedByName = new Map(savedRooms.map((room) => [room.name, room]))
-  return baseRooms.map((room) => {
-    const saved = savedByName.get(room.name)
-    if (!saved) return room
+  if (!Array.isArray(savedRooms) || savedRooms.length === 0) return baseRooms
+
+  const baseById = new Map(baseRooms.map((room) => [room.id, room]))
+  const baseByName = new Map(baseRooms.map((room) => [room.name, room]))
+
+  return savedRooms.map((saved, index) => {
+    const base = baseById.get(saved.id) || baseByName.get(saved.name) || baseRooms[index] || {}
     const stale = STALE_PRICING_ROOM_IMAGES.has(saved.image) || needsImageRefresh
     return {
+      ...base,
       ...saved,
-      ...room,
-      price: saved.price ?? room.price,
-      oldPrice: saved.oldPrice ?? room.oldPrice,
-      image: stale ? room.image : saved.image || room.image,
-      imageAlt: stale ? room.imageAlt : saved.imageAlt || room.imageAlt,
-      features: stale || !saved.features?.length ? room.features : saved.features,
-      featured: saved.featured ?? room.featured,
+      id: saved.id || base.id || `pricing-${index + 1}`,
+      name: saved.name || base.name || `Kart ${index + 1}`,
+      price: saved.price ?? base.price ?? '',
+      oldPrice: normalizeOldPrice(saved.oldPrice !== undefined ? saved.oldPrice : base.oldPrice),
+      image: stale ? base.image : saved.image || base.image,
+      imageAlt: stale ? base.imageAlt : saved.imageAlt || base.imageAlt,
+      features: saved.features?.length ? saved.features : base.features || [],
+      featured: saved.featured ?? base.featured ?? false,
+      capacity: saved.capacity ?? base.capacity ?? '',
     }
   })
 }
 
-function mergeShowcaseRooms(baseRooms, savedRooms, savedRevision = 0) {
-  const baseRevision = defaultSiteData.showcaseRoomsRevision ?? 0
-  const needsContentRefresh = savedRevision < baseRevision
+/** Kaydedilmiş oda listesi kaynak doğrudur — ekle / sil / gizle / sıra desteklenir. */
+function mergeShowcaseRooms(baseRooms, savedRooms) {
+  if (!Array.isArray(savedRooms) || savedRooms.length === 0) return baseRooms
 
-  if (!Array.isArray(savedRooms)) return baseRooms
-  const savedById = new Map(savedRooms.map((room) => [room.id, room]))
-  return baseRooms.map((room) => {
-    const saved = savedById.get(room.id)
-    if (!saved) return room
-    const stale = usesStaleRoomImages(saved.images)
-    const refresh = needsContentRefresh || stale
-    return {
-      ...saved,
-      ...room,
-      number: refresh ? room.number : saved.number || room.number,
-      maxGuests: refresh ? room.maxGuests : saved.maxGuests ?? room.maxGuests,
-      description: refresh ? room.description : saved.description || room.description,
-      type: refresh ? room.type : saved.type || room.type,
-      features: refresh || !saved.features?.length ? room.features : saved.features,
-      images: stale ? room.images : saved.images?.length ? saved.images : room.images,
-      availability: saved.availability ?? room.availability ?? 'available',
-      occupiedUntil:
-        (saved.availability ?? room.availability ?? 'available') === 'occupied_until'
-          ? saved.occupiedUntil || room.occupiedUntil || ''
-          : undefined,
-    }
-  })
+  const baseById = new Map(baseRooms.map((room) => [room.id, room]))
+
+  return savedRooms
+    .map((saved, index) => {
+      const base = baseById.get(saved.id) || {}
+      const stale = usesStaleRoomImages(saved.images)
+      const availability = saved.availability ?? base.availability ?? 'available'
+      return {
+        ...base,
+        ...saved,
+        id: saved.id ?? base.id ?? `room-${index + 1}`,
+        number: saved.number || base.number || `Oda ${index + 1}`,
+        type: saved.type || base.type || 'Çift',
+        maxGuests: saved.maxGuests ?? base.maxGuests ?? (saved.type === '3 Kişilik' ? 3 : 2),
+        description: saved.description ?? base.description ?? '',
+        features: Array.isArray(saved.features) && saved.features.length ? saved.features : base.features || [],
+        images: stale && base.images?.length ? base.images : saved.images?.length ? saved.images : base.images || [],
+        availability,
+        occupiedUntil: availability === 'occupied_until' ? saved.occupiedUntil || base.occupiedUntil || '' : undefined,
+        hidden: Boolean(saved.hidden),
+        sortOrder: saved.sortOrder ?? index,
+      }
+    })
+    .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
 }
 
 function filterOutdoorGallery(items) {
@@ -88,13 +101,11 @@ function filterOutdoorGallery(items) {
 
 export function resolveAsset(path) {
   if (!path) return ''
-  if (path.startsWith('http') || path.startsWith('data:') || path.startsWith('/')) {
-    return path.startsWith('/') ? `${import.meta.env.BASE_URL}${path.slice(1)}` : path
-  }
+  if (path.startsWith('http') || path.startsWith('data:') || path.startsWith('blob:')) return path
+  if (path.startsWith('/')) return `${import.meta.env.BASE_URL}${path.slice(1)}`
   return `${import.meta.env.BASE_URL}${path}`
 }
 
-/** Eksik veya eski localStorage kayıtlarını varsayılanlarla birleştirir. */
 function cloneData(data) {
   return JSON.parse(JSON.stringify(data))
 }
@@ -118,7 +129,7 @@ export function mergeSiteData(raw) {
     pricingRoomsRevision: base.pricingRoomsRevision,
     showcaseRoomsRevision: base.showcaseRoomsRevision,
     rooms: mergePricingRooms(base.rooms, raw.rooms, raw.pricingRoomsRevision ?? 0),
-    showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms, raw.showcaseRoomsRevision ?? 0),
+    showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms),
     outdoorGallery: filterOutdoorGallery(Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery),
     gallery: filterOutdoorGallery(Array.isArray(raw.gallery) ? raw.gallery : base.gallery),
   }
@@ -141,11 +152,14 @@ export function hydrateSiteData(raw) {
     rooms: (data.rooms || []).map((room) => ({
       ...room,
       image: resolveAsset(room?.image),
+      oldPrice: normalizeOldPrice(room?.oldPrice),
     })),
-    showcaseRooms: (data.showcaseRooms || []).map((room) => ({
-      ...room,
-      images: (room?.images || []).map(resolveAsset),
-    })),
+    showcaseRooms: (data.showcaseRooms || [])
+      .filter((room) => !room.hidden)
+      .map((room) => ({
+        ...room,
+        images: (room?.images || []).map(resolveAsset),
+      })),
     outdoorGallery: (data.outdoorGallery || []).map((item) => ({
       ...item,
       src: resolveAsset(item?.src),
@@ -160,6 +174,7 @@ export function hydrateSiteData(raw) {
 export function dehydrateSiteData(hydrated) {
   const strip = (url) => {
     if (!url) return ''
+    if (url.startsWith('data:') || url.startsWith('http') || url.startsWith('blob:')) return url
     const base = import.meta.env.BASE_URL
     if (url.startsWith(base)) return url.slice(base.length)
     return url
@@ -170,6 +185,7 @@ export function dehydrateSiteData(hydrated) {
     hero: {
       ...hydrated.hero,
       image: strip(hydrated.hero?.image),
+      imageMobile: strip(hydrated.hero?.imageMobile),
     },
     about: {
       ...hydrated.about,
@@ -178,6 +194,7 @@ export function dehydrateSiteData(hydrated) {
     rooms: (hydrated.rooms || []).map((room) => ({
       ...room,
       image: strip(room.image),
+      oldPrice: normalizeOldPrice(room.oldPrice),
     })),
     showcaseRooms: (hydrated.showcaseRooms || []).map((room) => ({
       ...room,
@@ -199,7 +216,7 @@ export function loadRawSiteData() {
     const saved = localStorage.getItem(STORAGE_KEY)
     if (saved) return mergeSiteData(JSON.parse(saved))
   } catch {
-    // Bozuk kayıt varsa varsayılana dön
+    /* bozuk kayıt */
   }
   return cloneData(defaultSiteData)
 }
@@ -240,7 +257,6 @@ export function exportSiteJson(data) {
   URL.revokeObjectURL(url)
 }
 
-/** Canlı site için public/site-data.json dosyasını indirir. */
 export function exportPublishedSiteJson(data) {
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
@@ -249,4 +265,32 @@ export function exportPublishedSiteJson(data) {
   a.download = 'site-data.json'
   a.click()
   URL.revokeObjectURL(url)
+}
+
+export function createEmptyShowcaseRoom(existing = []) {
+  const nextIndex = existing.length + 1
+  const maxId = existing.reduce((max, room) => Math.max(max, Number(room.id) || 0), 0)
+  return {
+    id: maxId + 1,
+    number: `Oda ${nextIndex}`,
+    type: 'Çift',
+    maxGuests: 2,
+    description: '',
+    features: ['Ücretsiz Wi-Fi', 'Klima', 'Smart TV', 'Özel Banyo'],
+    images: [],
+    availability: 'available',
+    hidden: false,
+    sortOrder: existing.length,
+  }
+}
+
+export function broadcastSiteSync() {
+  try {
+    if (typeof BroadcastChannel === 'undefined') return
+    const channel = new BroadcastChannel(SITE_SYNC_CHANNEL)
+    channel.postMessage({ type: 'site-updated', at: Date.now() })
+    channel.close()
+  } catch {
+    /* desteklenmiyor */
+  }
 }

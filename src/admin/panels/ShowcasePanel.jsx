@@ -1,8 +1,18 @@
 import { useState } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import {
+  ChevronDown,
+  ChevronUp,
+  Eye,
+  EyeOff,
+  Plus,
+  Trash2,
+  ArrowUp,
+  ArrowDown,
+} from 'lucide-react'
 import { useSite } from '../../context/SiteContext'
 import { getRoomMaxCapacityLabel } from '../../utils/roomCapacity'
 import { ROOM_AVAILABILITY, ROOM_AVAILABILITY_OPTIONS } from '../../utils/roomAvailability'
+import { createEmptyShowcaseRoom } from '../../utils/storage'
 import RoomAvailabilityBadge from '../../components/RoomAvailabilityBadge'
 import FeatureChecklist from '../ui/FeatureChecklist'
 import SortableImageList from '../ui/SortableImageList'
@@ -10,7 +20,14 @@ import { AdminCard, AdminField, AdminInput, AdminTextarea, AdminSelect, AdminSav
 
 export default function ShowcasePanel() {
   const { rawData, updateSite } = useSite()
-  const [openId, setOpenId] = useState(rawData.showcaseRooms[0]?.id)
+  const rooms = rawData.showcaseRooms || []
+  const [openId, setOpenId] = useState(rooms[0]?.id)
+
+  const setRooms = (nextRooms) =>
+    updateSite((prev) => ({
+      ...prev,
+      showcaseRooms: nextRooms.map((room, index) => ({ ...room, sortOrder: index })),
+    }))
 
   const updateRoom = (id, key, value) =>
     updateSite((prev) => ({
@@ -59,25 +76,104 @@ export default function ShowcasePanel() {
       ),
     }))
 
+  const addRoom = () => {
+    const room = createEmptyShowcaseRoom(rooms)
+    setRooms([...rooms, room])
+    setOpenId(room.id)
+  }
+
+  const deleteRoom = (id) => {
+    const room = rooms.find((item) => item.id === id)
+    if (!window.confirm(`“${room?.number || 'Oda'}” silinsin mi? Bu işlem geri alınabilir (Üstteki Geri Al).`)) return
+    const next = rooms.filter((item) => item.id !== id)
+    setRooms(next)
+    if (openId === id) setOpenId(next[0]?.id ?? null)
+  }
+
+  const toggleHidden = (id) =>
+    updateSite((prev) => ({
+      ...prev,
+      showcaseRooms: prev.showcaseRooms.map((room) =>
+        room.id === id ? { ...room, hidden: !room.hidden } : room,
+      ),
+    }))
+
+  const moveRoom = (id, direction) => {
+    const index = rooms.findIndex((room) => room.id === id)
+    if (index < 0) return
+    const target = index + direction
+    if (target < 0 || target >= rooms.length) return
+    const next = [...rooms]
+    const [moved] = next.splice(index, 1)
+    next.splice(target, 0, moved)
+    setRooms(next)
+  }
+
   return (
     <div className="space-y-6">
       <AdminSaveNote />
 
-      {rawData.showcaseRooms.map((room) => {
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-ink/60">{rooms.length} oda — gizlenenler sitede görünmez</p>
+        <button type="button" onClick={addRoom} className="btn-primary !px-4 !py-2 text-sm">
+          <Plus className="h-4 w-4" />
+          Yeni Oda Ekle
+        </button>
+      </div>
+
+      {rooms.map((room, index) => {
         const isOpen = openId === room.id
+        const folder = `rooms/${String(room.id).padStart(3, '0')}`
         return (
           <AdminCard
             key={room.id}
             title={room.number}
             action={
-              <button
-                type="button"
-                onClick={() => setOpenId(isOpen ? null : room.id)}
-                className="inline-flex items-center gap-1 text-sm text-wine"
-              >
-                {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                {isOpen ? 'Kapat' : 'Düzenle'}
-              </button>
+              <div className="flex flex-wrap items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => moveRoom(room.id, -1)}
+                  disabled={index === 0}
+                  className="rounded-lg p-1.5 text-ink/45 hover:bg-wine/5 hover:text-wine disabled:opacity-30"
+                  aria-label="Yukarı taşı"
+                >
+                  <ArrowUp className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveRoom(room.id, 1)}
+                  disabled={index === rooms.length - 1}
+                  className="rounded-lg p-1.5 text-ink/45 hover:bg-wine/5 hover:text-wine disabled:opacity-30"
+                  aria-label="Aşağı taşı"
+                >
+                  <ArrowDown className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => toggleHidden(room.id)}
+                  className="rounded-lg p-1.5 text-ink/45 hover:bg-wine/5 hover:text-wine"
+                  aria-label={room.hidden ? 'Aktif et' : 'Gizle'}
+                  title={room.hidden ? 'Sitede göster' : 'Siteden gizle'}
+                >
+                  {room.hidden ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => deleteRoom(room.id)}
+                  className="rounded-lg p-1.5 text-ink/45 hover:bg-red-50 hover:text-red-700"
+                  aria-label="Odayı sil"
+                >
+                  <Trash2 className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setOpenId(isOpen ? null : room.id)}
+                  className="inline-flex items-center gap-1 text-sm text-wine"
+                >
+                  {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  {isOpen ? 'Kapat' : 'Düzenle'}
+                </button>
+              </div>
             }
           >
             <div className="flex flex-wrap items-center gap-3 text-sm text-ink/60">
@@ -85,6 +181,9 @@ export default function ShowcasePanel() {
                 {getRoomMaxCapacityLabel(room)}
               </span>
               <RoomAvailabilityBadge room={room} />
+              {room.hidden && (
+                <span className="rounded-full bg-ink/10 px-3 py-1 text-xs font-medium text-ink/70">Gizli</span>
+              )}
             </div>
 
             {isOpen && (
@@ -142,11 +241,12 @@ export default function ShowcasePanel() {
                   </AdminField>
                 )}
 
-                <AdminField label="Galeri Görselleri" hint="Sürükleyerek sıralayın">
+                <AdminField label="Galeri Görselleri" hint="Sürükleyerek sıralayın · İlk fotoğraf kapaktır">
                   <SortableImageList
-                    items={room.images?.length ? room.images : ['']}
+                    items={room.images?.length ? room.images : []}
                     onChange={(images) => updateImages(room.id, images)}
                     previewBase={import.meta.env.BASE_URL}
+                    roomFolder={folder}
                   />
                 </AdminField>
 

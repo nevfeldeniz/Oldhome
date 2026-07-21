@@ -44,8 +44,17 @@ export function getShowcasePricing(type, ratePlans, maxGuests) {
 
 export function normalizeRatePlans(raw) {
   if (!raw || typeof raw !== 'object') return DEFAULT_RATE_PLANS
+
+  const clean = (list, fallback) => {
+    const source = Array.isArray(list) && list.length ? list : fallback
+    return source.map((rate) => ({
+      ...rate,
+      oldPrice: rate.oldPrice && String(rate.oldPrice).trim() && rate.oldPrice !== rate.price ? rate.oldPrice : undefined,
+    }))
+  }
+
   return {
-    max2: Array.isArray(raw.max2) && raw.max2.length ? raw.max2 : DEFAULT_RATE_PLANS.max2,
-    max3: Array.isArray(raw.max3) && raw.max3.length ? raw.max3 : DEFAULT_RATE_PLANS.max3,
+    max2: clean(raw.max2, DEFAULT_RATE_PLANS.max2),
+    max3: clean(raw.max3, DEFAULT_RATE_PLANS.max3),
   }
 }

@@ -43,7 +43,7 @@ export default function Rooms() {
               transition={{ duration: 0.4, ease: 'easeOut' }}
               className={`card-booking-alt relative flex flex-col ${room.featured ? 'ring-1 ring-wine/15' : ''}`}
             >
-              {room.oldPrice && (
+              {room.oldPrice && room.oldPrice !== room.price && (
                 <span className="absolute left-4 top-4 z-10 rounded-ui bg-wine-dark px-3 py-1 text-xs font-semibold text-white">
                   İndirim
                 </span>
@@ -78,7 +78,7 @@ export default function Rooms() {
 
                 <div className="mt-6 border-t border-black/[0.06] pt-5">
                   <div>
-                    {room.oldPrice && (
+                    {room.oldPrice && room.oldPrice !== room.price && (
                       <p className="text-sm font-medium text-ink/40 line-through">{room.oldPrice}</p>
                     )}
                     <p className="font-serif text-2xl font-semibold text-wine">{room.price}</p>

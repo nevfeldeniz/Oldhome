@@ -17,14 +17,14 @@ function RatePlanEditor({ title, rates, onChange }) {
             <AdminField label={rate.label}>
               <AdminInput value={rate.label} onChange={(e) => updateRate(index, 'label', e.target.value)} />
             </AdminField>
-            <AdminField label="Normal Fiyat (eski)">
+            <AdminField label="Normal Fiyat (üstü çizili / boş bırakılabilir)">
               <AdminInput
                 value={rate.oldPrice || ''}
                 onChange={(e) => updateRate(index, 'oldPrice', e.target.value)}
-                placeholder="3.200 TL"
+                placeholder="Boş = indirim yok"
               />
             </AdminField>
-            <AdminField label="Kampanya Fiyatı (güncel)">
+            <AdminField label="Güncel Fiyat">
               <AdminInput
                 value={rate.price || ''}
                 onChange={(e) => updateRate(index, 'price', e.target.value)}
@@ -116,10 +116,10 @@ export default function RoomTypesPanel() {
             <AdminField label="Kapasite Etiketi (fiyat kartında)">
               <AdminInput value={room.capacity} onChange={(e) => updateRoom(index, 'capacity', e.target.value)} />
             </AdminField>
-            <AdminField label="Kampanya Fiyatı (güncel)">
+            <AdminField label="Güncel Fiyat">
               <AdminInput value={room.price} onChange={(e) => updateRoom(index, 'price', e.target.value)} />
             </AdminField>
-            <AdminField label="Normal Fiyat (indirimli ise)">
+            <AdminField label="Normal Fiyat (üstü çizili — boş = indirim yok)">
               <AdminInput
                 value={room.oldPrice || ''}
                 onChange={(e) => updateRoom(index, 'oldPrice', e.target.value || undefined)}

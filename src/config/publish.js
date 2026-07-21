@@ -58,7 +58,19 @@ export function getActivePublishConfig() {
       mode: 'jsonbin',
       binId: envBin,
       masterKey: envMaster,
-      accessKey: import.meta.env.VITE_JSONBIN_ACCESS_KEY || envMaster,
+      accessKey: import.meta.env.VITE_JSONBIN_ACCESS_KEY || '',
+      isPublic: true,
+    }
+  }
+
+  // publish-config.json'daki binId + localStorage masterKey birleşimi
+  if (cachedPublicConfig?.binId && stored?.masterKey) {
+    return {
+      mode: 'jsonbin',
+      binId: cachedPublicConfig.binId,
+      masterKey: stored.masterKey,
+      accessKey: cachedPublicConfig.accessKey || '',
+      isPublic: true,
     }
   }
 
@@ -70,5 +82,8 @@ export function getActivePublishConfig() {
 }
 
 export function isLivePublishConfigured() {
-  return Boolean(getActivePublishConfig())
+  if (getActivePublishConfig()) return true
+  // public config yüklendikten sonra masterKey bağlanabilir
+  const stored = getStoredPublishConfig()
+  return Boolean(stored?.masterKey && (stored?.binId || cachedPublicConfig?.binId))
 }

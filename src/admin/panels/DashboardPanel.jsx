@@ -30,10 +30,10 @@ export default function DashboardPanel() {
 
       <AdminCard title="Hızlı Kontrol Listesi">
         <ul className="grid gap-2 text-sm text-ink/70 sm:grid-cols-2">
-          <li>• Oda düzenlemeleri otomatik kaydedilir.</li>
-          <li>• Müsaitlik ve fiyat değişiklikleri için <strong>Canlı Siteye Yayınla</strong> gerekir.</li>
-          <li>• Görseller <code className="text-wine">public/</code> klasörüne yüklenir.</li>
-          <li>• Admin: <code className="text-wine">/Oldhome/admin</code></li>
+          <li>• Değişiklikler taslak olarak kaydedilir.</li>
+          <li>• Canlı site için üstteki <strong>Kaydet ve Yayınla</strong> butonuna basın.</li>
+          <li>• Oda ekle / gizle / sil: Oda Galerisi paneli.</li>
+          <li>• Geri Al ile son değişikliği geri alabilirsiniz.</li>
         </ul>
       </AdminCard>
     </div>
