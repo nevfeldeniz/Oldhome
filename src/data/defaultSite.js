@@ -37,7 +37,7 @@ export const defaultSiteData = {
     description:
       'Rahatlığı ve huzuru bir araya getirerek misafirlerimize unutulmaz bir konaklama deneyimi sunuyoruz.',
     image: 'oldhome-cyprus-hotel-exterior-hero-desktop.jpg',
-    imageMobile: 'oldhome-cyprus-hero-mobile.png',
+    imageMobile: 'oldhome-cyprus-hotel-exterior-hero-mobile.jpg',
   },
 
   about: {

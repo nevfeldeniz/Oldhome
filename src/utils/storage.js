@@ -132,8 +132,8 @@ export function mergeSiteData(raw) {
 
   const LEGACY_HERO = new Set(['oldhome-cyprus-hotel-exterior.jpg', 'oldhome-cyprus-hotel-exterior-02.jpg'])
   const LEGACY_HERO_MOBILE = new Set([
+    'oldhome-cyprus-hero-mobile.png',
     'oldhome-cyprus-hotel-exterior.jpg',
-    'oldhome-cyprus-hotel-exterior-hero-mobile.jpg',
     'oldhome-cyprus-hotel-exterior-hero-desktop.jpg',
   ])
 

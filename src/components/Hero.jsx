@@ -5,7 +5,7 @@ import { resolveAsset } from '../utils/storage'
 import WhatsAppIcon from './WhatsAppIcon'
 
 const FALLBACK_HERO = 'oldhome-cyprus-hotel-exterior-hero-desktop.jpg'
-const FALLBACK_HERO_MOBILE = 'oldhome-cyprus-hero-mobile.png'
+const FALLBACK_HERO_MOBILE = 'oldhome-cyprus-hotel-exterior-hero-mobile.jpg'
 const HERO_ALT = 'Old Home Guest House boutique hotel exterior in Cyprus'
 
 export default function Hero() {
@@ -25,7 +25,7 @@ export default function Hero() {
       aria-label="Welcome"
     >
       <div className="absolute inset-0">
-        {/* Mobil: mevcut mobil hero */}
+        {/* Mobil ≤768px: masaüstü herodan üretilmiş 9:16 görsel */}
         <img
           src={heroImageMobile}
           alt={HERO_ALT}
@@ -33,9 +33,9 @@ export default function Hero() {
           height={1920}
           decoding="async"
           fetchPriority="high"
-          className="h-full w-full object-cover object-center sm:hidden"
+          className="h-full w-full object-cover object-center md:hidden"
         />
-        {/* Masaüstü: yeni hero görseli */}
+        {/* Masaüstü: mevcut hero — değiştirilmedi */}
         <img
           src={heroImage}
           alt={HERO_ALT}
@@ -43,7 +43,7 @@ export default function Hero() {
           height={1096}
           decoding="async"
           fetchPriority="high"
-          className="hidden h-full w-full object-cover object-center sm:block"
+          className="hidden h-full w-full object-cover object-center md:block"
         />
         <div
           className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/10 sm:from-black/70 sm:via-black/40 sm:to-black/20"
