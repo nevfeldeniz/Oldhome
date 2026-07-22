@@ -78,8 +78,14 @@ export default function GeneralPanel() {
         <AdminField label="Açıklama">
           <AdminTextarea value={rawData.hero.description} onChange={(e) => setHero('description', e.target.value)} />
         </AdminField>
-        <AdminField label="Ana Sayfa Görseli" hint="public/ klasöründeki dosya">
+        <AdminField label="Masaüstü Hero Görseli" hint="public/ klasöründeki dosya">
           <AdminInput value={rawData.hero.image || ''} onChange={(e) => setHero('image', e.target.value)} />
+        </AdminField>
+        <AdminField label="Mobil Hero Görseli" hint="public/ klasöründeki mobil görsel">
+          <AdminInput
+            value={rawData.hero.imageMobile || ''}
+            onChange={(e) => setHero('imageMobile', e.target.value)}
+          />
         </AdminField>
       </AdminCard>
 

@@ -130,15 +130,39 @@ export function mergeSiteData(raw) {
   const base = cloneData(defaultSiteData)
   if (!raw || typeof raw !== 'object') return base
 
+  const LEGACY_HERO = new Set(['oldhome-cyprus-hotel-exterior.jpg', 'oldhome-cyprus-hotel-exterior-02.jpg'])
+  const LEGACY_HERO_MOBILE = new Set([
+    'oldhome-cyprus-hotel-exterior.jpg',
+    'oldhome-cyprus-hotel-exterior-hero-mobile.jpg',
+    'oldhome-cyprus-hotel-exterior-hero-desktop.jpg',
+  ])
+
+  const rawHero = raw.hero || {}
+  const heroImage = LEGACY_HERO.has(rawHero.image) || !rawHero.image ? base.hero.image : rawHero.image
+  const heroImageMobile =
+    LEGACY_HERO_MOBILE.has(rawHero.imageMobile) || !rawHero.imageMobile
+      ? base.hero.imageMobile
+      : rawHero.imageMobile
+
   return {
     ...base,
     ...raw,
-    hero: { ...base.hero, ...(raw.hero || {}), imageMobile: raw.hero?.imageMobile || base.hero.imageMobile },
+    hero: {
+      ...base.hero,
+      ...rawHero,
+      image: heroImage,
+      imageMobile: heroImageMobile,
+    },
     about: { ...base.about, ...(raw.about || {}) },
     contact: { ...base.contact, ...(raw.contact || {}) },
     social: { ...base.social, ...(raw.social || {}) },
     footer: { ...base.footer, ...(raw.footer || {}) },
-    seo: { ...base.seo, ...(raw.seo || {}) },
+    seo: {
+      ...base.seo,
+      ...(raw.seo || {}),
+      ogImage:
+        LEGACY_HERO.has(raw.seo?.ogImage) || !raw.seo?.ogImage ? base.seo.ogImage : raw.seo.ogImage,
+    },
     quickInfoBar: Array.isArray(raw.quickInfoBar) ? raw.quickInfoBar : base.quickInfoBar,
     ratePlans: normalizeRatePlans(raw.ratePlans ?? base.ratePlans),
     roomsNote: raw.roomsNote ?? base.roomsNote,

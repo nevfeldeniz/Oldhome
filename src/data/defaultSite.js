@@ -17,7 +17,7 @@ export const defaultSiteData = {
     keywords: 'old home guest house, kıbrıs otel, lefkoşa otel, butik otel, köşklüçiftlik konaklama',
     ogTitle: 'Old Home Guest House',
     ogDescription: "Kıbrıs'ta konforlu konaklama ve sıcak bir yuva hissi.",
-    ogImage: 'oldhome-cyprus-hotel-exterior.jpg',
+    ogImage: 'oldhome-cyprus-hotel-exterior-hero-desktop.jpg',
     ogImageAlt: 'Old Home Guest House boutique hotel exterior in Cyprus',
   },
 
@@ -36,7 +36,7 @@ export const defaultSiteData = {
     subtitle: 'Konforlu Konaklama, Sıcak Bir Yuva Hissi',
     description:
       'Rahatlığı ve huzuru bir araya getirerek misafirlerimize unutulmaz bir konaklama deneyimi sunuyoruz.',
-    image: 'oldhome-cyprus-hotel-exterior.jpg',
+    image: 'oldhome-cyprus-hotel-exterior-hero-desktop.jpg',
     imageMobile: 'oldhome-cyprus-hero-mobile.png',
   },
 
