@@ -29,8 +29,8 @@ export default function Hero() {
         <img
           src={heroImageMobile}
           alt={HERO_ALT}
-          width={1080}
-          height={1920}
+          width={576}
+          height={1024}
           decoding="async"
           fetchPriority="high"
           className="h-full w-full object-cover object-center md:hidden"
