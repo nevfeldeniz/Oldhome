@@ -7,7 +7,9 @@ import RoomRateList from './RoomRateList'
 import RoomAvailabilityBadge from './RoomAvailabilityBadge'
 import OptimizedImage from './ui/OptimizedImage'
 import { hasDiscountedRates, getLowestRate } from '../utils/roomPricing'
+import { getResolvedRoomGallery } from '../data/roomGalleries'
 import { getRoomMaxCapacityLabel } from '../utils/roomCapacity'
+import { resolveAsset } from '../utils/storage'
 import { SectionIntro, SectionHeading, fadeUp } from './Section'
 
 const filters = [
@@ -110,8 +112,9 @@ export default function DiscoverRooms() {
           <motion.div layout className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <AnimatePresence mode="popLayout">
               {visibleRooms.map((room) => {
-                const coverImage = room.images?.[0]
-                const photoCount = room.images?.length || 0
+                const gallery = getResolvedRoomGallery(room)
+                const coverImage = resolveAsset(gallery?.images[0]?.src ?? room.images[0])
+                const photoCount = gallery?.images.length ?? room.images.length
 
                 return (
                   <motion.article

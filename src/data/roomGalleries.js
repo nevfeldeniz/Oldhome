@@ -282,8 +282,39 @@ export const roomGalleries = {
 
 /** Oda numarasından galeri verisini döndürür (örn. "Oda 001" → "001") */
 export function getRoomGallery(roomNumber) {
-  const id = roomNumber.replace(/\D/g, '').padStart(3, '0')
+  const id = String(roomNumber || '').replace(/\D/g, '').padStart(3, '0')
   return roomGalleries[id] || null
+}
+
+/** Varsayılan tam fotoğraf listesi (CMS boş/kısa kaldığında). */
+export function getDefaultRoomImageSrcs(roomNumber) {
+  const gallery = getRoomGallery(roomNumber)
+  return gallery ? gallery.images.map((img) => img.src) : []
+}
+
+/**
+ * Site gösterimi: admin CMS images varsa onları kullan (ekle/sil/sıra yansır),
+ * yoksa eski roomGalleries yedeğine düş.
+ */
+export function getResolvedRoomGallery(room) {
+  const cmsImages = (room?.images || []).filter(Boolean)
+  if (cmsImages.length > 0) {
+    const base = import.meta.env.BASE_URL || '/'
+    return {
+      id: `room-${room.id ?? 'x'}`,
+      title: room.number || 'Room',
+      images: cmsImages.map((src, index) => {
+        let path = src
+        if (typeof path === 'string' && path.startsWith(base)) path = path.slice(base.length)
+        return {
+          src: path,
+          alt: `${room.number || 'Room'} photo ${index + 1} at Old Home Guest House Cyprus`,
+          category: 'cms',
+        }
+      }),
+    }
+  }
+  return getRoomGallery(room?.number)
 }
 
 /** Kart önizlemesi için oda görselleri (banyo hariç) */

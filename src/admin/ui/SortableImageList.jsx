@@ -1,81 +1,57 @@
 import { useRef, useState } from 'react'
-import { GripVertical, ImagePlus, Star, Upload, X } from 'lucide-react'
-import { compressImageFile, previewSrc } from '../../utils/imageOptimize'
+import { GripVertical, ImagePlus, Replace, Upload, X } from 'lucide-react'
+import { previewSrc } from '../../utils/imageOptimize'
 
-export default function SortableImageList({
-  items = [],
-  onChange,
-  previewBase = '',
-  roomFolder = '',
-  allowDataUrl = true,
-}) {
+export default function SortableImageList({ items = [], onChange, previewBase = '', roomFolder = '' }) {
   const [dragIndex, setDragIndex] = useState(null)
-  const [busy, setBusy] = useState(false)
-  const [error, setError] = useState('')
   const fileRef = useRef(null)
+  const replaceIndexRef = useRef(null)
+
+  const list = items.length ? items : ['']
+
+  const commit = (next) => onChange(next)
 
   const reorder = (from, to) => {
     if (from === null || from === to) return
-    const next = [...items]
+    const next = [...list]
     const [moved] = next.splice(from, 1)
     next.splice(to, 0, moved)
-    onChange(next)
+    commit(next)
+  }
+
+  const updateAt = (index, value) => {
+    const next = [...list]
+    next[index] = value
+    commit(next)
   }
 
   const removeAt = (index) => {
-    onChange(items.filter((_, i) => i !== index))
+    const next = list.filter((_, i) => i !== index)
+    commit(next.length ? next : [''])
   }
 
-  const setCover = (index) => {
-    if (index === 0) return
-    const next = [...items]
-    const [moved] = next.splice(index, 1)
-    next.unshift(moved)
-    onChange(next)
-  }
+  const addEmpty = () => commit([...list.filter(Boolean), ''])
 
-  const handleFiles = async (fileList) => {
+  const handleFiles = (fileList, replaceIndex = null) => {
     const files = Array.from(fileList || [])
     if (!files.length) return
-    setBusy(true)
-    setError('')
-    try {
-      const added = []
-      for (const file of files) {
-        if (allowDataUrl) {
-          const { dataUrl, fileName } = await compressImageFile(file)
-          // Küçük görseller data URL; büyükse dosya adı öner
-          if (dataUrl.length < 80_000) {
-            added.push(dataUrl)
-          } else {
-            const suggested = roomFolder ? `${roomFolder}/${fileName}` : fileName
-            added.push(suggested)
-            setError(
-              (prev) =>
-                prev ||
-                `${fileName} büyük olduğu için dosya adı olarak eklendi. Dosyayı public/${suggested} konumuna koyun.`,
-            )
-          }
-        } else {
-          const suggested = roomFolder ? `${roomFolder}/${file.name}` : file.name
-          added.push(suggested)
-        }
-      }
-      onChange([...items.filter(Boolean), ...added])
-    } catch (err) {
-      setError(err.message || 'Yükleme başarısız.')
-    } finally {
-      setBusy(false)
-      if (fileRef.current) fileRef.current.value = ''
+    const names = files.map((file) => (roomFolder ? `${roomFolder}/${file.name}` : file.name))
+    if (replaceIndex !== null) {
+      const next = [...list]
+      next[replaceIndex] = names[0]
+      if (names.length > 1) next.splice(replaceIndex + 1, 0, ...names.slice(1))
+      commit(next)
+    } else {
+      commit([...list.filter(Boolean), ...names])
     }
   }
 
   return (
     <div className="space-y-3">
       <ul className="space-y-2">
-        {items.map((src, index) => (
+        {list.map((src, index) => (
           <li
-            key={`${String(src).slice(0, 40)}-${index}`}
+            key={`img-${index}`}
             draggable
             onDragStart={() => setDragIndex(index)}
             onDragOver={(e) => e.preventDefault()}
@@ -91,42 +67,36 @@ export default function SortableImageList({
             <span className="cursor-grab text-ink/35 active:cursor-grabbing" aria-hidden>
               <GripVertical className="h-4 w-4" />
             </span>
-            {src && (
+            {src ? (
               <img
                 src={previewSrc(src, previewBase)}
                 alt=""
                 className="h-14 w-20 shrink-0 rounded-lg object-cover"
               />
+            ) : (
+              <span className="grid h-14 w-20 shrink-0 place-items-center rounded-lg bg-parchment text-[10px] text-ink/40">
+                Önizleme
+              </span>
             )}
-            <div className="min-w-0 flex-1 space-y-1">
-              <input
-                type="text"
-                value={src.startsWith('data:') ? `(yüklenen görsel ${index + 1})` : src}
-                onChange={(e) => {
-                  if (src.startsWith('data:')) return
-                  const next = [...items]
-                  next[index] = e.target.value
-                  onChange(next)
-                }}
-                readOnly={src.startsWith('data:')}
-                className="w-full rounded-lg border border-wine/15 px-3 py-2 text-xs text-ink outline-none focus:border-wine"
-                placeholder="dosya-adı.jpg veya rooms/001/foto.jpg"
-              />
-              {index === 0 && (
-                <p className="text-[11px] font-medium text-wine">Kapak fotoğrafı</p>
-              )}
-            </div>
-            {index !== 0 && (
-              <button
-                type="button"
-                onClick={() => setCover(index)}
-                className="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-ink/40 hover:bg-amber-50 hover:text-amber-700"
-                title="Kapak yap"
-                aria-label="Kapak fotoğrafı yap"
-              >
-                <Star className="h-4 w-4" />
-              </button>
-            )}
+            <input
+              type="text"
+              value={src}
+              onChange={(e) => updateAt(index, e.target.value)}
+              className="min-w-0 flex-1 rounded-lg border border-wine/15 px-3 py-2 text-xs text-ink outline-none focus:border-wine"
+              placeholder="dosya-adı.jpg"
+            />
+            <button
+              type="button"
+              onClick={() => {
+                replaceIndexRef.current = index
+                fileRef.current?.click()
+              }}
+              className="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-ink/40 hover:bg-wine/5 hover:text-wine"
+              title="Fotoğraf değiştir"
+              aria-label="Fotoğraf değiştir"
+            >
+              <Replace className="h-4 w-4" />
+            </button>
             <button
               type="button"
               onClick={() => removeAt(index)}
@@ -142,20 +112,22 @@ export default function SortableImageList({
       <div className="flex flex-wrap gap-2">
         <button
           type="button"
-          onClick={() => onChange([...items, ''])}
+          onClick={addEmpty}
           className="inline-flex items-center gap-2 rounded-xl border border-dashed border-wine/25 px-4 py-2.5 text-sm text-wine transition hover:border-wine/40 hover:bg-wine/5"
         >
           <ImagePlus className="h-4 w-4" />
-          Dosya adı ekle
+          Fotoğraf satırı ekle
         </button>
         <button
           type="button"
-          disabled={busy}
-          onClick={() => fileRef.current?.click()}
-          className="inline-flex items-center gap-2 rounded-xl border border-wine/20 bg-wine/5 px-4 py-2.5 text-sm font-medium text-wine transition hover:bg-wine/10 disabled:opacity-60"
+          onClick={() => {
+            replaceIndexRef.current = null
+            fileRef.current?.click()
+          }}
+          className="inline-flex items-center gap-2 rounded-xl border border-wine/20 bg-wine/5 px-4 py-2.5 text-sm font-medium text-wine transition hover:bg-wine/10"
         >
           <Upload className="h-4 w-4" />
-          {busy ? 'Yükleniyor…' : 'Fotoğraf yükle (çoklu)'}
+          Fotoğraf ekle (çoklu)
         </button>
         <input
           ref={fileRef}
@@ -163,16 +135,20 @@ export default function SortableImageList({
           accept="image/*"
           multiple
           className="hidden"
-          onChange={(e) => handleFiles(e.target.files)}
+          onChange={(e) => {
+            handleFiles(e.target.files, replaceIndexRef.current)
+            e.target.value = ''
+            replaceIndexRef.current = null
+          }}
         />
       </div>
 
       {roomFolder && (
         <p className="text-xs text-ink/55">
-          Önerilen klasör: <code className="text-wine">public/{roomFolder}/</code>
+          Seçilen dosya adları kaydedilir. Dosyaları <code className="text-wine">public/{roomFolder}/</code>{' '}
+          klasörüne koyun; sonra <strong>Kaydet ve Yayınla</strong> deyin.
         </p>
       )}
-      {error && <p className="text-xs text-amber-800">{error}</p>}
     </div>
   )
 }

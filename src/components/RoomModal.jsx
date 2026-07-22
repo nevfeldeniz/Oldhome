@@ -25,6 +25,8 @@ import {
 import { useSite } from '../context/SiteContext'
 import { getWhatsAppUrl } from '../utils/whatsapp'
 import WhatsAppIcon from './WhatsAppIcon'
+import { getResolvedRoomGallery } from '../data/roomGalleries'
+import { resolveAsset } from '../utils/storage'
 import RoomGallery from './RoomGallery'
 import RoomRateList from './RoomRateList'
 import RoomAvailabilityBadge from './RoomAvailabilityBadge'
@@ -55,14 +57,18 @@ const featureIcons = {
 export default function RoomModal({ room, onClose }) {
   const { site } = useSite()
   const { contact, social, ratePlans } = site
-  const sliderImages = room.images?.length ? room.images : []
-  const hasExtendedGallery = sliderImages.length > 4
+  const extendedGallery = getResolvedRoomGallery(room)
+  const hasExtendedGallery = !!extendedGallery
+
+  const sliderImages = hasExtendedGallery
+    ? extendedGallery.images.map((img) => resolveAsset(img.src))
+    : room.images
 
   const [current, setCurrent] = useState(0)
   const total = sliderImages.length
 
-  const next = useCallback(() => setCurrent((i) => (i + 1) % Math.max(total, 1)), [total])
-  const prev = useCallback(() => setCurrent((i) => (i - 1 + Math.max(total, 1)) % Math.max(total, 1)), [total])
+  const next = useCallback(() => setCurrent((i) => (i + 1) % total), [total])
+  const prev = useCallback(() => setCurrent((i) => (i - 1 + total) % total), [total])
 
   useEffect(() => {
     const onKey = (e) => {
@@ -160,10 +166,11 @@ export default function RoomModal({ room, onClose }) {
 
         {hasExtendedGallery ? (
           <div className="space-y-8 px-4 pb-8 pt-16 sm:px-8">
+            {/* Hero — genel görünüm */}
             <div className="aspect-[16/10] overflow-hidden rounded-ui bg-parchment">
               <OptimizedImage
-                src={sliderImages[0]}
-                alt={`${room.number} at Old Home Guest House Cyprus`}
+                src={resolveAsset(extendedGallery.images[0].src)}
+                alt={extendedGallery.images[0].alt}
                 width={1200}
                 height={750}
                 priority
@@ -173,14 +180,7 @@ export default function RoomModal({ room, onClose }) {
 
             <div>{detailsBlock}</div>
 
-            <RoomGallery
-              gallery={{
-                images: sliderImages.map((src, index) => ({
-                  src,
-                  alt: `${room.number} photo ${index + 1}`,
-                })),
-              }}
-            />
+            <RoomGallery gallery={extendedGallery} />
           </div>
         ) : (
           <>

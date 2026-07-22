@@ -8,7 +8,7 @@ const withDefaultAvailability = (rooms) =>
 
 export const defaultSiteData = {
   pricingRoomsRevision: 6,
-  showcaseRoomsRevision: 2,
+  showcaseRoomsRevision: 3,
 
   seo: {
     title: "Old Home Guest House | Kıbrıs'ta Konforlu Konaklama",
@@ -98,7 +98,7 @@ export const defaultSiteData = {
       availability: 'occupied',
       description:
         'Zemin katta, ferah ve aydınlık çift kişilik odamız. Sıcak ahşap tonları ve konforlu yatağıyla huzurlu, sakin bir konaklama sunar.',
-      images: ['oldhome-cyprus-room-001-01.jpg', 'oldhome-cyprus-room-001-03.jpg'],
+      images: ['oldhome-cyprus-room-001-01.jpg', 'oldhome-cyprus-room-001-03.jpg', 'oldhome-cyprus-room-bathroom-001-02.jpg', 'oldhome-cyprus-room-interior-001-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -120,7 +120,7 @@ export const defaultSiteData = {
       availability: 'occupied',
       description:
         'Yenilenen ferah çift kişilik odamız. Pencere kenarı hasır oturma köşesi, geniş yatak ve mermer banyosuyla konforlu bir konaklama sunar.',
-      images: ['oldhome-cyprus-room-002-01.jpg', 'oldhome-cyprus-room-002-02.jpg'],
+      images: ['oldhome-cyprus-room-002-01.jpg', 'oldhome-cyprus-room-002-02.jpg', 'oldhome-cyprus-room-bathroom-002-02.jpg', 'oldhome-cyprus-room-interior-002-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -142,7 +142,7 @@ export const defaultSiteData = {
       availability: 'occupied',
       description:
         'Minimalist ve aydınlık tek kişilik odamız. Konforlu yatak, çalışma masası ve sakin atmosferiyle yalnız seyahat eden misafirler için idealdir.',
-      images: ['oldhome-cyprus-room-003-01.jpg', 'oldhome-cyprus-room-003-02.jpg'],
+      images: ['oldhome-cyprus-room-003-01.jpg', 'oldhome-cyprus-room-003-02.jpg', 'oldhome-cyprus-room-bathroom-003-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -164,7 +164,7 @@ export const defaultSiteData = {
       availability: 'occupied',
       description:
         'Yenilenen çift kişilik odamız. Ayna karşılı oturma köşesi, geniş yatak ve mermer banyosuyla şık ve konforlu bir konaklama sunar.',
-      images: ['oldhome-cyprus-room-004-01.jpg', 'oldhome-cyprus-room-004-02.jpg'],
+      images: ['oldhome-cyprus-room-004-01.jpg', 'oldhome-cyprus-room-004-02.jpg', 'oldhome-cyprus-room-bathroom-004-01.jpg', 'oldhome-cyprus-room-interior-004-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -186,7 +186,7 @@ export const defaultSiteData = {
       availability: 'occupied',
       description:
         'Modern ve ferah tek kişilik odamız. Beyaz minimalist tasarım, çalışma köşesi ve mermer kaplı özel banyosuyla sakin bir konaklama sunar.',
-      images: ['oldhome-cyprus-room-005-01.jpg', 'oldhome-cyprus-room-005-04.jpg'],
+      images: ['oldhome-cyprus-room-005-01.jpg', 'oldhome-cyprus-room-005-04.jpg', 'oldhome-cyprus-room-bathroom-005-02.jpg', 'oldhome-cyprus-room-interior-005-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -207,7 +207,7 @@ export const defaultSiteData = {
       type: 'Çift',
       description:
         'Yenilenen ferah çift kişilik odamız. Hasır oturma köşesi, boy aynası ve mermer banyosuyla konforlu bir konaklama sunar.',
-      images: ['oldhome-cyprus-room-006-01.jpg', 'oldhome-cyprus-room-006-02.jpg'],
+      images: ['oldhome-cyprus-room-006-01.jpg', 'oldhome-cyprus-room-006-02.jpg', 'oldhome-cyprus-room-bathroom-006-02.jpg', 'oldhome-cyprus-room-interior-006-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -228,7 +228,7 @@ export const defaultSiteData = {
       type: '3 Kişilik',
       description:
         'Yenilenen üç kişilik aile odamız. Esnek yatak düzeni, hasır oturma köşesi ve mermer banyosuyla aileler için idealdir.',
-      images: ['oldhome-cyprus-room-007-01.jpg', 'oldhome-cyprus-room-007-03.jpg'],
+      images: ['oldhome-cyprus-room-007-01.jpg', 'oldhome-cyprus-room-007-03.jpg', 'oldhome-cyprus-room-bathroom-007-01.jpg', 'oldhome-cyprus-room-interior-007-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -250,7 +250,7 @@ export const defaultSiteData = {
       type: '3 Kişilik',
       description:
         'Üç kişilik odamız; çift ve tek kişilik yatak düzeniyle esnek konaklama imkânı sunar. Hasır oturma köşesi ve şık mermer banyosuyla konforlu bir deneyim sağlar.',
-      images: ['oldhome-cyprus-room-008-01.jpg', 'oldhome-cyprus-room-008-04.jpg'],
+      images: ['oldhome-cyprus-room-008-01.jpg', 'oldhome-cyprus-room-008-04.jpg', 'oldhome-cyprus-room-bathroom-008-02.jpg', 'oldhome-cyprus-room-interior-008-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -272,7 +272,7 @@ export const defaultSiteData = {
       type: 'Çift',
       description:
         'Aydınlık ve minimalist odamız. Pencere kenarı hasır oturma köşesi, geniş gardırop ve mermer kaplı özel banyosuyla keyifli bir konaklama sunar.',
-      images: ['oldhome-cyprus-room-009-01.jpg', 'oldhome-cyprus-room-009-04.jpg'],
+      images: ['oldhome-cyprus-room-009-01.jpg', 'oldhome-cyprus-room-009-04.jpg', 'oldhome-cyprus-room-bathroom-009-02.jpg', 'oldhome-cyprus-room-interior-009-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -293,7 +293,7 @@ export const defaultSiteData = {
       type: 'Çift',
       description:
         'Yenilenen çift kişilik odamız. Hasır oturma köşesi, boy aynalı gardırop ve mermer banyosuyla romantik bir konaklama sunar.',
-      images: ['oldhome-cyprus-room-010-01.jpg', 'oldhome-cyprus-room-010-02.jpg'],
+      images: ['oldhome-cyprus-room-010-01.jpg', 'oldhome-cyprus-room-010-02.jpg', 'oldhome-cyprus-room-bathroom-010-02.jpg', 'oldhome-cyprus-room-interior-010-01.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',
@@ -314,7 +314,7 @@ export const defaultSiteData = {
       type: 'Tek',
       description:
         'Üst katta yer alan, aydınlık tek kişilik odamız. Çalışma köşesi, yağmur duşlu mermer banyosu ve sakin atmosferiyle yalnız seyahat eden misafirler için idealdir.',
-      images: ['oldhome-cyprus-room-011-01.jpg', 'oldhome-cyprus-room-011-04.jpg'],
+      images: ['oldhome-cyprus-room-011-01.jpg', 'oldhome-cyprus-room-011-04.jpg', 'oldhome-cyprus-room-bathroom-011-02.jpg'],
       features: [
         'Klima',
         'Ücretsiz Wi-Fi',

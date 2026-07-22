@@ -66,7 +66,10 @@ function mergePricingRooms(baseRooms, savedRooms, savedRevision = 0) {
 }
 
 /** Kaydedilmiş oda listesi kaynak doğrudur — ekle / sil / gizle / sıra desteklenir. */
-function mergeShowcaseRooms(baseRooms, savedRooms) {
+function mergeShowcaseRooms(baseRooms, savedRooms, savedRevision = 0) {
+  const baseRevision = defaultSiteData.showcaseRoomsRevision ?? 0
+  const needsGalleryRestore = savedRevision < baseRevision
+
   if (!Array.isArray(savedRooms) || savedRooms.length === 0) return baseRooms
 
   const baseById = new Map(baseRooms.map((room) => [room.id, room]))
@@ -76,6 +79,19 @@ function mergeShowcaseRooms(baseRooms, savedRooms) {
       const base = baseById.get(saved.id) || {}
       const stale = usesStaleRoomImages(saved.images)
       const availability = saved.availability ?? base.availability ?? 'available'
+      let images = saved.images?.length ? saved.images : base.images || []
+      // Eski kısa galeriyi (2 foto) tam listeye bir kez yükselt; admin silmelerini sonraki kayıtlarda koru
+      if (
+        (stale || needsGalleryRestore) &&
+        base.images?.length &&
+        images.length > 0 &&
+        images.length < base.images.length &&
+        images.every((img) => base.images.includes(img) || String(img).includes('oldhome-cyprus-room'))
+      ) {
+        images = base.images
+      } else if (stale && base.images?.length) {
+        images = base.images
+      }
       return {
         ...base,
         ...saved,
@@ -85,7 +101,7 @@ function mergeShowcaseRooms(baseRooms, savedRooms) {
         maxGuests: saved.maxGuests ?? base.maxGuests ?? (saved.type === '3 Kişilik' ? 3 : 2),
         description: saved.description ?? base.description ?? '',
         features: Array.isArray(saved.features) && saved.features.length ? saved.features : base.features || [],
-        images: stale && base.images?.length ? base.images : saved.images?.length ? saved.images : base.images || [],
+        images,
         availability,
         occupiedUntil: availability === 'occupied_until' ? saved.occupiedUntil || base.occupiedUntil || '' : undefined,
         hidden: Boolean(saved.hidden),
@@ -129,7 +145,7 @@ export function mergeSiteData(raw) {
     pricingRoomsRevision: base.pricingRoomsRevision,
     showcaseRoomsRevision: base.showcaseRoomsRevision,
     rooms: mergePricingRooms(base.rooms, raw.rooms, raw.pricingRoomsRevision ?? 0),
-    showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms),
+    showcaseRooms: mergeShowcaseRooms(base.showcaseRooms, raw.showcaseRooms, raw.showcaseRoomsRevision ?? 0),
     outdoorGallery: filterOutdoorGallery(Array.isArray(raw.outdoorGallery) ? raw.outdoorGallery : base.outdoorGallery),
     gallery: filterOutdoorGallery(Array.isArray(raw.gallery) ? raw.gallery : base.gallery),
   }
